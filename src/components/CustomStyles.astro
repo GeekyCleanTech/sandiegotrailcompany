@@ -1,0 +1,35 @@
+---
+// San Diego Trail Company — brand fonts (loaded via Google Fonts in Layout.astro)
+// and brand color tokens mapped into AstroWind's --aw-* variables.
+---
+
+<style is:inline>
+  :root {
+    --aw-font-sans: 'DM Sans';
+    --aw-font-serif: 'Cormorant Garamond';
+    --aw-font-heading: 'Cormorant Garamond';
+
+    /* San Diego Trail Company brand palette */
+    --aw-color-primary: #3b2314; /* Deep Saddle Brown */
+    --aw-color-secondary: #c49a3c; /* Sunbaked Gold */
+    --aw-color-accent: #8a9e7b; /* Canyon Sage */
+
+    --aw-color-text-heading: #3b2314;
+    --aw-color-text-default: #2c2c2c; /* Charcoal */
+    --aw-color-text-muted: rgb(44 44 44 / 66%);
+    --aw-color-bg-page: #f5f0e8; /* Warm Linen */
+
+    --aw-color-bg-page-dark: #3b2314;
+
+    ::selection {
+      background-color: #c49a3c;
+      color: #3b2314;
+    }
+  }
+
+  body {
+    font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+    background-color: #f5f0e8;
+    color: #2c2c2c;
+  }
+</style>

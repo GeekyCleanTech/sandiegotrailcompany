@@ -1,0 +1,62 @@
+---
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  service: {
+    title: string;
+    label: string;
+    description: string;
+    details: string[];
+    href: string;
+    image: string;
+  };
+  flip?: boolean;
+  shade?: boolean;
+}
+
+const { service, flip = false, shade = false } = Astro.props;
+---
+
+<article aria-label={service.title} class={`grid lg:grid-cols-2 ${flip ? 'lg:grid-flow-dense' : ''}`}>
+  <div
+    role="img"
+    aria-label={`${service.title} – photo`}
+    class={`h-[360px] lg:h-auto bg-cover bg-center ${flip ? 'lg:col-start-2' : ''}`}
+    style={`background-image:url(${service.image});min-height:380px;`}
+  >
+  </div>
+  <div
+    class={`px-8 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center ${flip ? 'lg:col-start-1 lg:row-start-1' : ''}`}
+    style={`background-color:${shade ? '#edeae0' : '#f5f0e8'};`}
+  >
+    <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">{service.label}</div>
+    <h3
+      class="mb-5"
+      style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:400;color:#3b2314;line-height:1.2;"
+    >
+      {service.title}
+    </h3>
+    <p class="mb-8" style="font-size:16px;color:#2c2c2c;line-height:1.8;opacity:0.85;max-width:480px;">
+      {service.description}
+    </p>
+    <ul class="mb-10 space-y-3">
+      {
+        service.details.map((d) => (
+          <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
+            <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />
+            {d}
+          </li>
+        ))
+      }
+    </ul>
+    <a
+      href={service.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 hover:gap-3 transition-all"
+      style="font-size:13px;color:#c49a3c;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+    >
+      Learn More <Icon name="tabler:arrow-right" class="w-4 h-4" />
+    </a>
+  </div>
+</article>

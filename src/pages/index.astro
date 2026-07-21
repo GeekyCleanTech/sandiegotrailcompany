@@ -1,0 +1,334 @@
+---
+import { Icon } from 'astro-icon/components';
+import SiteLayout from '~/layouts/SiteLayout.astro';
+
+const BOOK_URL = 'https://sandiegotrailcompany.com/contact/';
+
+const metadata = {
+  description:
+    "Experience Southern California's backcountry with guided horseback trail rides, boutique ranch stays, kids camps, equine coaching, and horse rescue in Poway, CA. Book your adventure today.",
+};
+
+const pillars = [
+  {
+    id: 'ride-learn',
+    label: 'Ride & Learn',
+    title: 'Guided Canyon Trail Rides',
+    description: "Golden-hour rides through Poway's backcountry. Small groups, experienced guides.",
+    image: '/images/pillar-ride-learn.png',
+    route: '/ride-and-learn',
+  },
+  {
+    id: 'stay-celebrate',
+    label: 'Stay & Celebrate',
+    title: 'Ranch Stays & Private Events',
+    description: 'Boutique accommodations, wedding venues, and celebrations under open sky.',
+    image: '/images/pillar-stay-celebrate.jpg',
+    route: '/stay-and-celebrate',
+  },
+  {
+    id: 'give-support',
+    label: 'Give & Support',
+    title: 'Equine Rescue Mission',
+    description: 'Support our nonprofit mission to rescue and rehabilitate neglected horses.',
+    image: '/images/pillar-give-support.jpg',
+    route: '/give-and-support',
+  },
+];
+
+const reviews = [
+  {
+    id: 1,
+    text: 'Absolutely magical. The sunset ride through the canyon was the highlight of our San Diego trip. Our guide was knowledgeable and the horses were so well-cared for.',
+    reviewer: 'Sarah M.',
+    source: 'Google Review',
+  },
+  {
+    id: 2,
+    text: "We hosted our intimate wedding at the ranch and it couldn't have been more perfect. The setting is breathtaking and the team went above and beyond.",
+    reviewer: 'James & Emily R.',
+    source: 'Google Review',
+  },
+  {
+    id: 3,
+    text: "As someone who's never ridden before, I was nervous, but the guides made me feel completely safe. The experience was transformative—I'll never forget it.",
+    reviewer: 'David L.',
+    source: 'Google Review',
+  },
+];
+
+const featuredImg =
+  'https://images.unsplash.com/photo-1765313273854-fcee815acdea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxob3JzZWJhY2slMjByaWRpbmclMjB0cmFpbCUyMGNhbnlvbiUyMGdvbGRlbiUyMGhvdXIlMjBzdW5zZXR8ZW58MXx8fHwxNzgwNjI4MTA4fDA&ixlib=rb-4.1.0&q=80&w=1080';
+const ranchImg =
+  'https://images.unsplash.com/photo-1777245397327-042bf06abfcc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw1fHxyYW5jaCUyMGFlcmlhbCUyMHZpZXclMjBkdXNrfGVufDF8fHx8MTc4MDYyODEwOXww&ixlib=rb-4.1.0&q=80&w=1080';
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'San Diego Trail Company',
+  description:
+    'Guided horseback trail rides, ranch stays, kids camps, equine coaching, and horse rescue in Poway, CA.',
+  url: 'https://sandiegotrailcompany.com',
+  telephone: '+1-858-748-6441',
+  email: 'ride@powayequestriancenter.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '14875 Mina De Oro',
+    addressLocality: 'Poway',
+    addressRegion: 'CA',
+    postalCode: '92064',
+    addressCountry: 'US',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 33.0164, longitude: -117.0333 },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '17:00',
+    },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Saturday', 'Sunday'], opens: '09:00', closes: '16:00' },
+  ],
+  sameAs: [
+    'https://www.instagram.com/sandiegotrailcompany/',
+    'https://www.facebook.com/sandiegotrailcompany/',
+  ],
+};
+
+const pillStyle =
+  'background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;';
+---
+
+<SiteLayout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  </Fragment>
+
+  <!-- HERO -->
+  <section aria-label="Welcome to San Diego Trail Company" class="relative h-screen w-full overflow-hidden">
+    <video
+      aria-hidden="true"
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 h-full w-full object-cover"
+      src="/videos/hero-trail-ride.mp4"></video>
+    <div
+      aria-hidden="true"
+      class="absolute inset-0"
+      style="background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, transparent 100%), rgba(0,0,0,0.5);"
+    >
+    </div>
+
+    <div class="relative h-full max-w-[1600px] mx-auto px-6 lg:px-12 flex items-center">
+      <div class="max-w-[600px]">
+        <p class="uppercase mb-6" style="font-size:12px;color:#8a9e7b;letter-spacing:0.15em;">San Diego · Poway Ranch</p>
+        <h1
+          class="text-white mb-6 leading-tight"
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(48px,8vw,72px);font-weight:300;"
+        >
+          Where the Canyon Meets the Horizon.
+        </h1>
+        <p class="text-white mb-8 leading-relaxed" style="font-size:17px;max-width:480px;opacity:0.9;">
+          Experience the raw beauty of Southern California's backcountry. Guided trail rides through golden canyons,
+          intimate ranch stays, and the freedom only open land can give.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href={BOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Reserve your trail ride experience (opens in new tab)"
+            class="inline-flex items-center justify-center px-10 rounded-full transition-all hover:brightness-110"
+            style={pillStyle}>Reserve Your Experience</a
+          >
+          <a
+            href="#pillars"
+            aria-label="Scroll down to explore all experiences"
+            class="text-white underline hover:text-[#c49a3c] transition-colors flex items-center justify-center rounded-sm"
+            style="font-size:13px;">Explore all experiences ↓</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div
+      role="complementary"
+      aria-label="Trust indicators"
+      class="absolute bottom-0 left-0 right-0 px-6 lg:px-12 py-4 text-center"
+      style="background-color:#f5f0e8;font-size:12px;color:#2c2c2c;"
+    >
+      <ul class="max-w-[1600px] mx-auto flex flex-wrap justify-center items-center gap-4 md:gap-8 list-none m-0 p-0">
+        <li>5-Star Google Rating</li>
+        <li aria-hidden="true" class="hidden md:inline select-none">·</li>
+        <li>Small Groups, Private Guides</li>
+        <li aria-hidden="true" class="hidden md:inline select-none">·</li>
+        <li>Est. in Poway, CA</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- BRAND INTRO -->
+  <section class="py-32 px-6 lg:px-12" style="background-color:#f5f0e8;">
+    <div class="max-w-[800px] mx-auto text-center">
+      <div class="uppercase tracking-[0.15em] mb-6" style="font-size:12px;color:#8a9e7b;">Our Story</div>
+      <h2
+        class="mb-8 leading-relaxed"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,48px);font-weight:400;font-style:italic;color:#3b2314;"
+      >
+        "We don't sell trail rides. We sell the memory of standing at the canyon's edge, wind in your hair, with nothing
+        but open land ahead."
+      </h2>
+      <p class="leading-relaxed max-w-[640px] mx-auto" style="font-size:17px;color:#2c2c2c;">
+        For over two decades, our family-owned ranch has been a sanctuary—for horses rescued from neglect, and for people
+        seeking escape from the everyday. Here, in the rugged beauty of Poway's backcountry, we offer more than an
+        activity. We offer solitude, connection, and the kind of peace that only comes from being on horseback with
+        nowhere to be but right here.
+      </p>
+    </div>
+  </section>
+
+  <!-- THREE PILLARS -->
+  <section id="pillars">
+    {
+      pillars.map((pillar) => (
+        <div id={pillar.id} class="relative overflow-hidden" style="height:70vh;min-height:500px;">
+          <div class="absolute inset-0 bg-cover bg-center" style={`background-image:url(${pillar.image});`}>
+            <div
+              class="absolute inset-0"
+              style="background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 70%);"
+            />
+          </div>
+          <div class="relative h-full flex items-end">
+            <div class="px-6 lg:px-12 pb-12 max-w-[600px]">
+              <div class="uppercase tracking-[0.15em] mb-3" style="font-size:11px;color:#8a9e7b;">
+                {pillar.label}
+              </div>
+              <h3 class="text-white mb-4" style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;">
+                {pillar.title}
+              </h3>
+              <p class="text-white mb-6" style="font-size:15px;opacity:0.9;">
+                {pillar.description}
+              </p>
+              <a
+                href={pillar.route}
+                class="inline-flex items-center gap-2 text-[#c49a3c] hover:underline transition-all"
+                style="font-size:13px;"
+              >
+                Explore <Icon name="tabler:arrow-right" class="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </section>
+
+  <!-- FEATURED EXPERIENCE -->
+  <section class="grid lg:grid-cols-2" style="background-color:#f5f0e8;">
+    <div class="h-[500px] lg:h-auto bg-cover bg-center" style={`background-image:url(${featuredImg});`}></div>
+    <div class="px-6 lg:px-16 py-16 lg:py-24 flex flex-col justify-center">
+      <div class="uppercase tracking-[0.15em] mb-4" style="font-size:12px;color:#8a9e7b;">Most Popular</div>
+      <h2
+        class="mb-6 leading-tight"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,44px);font-weight:400;color:#3b2314;"
+      >
+        Sunset Canyon Trail Ride
+      </h2>
+      <p class="mb-8 leading-relaxed" style="font-size:17px;color:#2c2c2c;">
+        Our signature experience. Ride through Poway's golden canyons as the sun dips low, casting long shadows across
+        open trails. Perfect for first-timers and seasoned riders alike.
+      </p>
+      <ul class="mb-10 space-y-3" style="font-size:15px;color:#8a9e7b;">
+        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full" style="background-color:#8a9e7b;"></span>1–2 hour ride options</li>
+        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full" style="background-color:#8a9e7b;"></span>Groups of 6 or fewer</li>
+        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full" style="background-color:#8a9e7b;"></span>All gear provided</li>
+        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full" style="background-color:#8a9e7b;"></span>Ages 7+</li>
+      </ul>
+      <a
+        href={BOOK_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-10 rounded-full transition-all hover:brightness-110 w-full sm:w-auto inline-flex items-center justify-center"
+        style={pillStyle}>Book a Trail Ride</a
+      >
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="py-20 lg:py-32 px-6 lg:px-12" style="background-color:#3b2314;">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="text-center mb-16">
+        <div class="uppercase tracking-[0.15em] mb-4" style="font-size:12px;color:#8a9e7b;">What Our Guests Say</div>
+        <h2
+          class="text-white leading-relaxed max-w-[800px] mx-auto"
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,44px);font-weight:400;font-style:italic;"
+        >
+          "Every ride tells a story. Here are a few of ours."
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        {
+          reviews.map((review) => (
+            <div class="p-8 rounded-lg" style="background-color:#4a2e1a;">
+              <div class="flex gap-1 mb-6">
+                <Icon name="tabler:star-filled" class="w-4 h-4" style="color:#c49a3c;" />
+                <Icon name="tabler:star-filled" class="w-4 h-4" style="color:#c49a3c;" />
+                <Icon name="tabler:star-filled" class="w-4 h-4" style="color:#c49a3c;" />
+                <Icon name="tabler:star-filled" class="w-4 h-4" style="color:#c49a3c;" />
+                <Icon name="tabler:star-filled" class="w-4 h-4" style="color:#c49a3c;" />
+              </div>
+              <p class="text-white mb-6 leading-relaxed line-clamp-4" style="font-size:15px;opacity:0.85;">
+                {review.text}
+              </p>
+              <div>
+                <div class="uppercase tracking-[0.15em] mb-1" style="font-size:12px;color:#8a9e7b;">
+                  {review.reviewer}
+                </div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.4);">{review.source}</div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="text-center" style="font-size:13px;color:rgba(255,255,255,0.6);">
+        Rated 5 stars · 100+ Google Reviews · Poway, CA
+      </div>
+    </div>
+  </section>
+
+  <!-- RANCH STAY TEASER -->
+  <section class="relative h-screen overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style={`background-image:url(${ranchImg});`}>
+      <div
+        class="absolute inset-0"
+        style="background:linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%);"
+      >
+      </div>
+    </div>
+    <div class="relative h-full flex items-center justify-center px-6 text-center">
+      <div class="max-w-[700px]">
+        <div class="uppercase tracking-[0.15em] mb-6" style="font-size:12px;color:#8a9e7b;">Ranch Stays</div>
+        <h2
+          class="text-white mb-8 leading-tight"
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(48px,8vw,64px);font-weight:300;"
+        >
+          Stay the Night. Wake Up to Horses.
+        </h2>
+        <p class="text-white mb-10 leading-relaxed max-w-[500px] mx-auto" style="font-size:17px;opacity:0.9;">
+          Boutique accommodations nestled in the heart of Poway's backcountry. Fall asleep to the sound of the wind, wake
+          to golden light and horses grazing outside your window.
+        </p>
+        <a
+          href="/stay-and-celebrate"
+          class="px-10 rounded-full border-2 transition-all hover:bg-[#c49a3c] hover:border-[#c49a3c] inline-flex items-center justify-center"
+          style="border-color:#ffffff;color:#ffffff;font-size:13px;font-weight:500;height:48px;letter-spacing:0.1em;text-transform:uppercase;background-color:transparent;text-decoration:none;"
+          >Explore Ranch Stays</a
+        >
+      </div>
+    </div>
+  </section>
+</SiteLayout>

@@ -1,0 +1,164 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const BOOK_URL = 'https://sandiegotrailcompany.com/contact/';
+
+const navLinks = [
+  { label: 'Ride & Learn', href: '/ride-and-learn', external: false },
+  { label: 'Stay & Celebrate', href: '/stay-and-celebrate', external: false },
+  { label: 'Give & Support', href: '/give-and-support', external: false },
+  { label: 'Shop', href: 'https://sandiegotrailcompany.com/shop/', external: true },
+  { label: 'Blog', href: 'https://sandiegotrailcompany.com/blog/', external: true },
+  { label: 'Contact', href: 'https://sandiegotrailcompany.com/contact/', external: true },
+];
+---
+
+<footer role="contentinfo" aria-label="Site footer" class="px-6 lg:px-12 py-16 lg:py-20" style="background-color:#3b2314;">
+  <div class="max-w-[1400px] mx-auto">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <!-- Brand -->
+      <div>
+        <a href="/" aria-label="San Diego Trail Company – Home" class="block mb-5 rounded-sm" style="text-decoration:none;">
+          <img
+            src="/images/sdtc-logo.png"
+            alt="San Diego Trail Company logo"
+            style="height:72px;width:auto;object-fit:contain;"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <p class="mb-6 italic" style="font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(255,255,255,0.7);">
+          Where freedom meets the horizon.
+        </p>
+        <div class="flex gap-4" role="list" aria-label="Social media links">
+          <a
+            href="https://www.instagram.com/sandiegotrailcompany/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="San Diego Trail Company on Instagram (opens in new tab)"
+            class="inline-flex items-center justify-center w-9 h-9 rounded-full hover:opacity-70 transition-opacity"
+          >
+            <Icon name="tabler:brand-instagram" class="w-5 h-5" style="color:#8a9e7b;" />
+          </a>
+          <a
+            href="https://www.facebook.com/sandiegotrailcompany/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="San Diego Trail Company on Facebook (opens in new tab)"
+            class="inline-flex items-center justify-center w-9 h-9 rounded-full hover:opacity-70 transition-opacity"
+          >
+            <Icon name="tabler:brand-facebook" class="w-5 h-5" style="color:#8a9e7b;" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigate -->
+      <nav aria-label="Footer navigation">
+        <h2 class="uppercase tracking-[0.15em] mb-6" style="font-size:13px;color:#c49a3c;">Navigate</h2>
+        <ul class="space-y-3 list-none m-0 p-0">
+          {
+            navLinks.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
+                  class="hover:text-[#c49a3c] transition-colors rounded-sm"
+                  style="font-size:15px;color:rgba(255,255,255,0.8);text-decoration:none;"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- Visit -->
+      <div>
+        <h2 class="uppercase tracking-[0.15em] mb-6" style="font-size:13px;color:#c49a3c;">Visit</h2>
+        <address class="not-italic space-y-3" style="font-size:15px;color:rgba(255,255,255,0.8);">
+          <p>
+            <a
+              href="https://maps.google.com/?q=14875+Mina+De+Oro+Poway+CA+92064"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="14875 Mina De Oro, Poway CA 92064 – Open in Google Maps (opens in new tab)"
+              class="hover:text-[#c49a3c] transition-colors rounded-sm"
+              style="color:rgba(255,255,255,0.8);text-decoration:none;"
+            >
+              14875 Mina De Oro<br />Poway, CA 92064
+            </a>
+          </p>
+          <p class="pt-2">
+            <span class="block" style="font-size:13px;color:#8a9e7b;">Hours</span>
+            <time datetime="Mo-Fr 09:00-17:00">Mon–Fri: 9am – 5pm</time><br />
+            <time datetime="Sa-Su 09:00-16:00">Sat–Sun: 9am – 4pm</time>
+          </p>
+        </address>
+      </div>
+
+      <!-- Book -->
+      <div>
+        <h2 class="uppercase tracking-[0.15em] mb-6" style="font-size:13px;color:#c49a3c;">Book</h2>
+        <div class="space-y-4 mb-6" style="font-size:15px;color:rgba(255,255,255,0.8);">
+          <p>
+            <a
+              href="tel:+18587486441"
+              aria-label="Call us at 858-748-6441"
+              class="hover:text-[#c49a3c] transition-colors rounded-sm"
+              style="color:rgba(255,255,255,0.8);text-decoration:none;">858-748-6441</a
+            >
+          </p>
+          <p>
+            <a
+              href="mailto:ride@powayequestriancenter.com"
+              aria-label="Email us at ride@powayequestriancenter.com"
+              class="hover:text-[#c49a3c] transition-colors rounded-sm break-all"
+              style="color:rgba(255,255,255,0.8);text-decoration:none;">ride@powayequestriancenter.com</a
+            >
+          </p>
+        </div>
+        <a
+          href={BOOK_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Book your ride experience (opens in new tab)"
+          class="w-full px-8 rounded-full transition-all hover:brightness-110 inline-flex items-center justify-center"
+          style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+        >
+          Book Your Ride
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="pt-8 border-t flex flex-col sm:flex-row justify-between items-center gap-4"
+      style="border-color:rgba(255,255,255,0.1);font-size:11px;color:rgba(255,255,255,0.4);"
+    >
+      <span>© 2026 San Diego Trail Company. All rights reserved.</span>
+      <nav aria-label="Legal links">
+        <ul class="flex gap-6 list-none m-0 p-0">
+          <li>
+            <a
+              href="https://sandiegotrailcompany.com/privacy-policy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-[#c49a3c] transition-colors rounded-sm"
+              style="color:rgba(255,255,255,0.4);text-decoration:none;">Privacy Policy</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://sandiegotrailcompany.com/sitemap/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-[#c49a3c] transition-colors rounded-sm"
+              style="color:rgba(255,255,255,0.4);text-decoration:none;">Sitemap</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>

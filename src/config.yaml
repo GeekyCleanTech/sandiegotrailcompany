@@ -1,0 +1,72 @@
+site:
+  name: San Diego Trail Company
+  site: 'https://sdtc.pages.dev'
+  base: '/'
+  trailingSlash: false
+
+  googleSiteVerificationId: ''
+
+# Default SEO metadata
+metadata:
+  title:
+    default: San Diego Trail Company – Guided Trail Rides, Ranch Stays & Equine Programs in Poway, CA
+    template: '%s | San Diego Trail Company'
+  description: "Experience Southern California's backcountry with guided horseback trail rides, boutique ranch stays, kids camps, equine coaching, and horse rescue in Poway, CA. Book your adventure today."
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    site_name: San Diego Trail Company
+    images:
+      - url: '~/assets/images/default.png'
+        width: 1200
+        height: 628
+    type: website
+  twitter:
+    handle: ''
+    site: ''
+    cardType: summary_large_image
+
+i18n:
+  language: en
+  textDirection: ltr
+
+apps:
+  blog:
+    isEnabled: false
+    postsPerPage: 6
+
+    post:
+      isEnabled: false
+      permalink: '/%slug%'
+      robots:
+        index: true
+
+    list:
+      isEnabled: false
+      pathname: 'blog'
+      robots:
+        index: true
+
+    category:
+      isEnabled: false
+      pathname: 'category'
+      robots:
+        index: true
+
+    tag:
+      isEnabled: false
+      pathname: 'tag'
+      robots:
+        index: false
+
+    isRelatedPostsEnabled: false
+    relatedPostsCount: 4
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: null # or "G-XXXXXXXXXX"
+
+ui:
+  theme: 'light:only'

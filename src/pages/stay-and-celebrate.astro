@@ -1,0 +1,202 @@
+---
+import { Icon } from 'astro-icon/components';
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import ServiceCard from '~/components/sdtc/ServiceCard.astro';
+
+const BOOK_URL = 'https://sandiegotrailcompany.com/contact/';
+
+const metadata = {
+  title: 'Stay & Celebrate – Ranch Stays, Glamping, Weddings & Events in Poway, CA',
+  description:
+    'Book ranch home stays, glamping tents, dude ranch experiences, kids birthday parties, country weddings, and corporate team-building retreats at San Diego Trail Company in Poway, CA.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Stay & Celebrate – San Diego Trail Company',
+  description: 'Ranch stays, glamping, weddings, birthday parties, and team-building events in Poway, CA.',
+  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://sandiegotrailcompany.com' },
+  areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
+};
+
+const hospitality = [
+  {
+    id: 'airbnb',
+    label: 'Airbnb Ranch',
+    title: 'Rustic Ranch Home Stays',
+    description:
+      'Sleep surrounded by open land. Our Airbnb ranch accommodations offer cozy, character-filled rooms steps away from the stables — the perfect base for a backcountry getaway.',
+    details: ['Private ranch-house rooms', 'Panoramic canyon views', 'Morning horse-feeding access', 'Couples & family rates'],
+    href: 'https://sandiegotrailcompany.com/horse-services/airbnb-ranches/',
+    image:
+      'https://images.unsplash.com/photo-1631630259742-c0f0b17c6c10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydXN0aWMlMjByYW5jaCUyMGFpcmJuYiUyMGNhYmluJTIwaW50ZXJpb3IlMjBjb3p5fGVufDF8fHx8MTc4MDgzMjYwOXww&ixlib=rb-4.1.0&q=80&w=1080',
+  },
+  {
+    id: 'glamping',
+    label: 'Glamping',
+    title: 'Safari Tents, Yurts & Treehouses',
+    description:
+      'High-design outdoor sleeping under Southern California stars. Our glamping options blend the romance of camping with the comfort of boutique hospitality — beds, lighting, and all.',
+    details: ['Safari tents, yurts & treehouses', 'Furnished & climate-ready', 'Campfire & outdoor dining setups', 'Available year-round'],
+    href: 'https://sandiegotrailcompany.com/horse-services/glamping/',
+    image: '/images/stay-yurt.jpg',
+  },
+  {
+    id: 'dude-ranch',
+    label: 'Dude Ranch',
+    title: 'The Full Cowboy Experience',
+    description:
+      'The ultimate immersive stay. Our dude ranch package wraps guided trail rides, authentic Western meals, and barn life into a single unforgettable package for guests who want it all.',
+    details: ['Multi-day immersive stays', 'Trail rides included', 'Western meals & activities', 'Private groups & families'],
+    href: 'https://sandiegotrailcompany.com/horse-services/dude-ranch-experience/',
+    image:
+      'https://images.unsplash.com/photo-1780728955330-73e2031d1bf6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxyYW5jaCUyMHdlZGRpbmclMjBnbGFtcGluZyUyMGx1eHVyeSUyMHRlbnQlMjBvdXRkb29yfGVufDF8fHx8MTc4MDgzMjYwMHww&ixlib=rb-4.1.0&q=80&w=1080',
+  },
+];
+
+const events = [
+  {
+    id: 'birthday',
+    label: 'Kids Birthday Party',
+    title: 'Pony Rides & Ranch Parties',
+    description:
+      "Give your child a birthday they'll talk about for years. Pony rides, themed ranch games, and wide open space make for an unforgettable celebration that no indoor venue can match.",
+    details: ['Pony ride stations', 'Themed ranch decorations', 'Up to 30 guests', 'Weekends available'],
+    href: 'https://sandiegotrailcompany.com/ranch-events/kids-birthday-party/',
+    image:
+      'https://images.unsplash.com/photo-1515203675075-e88c2b5600e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxraWRzJTIwaG9yc2UlMjBjYW1wJTIwY2hpbGRyZW4lMjBwb255JTIwcmlkaW5nfGVufDF8fHx8MTc4MDgzMjYwOHww&ixlib=rb-4.1.0&q=80&w=1080',
+  },
+  {
+    id: 'wedding',
+    label: 'Ranch Wedding',
+    title: 'Country Weddings Under Open Sky',
+    description:
+      'Exchange vows where the canyon meets the horizon. Our rustic ranch setting provides the backdrop for intimate country-style weddings — no artificial decor needed when nature does the work.',
+    details: ['Ceremony & reception space', 'Up to 150 guests', 'Catering & vendor coordination', 'Sunset golden-hour timing'],
+    href: 'https://sandiegotrailcompany.com/ranch-events/dream-ranch-wedding/',
+    image:
+      'https://images.unsplash.com/photo-1768179123386-a86a85f1c35c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxyYW5jaCUyMHdlZGRpbmclMjBnbGFtcGluZyUyMGx1eHVyeSUyMHRlbnQlMjBvdXRkb29yfGVufDF8fHx8MTc4MDgzMjYwMHww&ixlib=rb-4.1.0&q=80&w=1080',
+  },
+  {
+    id: 'teambuilding',
+    label: 'Team Building & Corporate',
+    title: 'Horse-Powered Leadership Retreats',
+    description:
+      "Horses don't respond to titles — they respond to presence. Our corporate retreat programs use equine-assisted activities to build communication, trust, and leadership in teams of every size.",
+    details: ['Half-day & full-day programs', 'Facilitated debrief sessions', 'Custom group activities', 'Up to 40 participants'],
+    href: 'https://sandiegotrailcompany.com/ranch-events/teambuilding-san-diego/',
+    image:
+      'https://images.unsplash.com/photo-1609064368338-91f9b6d5fde3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraWRzJTIwaG9yc2UlMjBjYW1wJTIwY2hpbGRyZW4lMjBwb255JTIwcmlkaW5nfGVufDF8fHx8MTc4MDgzMjYwOHww&ixlib=rb-4.1.0&q=80&w=1080',
+  },
+];
+---
+
+<SiteLayout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section aria-label="Stay and Celebrate hero" class="relative flex items-end" style="height:80vh;min-height:560px;">
+    <div aria-hidden="true" class="absolute inset-0 overflow-hidden">
+      <video src="/videos/stay-hero.mp4" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover"
+      ></video>
+      <div
+        class="absolute inset-0"
+        style="background:linear-gradient(to top, rgba(30,12,4,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);"
+      >
+      </div>
+    </div>
+    <div class="relative w-full max-w-[1400px] mx-auto px-6 lg:px-12 pb-16 lg:pb-24">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">San Diego Trail Company</div>
+      <h1
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7vw,80px);font-weight:300;line-height:1.1;max-width:720px;"
+      >
+        Stay & Celebrate
+      </h1>
+      <p class="text-white mb-8" style="font-size:18px;max-width:520px;opacity:0.88;line-height:1.7;">
+        Ranch hospitality that matches the magic of the land. From glamping under stars to elegant country weddings and
+        team retreats — celebrate life's moments in open air.
+      </p>
+      <a
+        href={BOOK_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+      >
+        Inquire About Availability <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+  </section>
+
+  <!-- Hospitality intro -->
+  <section aria-label="Ranch hospitality and getaways" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#f5f0e8;">
+    <div class="max-w-[800px] mx-auto text-center">
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Hospitality & Getaways</div>
+      <h2
+        class="mb-8"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:400;color:#3b2314;line-height:1.25;"
+      >
+        Wake up where the horses graze.
+      </h2>
+      <p style="font-size:18px;color:#2c2c2c;line-height:1.8;opacity:0.85;">
+        Our ranch accommodations run from cozy ranch-house rooms to safari tents and full dude-ranch immersion. Every
+        option puts you at the heart of the Poway backcountry, moments from the trail.
+      </p>
+    </div>
+  </section>
+
+  <!-- Hospitality cards -->
+  <section aria-label="Hospitality options" style="background-color:#f5f0e8;">
+    {hospitality.map((s, i) => <ServiceCard service={s} flip={i % 2 === 1} shade={i % 2 === 0} />)}
+  </section>
+
+  <!-- Events divider -->
+  <section aria-label="Events and gatherings introduction" class="px-6 lg:px-12 py-20 lg:py-24" style="background-color:#3b2314;">
+    <div class="max-w-[800px] mx-auto text-center">
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Events & Gatherings</div>
+      <h2
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:300;line-height:1.2;"
+      >
+        The ranch as your venue.
+      </h2>
+      <p style="font-size:18px;color:rgba(255,255,255,0.75);line-height:1.8;">
+        No ballroom compares. Whether you're celebrating a child's birthday, saying your vows at sunset, or building your
+        team through shared experience — the land sets a stage nothing else can replicate.
+      </p>
+    </div>
+  </section>
+
+  <!-- Events cards -->
+  <section aria-label="Event options" style="background-color:#f5f0e8;">
+    {events.map((s, i) => <ServiceCard service={s} flip={i % 2 === 0} shade={i % 2 === 1} />)}
+  </section>
+
+  <!-- Cross-sell -->
+  <section aria-label="Cross promotion – Ride and Learn" class="px-6 lg:px-12 py-20 lg:py-24 text-center" style="background-color:#8a9e7b;">
+    <div class="max-w-[640px] mx-auto">
+      <div class="uppercase tracking-[0.2em] mb-5" style="font-size:11px;color:rgba(255,255,255,0.7);">Add to Your Stay</div>
+      <h2
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:300;line-height:1.2;"
+      >
+        Want to add a ride to your stay?
+      </h2>
+      <p class="mb-10" style="font-size:16px;color:rgba(255,255,255,0.85);line-height:1.8;">
+        Any stay can be paired with a guided trail ride, riding lesson, or Equus coaching session. Our Ride & Learn
+        experiences are the perfect complement to an overnight at the ranch.
+      </p>
+      <a
+        href="/ride-and-learn"
+        class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+      >
+        Explore Ride & Learn <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+  </section>
+</SiteLayout>

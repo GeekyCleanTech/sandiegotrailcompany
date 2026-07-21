@@ -1,0 +1,33 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import Header from '~/components/sdtc/Header.astro';
+import Footer from '~/components/sdtc/Footer.astro';
+
+import type { MetaData } from '~/types';
+
+export interface Props {
+  metadata?: MetaData;
+}
+
+const { metadata } = Astro.props;
+---
+
+<Layout metadata={metadata}>
+  <slot name="head" slot="head" />
+
+  <!-- Skip link — hidden until focused, for keyboard / screen reader users -->
+  <a
+    href="#main-content"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:rounded-full focus:shadow-lg"
+    style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:600;letter-spacing:0.05em;text-decoration:none;"
+    >Skip to main content</a
+  >
+
+  <Header />
+
+  <main id="main-content" tabindex="-1">
+    <slot />
+  </main>
+
+  <Footer />
+</Layout>

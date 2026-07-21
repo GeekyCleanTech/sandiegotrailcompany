@@ -1,0 +1,217 @@
+---
+import { Icon } from 'astro-icon/components';
+import SiteLayout from '~/layouts/SiteLayout.astro';
+
+const BOOK_URL = 'https://sandiegotrailcompany.com/contact/';
+
+const metadata = {
+  title: 'Ride & Learn – Trail Rides, Horse Lessons, Kids Camps & Equus Coaching',
+  description:
+    'Book guided canyon trail rides, private horse riding lessons, youth ranch camps, Equus coaching, and horse boarding in Poway, CA. Small groups, experienced guides, all skill levels welcome.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Ride & Learn – San Diego Trail Company',
+  description: 'Guided horseback trail rides, riding lessons, kids camps, and equine coaching in Poway, CA.',
+  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://sandiegotrailcompany.com' },
+  areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
+};
+
+const heroImg =
+  'https://images.unsplash.com/photo-1778546979325-e613a5e32220?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3JzZWJhY2slMjByaWRpbmclMjB0cmFpbCUyMGNhbnlvbiUyMGdvbGRlbiUyMGhvdXJ8ZW58MXx8fHwxNzgwODMyNjAwfDA&ixlib=rb-4.1.0&q=80&w=1080';
+
+const services = [
+  {
+    id: 'trail-riding',
+    label: 'Trail & Scenic Riding',
+    title: 'Canyon Trail Rides',
+    description:
+      'Our signature backcountry trail rides wind through the golden hills and chaparral canyons of Poway. Small groups of six or fewer, led by experienced guides who know every ridge and ravine.',
+    details: ['1–2 hour ride options', 'Groups of 6 or fewer', 'All equipment provided', 'Ages 7+'],
+    href: 'https://sandiegotrailcompany.com/service-area/horse-trail-ride/',
+    image: '/images/ride-trail.jpg',
+  },
+  {
+    id: 'lessons',
+    label: 'Horse Lessons',
+    title: 'Riding Lessons for All Levels',
+    description:
+      "Private and small-group lessons taught by certified instructors. Whether you've never touched a stirrup or you're working on advanced horsemanship, we meet you where you are.",
+    details: ['Private & group formats', 'All skill levels welcome', 'English & Western styles', 'Ongoing programs available'],
+    href: 'https://sandiegotrailcompany.com/service-area/horse-riding-lessons/',
+    image:
+      'https://images.unsplash.com/photo-1763130063689-06fbdb789db8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxob3JzZSUyMGxlc3NvbnMlMjBlcXVlc3RyaWFuJTIwdHJhaW5pbmclMjByaWRpbmclMjBhcmVuYXxlbnwxfHx8fDE3ODA4MzI2MDl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+  },
+  {
+    id: 'kids-camps',
+    label: 'Kids & Summer Camps',
+    title: 'Ranch Camps for Young Riders',
+    description:
+      "Immersive multi-day programs where kids learn riding, animal care, and trail safety — all in the fresh air of the Poway backcountry. A formative experience they'll carry for life.",
+    details: ['Ages 6–16', 'Half-day & full-day formats', 'Animal care & horsemanship', 'Summer & school break sessions'],
+    href: 'https://sandiegotrailcompany.com/service-area/kids-camps/',
+    image: '/images/ride-kids-camps.png',
+  },
+  {
+    id: 'equus-coaching',
+    label: 'Equus Coaching',
+    title: 'Equine-Assisted Personal Growth',
+    description:
+      'Horses are extraordinary mirrors of human emotion. Our Equus coaching sessions use the horse-human relationship to unlock deeper self-awareness, leadership, and emotional resilience.',
+    details: ['Individual & group sessions', 'No riding experience required', 'Certified Equus coach', 'Corporate & personal programs'],
+    href: 'https://sandiegotrailcompany.com/service-area/equus-coaching/',
+    image:
+      'https://images.unsplash.com/photo-1599635406076-0f40532a59fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3JzZSUyMHJlc2N1ZSUyMHJlaGFiaWxpdGF0aW9uJTIwcGFzdHVyZSUyMHN1bnJpc2V8ZW58MXx8fHwxNzgwODMyNjAxfDA&ixlib=rb-4.1.0&q=80&w=1080',
+  },
+  {
+    id: 'boarding',
+    label: 'Horse Boarding',
+    title: 'Full-Service Ranch Boarding',
+    description:
+      'Bring your horse home to Poway. Our boarding program offers daily turnout, quality feed, attentive care, and access to trails right from the property — for riders who want the best for their horse.',
+    details: ['Daily turnout & feeding', 'Direct trail access', 'Veterinary & farrier coordination', 'Monthly & long-term rates'],
+    href: 'https://sandiegotrailcompany.com/service-area/horse-boarding/',
+    image: '/images/pillar-give-support.jpg',
+  },
+];
+---
+
+<SiteLayout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section aria-label="Ride and Learn hero" class="relative flex items-end" style="height:80vh;min-height:560px;">
+    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center" style={`background-image:url(${heroImg});`}>
+      <div
+        class="absolute inset-0"
+        style="background:linear-gradient(to top, rgba(30,12,4,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);"
+      >
+      </div>
+    </div>
+    <div class="relative w-full max-w-[1400px] mx-auto px-6 lg:px-12 pb-16 lg:pb-24">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">San Diego Trail Company</div>
+      <h1
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7vw,80px);font-weight:300;line-height:1.1;max-width:720px;"
+      >
+        Ride & Learn
+      </h1>
+      <p class="text-white mb-8" style="font-size:18px;max-width:520px;opacity:0.88;line-height:1.7;">
+        Hands-on equine experiences for individuals, families, and riders of every level — from first-timer trail rides
+        to deep personal growth through horsemanship.
+      </p>
+      <a
+        href={BOOK_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+      >
+        Book an Experience <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section aria-label="About Ride and Learn" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#f5f0e8;">
+    <div class="max-w-[800px] mx-auto text-center">
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">The Ranch Experience</div>
+      <h2
+        class="mb-8"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:400;color:#3b2314;line-height:1.25;"
+      >
+        More than a ride. A relationship with the land.
+      </h2>
+      <p style="font-size:18px;color:#2c2c2c;line-height:1.8;opacity:0.85;">
+        Everything we offer under Ride & Learn is rooted in one belief: the best way to understand a horse is to meet it
+        on its own terms. Our programs range from scenic canyon trail rides to structured lessons, youth camps, and
+        equine-assisted coaching — all designed to deepen the connection between rider and animal.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service cards — alternating layout -->
+  <section aria-label="Ride and Learn services" style="background-color:#f5f0e8;">
+    {
+      services.map((service, index) => (
+        <article
+          aria-label={service.title}
+          class={`grid lg:grid-cols-2 ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}
+        >
+          <div
+            role="img"
+            aria-label={`${service.title} – scenic photo`}
+            class={`h-[380px] lg:h-auto bg-cover bg-center ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}
+            style={`background-image:url(${service.image});min-height:400px;`}
+          />
+          <div
+            class={`px-8 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center ${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}
+            style={`background-color:${index % 2 === 0 ? '#f5f0e8' : '#edeae0'};`}
+          >
+            <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">
+              {service.label}
+            </div>
+            <h3
+              class="mb-5"
+              style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,40px);font-weight:400;color:#3b2314;line-height:1.2;"
+            >
+              {service.title}
+            </h3>
+            <p style="font-size:16px;color:#2c2c2c;line-height:1.8;opacity:0.85;max-width:480px;" class="mb-8">
+              {service.description}
+            </p>
+            <ul class="mb-10 space-y-3">
+              {service.details.map((detail) => (
+                <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
+                  <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />
+                  {detail}
+                </li>
+              ))}
+            </ul>
+            <a
+              href={service.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 hover:gap-3 transition-all"
+              style="font-size:13px;color:#c49a3c;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+            >
+              Learn More <Icon name="tabler:arrow-right" class="w-4 h-4" />
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+
+  <!-- Cross-sell -->
+  <section
+    aria-label="Cross promotion – Stay and Celebrate"
+    class="px-6 lg:px-12 py-20 lg:py-24 text-center"
+    style="background-color:#3b2314;"
+  >
+    <div class="max-w-[640px] mx-auto">
+      <div class="uppercase tracking-[0.2em] mb-5" style="font-size:11px;color:#8a9e7b;">Stay Longer</div>
+      <h2
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:300;line-height:1.2;"
+      >
+        Add a ranch stay to your riding experience.
+      </h2>
+      <p class="mb-10" style="font-size:16px;color:rgba(255,255,255,0.75);line-height:1.8;">
+        Wake up to horses at your fence line. Our Stay & Celebrate packages let you combine a trail ride with an
+        overnight Airbnb stay, glamping tent, or full dude ranch experience.
+      </p>
+      <a
+        href="/stay-and-celebrate"
+        class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+      >
+        Explore Stay & Celebrate <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+  </section>
+</SiteLayout>

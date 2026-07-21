@@ -1,0 +1,28 @@
+---
+import SiteLayout from '~/layouts/SiteLayout.astro';
+
+const metadata = { title: 'Page Not Found' };
+---
+
+<SiteLayout metadata={metadata}>
+  <section class="min-h-screen flex items-center justify-center px-6 text-center" style="background-color:#3b2314;">
+    <div class="max-w-[600px] mx-auto">
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">San Diego Trail Company</div>
+      <h1
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(48px,9vw,88px);font-weight:300;line-height:1.05;"
+      >
+        This trail leads nowhere.
+      </h1>
+      <p class="text-white mb-10 mx-auto" style="font-size:17px;opacity:0.85;max-width:440px;line-height:1.7;">
+        The page you're looking for has wandered off. Let's get you back to open ground.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-center justify-center px-10 rounded-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+        >Back to Home</a
+      >
+    </div>
+  </section>
+</SiteLayout>
