@@ -1,0 +1,199 @@
+---
+import { Icon } from 'astro-icon/components';
+import SiteLayout from '~/layouts/SiteLayout.astro';
+
+// ─────────────────────────────────────────────────────────────
+// Web3Forms access key — get yours free at https://web3forms.com
+// (enter info@sandiegotrailcompany.com, then paste the key it emails you).
+// This key is safe to commit; it only routes submissions to your inbox.
+// ─────────────────────────────────────────────────────────────
+const WEB3FORMS_ACCESS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY || '30da4020-0add-4a32-bdb4-5e943ca249da';
+
+const metadata = {
+  title: 'Contact',
+  description:
+    'Get in touch with San Diego Trail Company in Poway, CA — questions about guided trail rides, ranch stays, private events, or our horse rescue mission.',
+};
+
+const fieldWrap = 'flex flex-col gap-2';
+const labelStyle = 'font-size:13px;letter-spacing:0.05em;color:#3b2314;font-weight:500;';
+const inputStyle =
+  'width:100%;background-color:#ffffff;border:1px solid rgba(59,35,20,0.18);border-radius:6px;padding:12px 14px;font-size:15px;color:#2c2c2c;font-family:inherit;';
+---
+
+<SiteLayout metadata={metadata}>
+  <!-- Header band (dark so the transparent nav stays readable) -->
+  <section class="px-6 lg:px-12 pt-32 pb-16 lg:pt-40 lg:pb-20" style="background-color:#3b2314;">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">Get in Touch</div>
+      <h1
+        class="text-white mb-5"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7vw,72px);font-weight:300;line-height:1.05;"
+      >
+        Contact
+      </h1>
+      <p class="text-white" style="font-size:18px;opacity:0.82;max-width:560px;line-height:1.7;">
+        Questions about a trail ride, ranch stay, private event, or our rescue mission? Send us a note and we'll get
+        back to you — usually within one business day.
+      </p>
+    </div>
+  </section>
+
+  <!-- Form + details -->
+  <section class="px-6 lg:px-12 py-16 lg:py-24" style="background-color:#f5f0e8;">
+    <div class="max-w-[1200px] mx-auto grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16">
+      <!-- Form -->
+      <div>
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-6">
+          <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+          <input type="hidden" name="subject" value="New inquiry from San Diego Trail Company website" />
+          <input type="hidden" name="from_name" value="San Diego Trail Company Website" />
+          <!-- Honeypot spam trap (hidden from humans) -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off" />
+
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class={fieldWrap}>
+              <label for="name" style={labelStyle}>Name *</label>
+              <input id="name" name="name" type="text" required autocomplete="name" style={inputStyle} />
+            </div>
+            <div class={fieldWrap}>
+              <label for="email" style={labelStyle}>Email *</label>
+              <input id="email" name="email" type="email" required autocomplete="email" style={inputStyle} />
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class={fieldWrap}>
+              <label for="phone" style={labelStyle}>Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" style={inputStyle} />
+            </div>
+            <div class={fieldWrap}>
+              <label for="interest" style={labelStyle}>I'm interested in</label>
+              <select id="interest" name="interest" style={inputStyle}>
+                <option>General inquiry</option>
+                <option>Trail ride (Ride &amp; Learn)</option>
+                <option>Ranch stay or event (Stay &amp; Celebrate)</option>
+                <option>Give &amp; Support</option>
+              </select>
+            </div>
+          </div>
+
+          <div class={fieldWrap}>
+            <label for="message" style={labelStyle}>Message *</label>
+            <textarea id="message" name="message" rows="6" required style={inputStyle + 'resize:vertical;'}></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+            <button
+              type="submit"
+              id="contact-submit"
+              class="inline-flex items-center justify-center px-10 rounded-full transition-all hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed"
+              style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;letter-spacing:0.1em;text-transform:uppercase;border:none;cursor:pointer;"
+            >
+              Send Message
+            </button>
+            <span style="font-size:12px;color:rgba(44,44,44,0.6);">We'll only use your details to reply to your inquiry.</span>
+          </div>
+
+          <!-- Inline result message -->
+          <p id="contact-result" role="status" aria-live="polite" class="hidden" style="font-size:15px;"></p>
+        </form>
+      </div>
+
+      <!-- Contact details -->
+      <aside aria-label="Contact details" class="flex flex-col gap-8">
+        <div>
+          <div class="uppercase tracking-[0.2em] mb-3" style="font-size:11px;color:#8a9e7b;">Visit</div>
+          <a
+            href="https://maps.google.com/?q=14875+Mina+De+Oro+Poway+CA+92064"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-[#c49a3c] transition-colors"
+            style="font-size:16px;color:#2c2c2c;text-decoration:none;line-height:1.7;"
+          >
+            14875 Mina De Oro<br />Poway, CA 92064
+          </a>
+        </div>
+
+        <div>
+          <div class="uppercase tracking-[0.2em] mb-3" style="font-size:11px;color:#8a9e7b;">Call or Email</div>
+          <p style="font-size:16px;color:#2c2c2c;line-height:1.9;">
+            <a href="tel:+18587486441" class="hover:text-[#c49a3c] transition-colors" style="color:#2c2c2c;text-decoration:none;">858-748-6441</a><br />
+            <a href="mailto:ride@powayequestriancenter.com" class="hover:text-[#c49a3c] transition-colors break-all" style="color:#2c2c2c;text-decoration:none;">ride@powayequestriancenter.com</a>
+          </p>
+        </div>
+
+        <div>
+          <div class="uppercase tracking-[0.2em] mb-3" style="font-size:11px;color:#8a9e7b;">Hours</div>
+          <p style="font-size:16px;color:#2c2c2c;line-height:1.8;">
+            Mon–Fri: 9am – 5pm<br />Sat–Sun: 9am – 4pm
+          </p>
+        </div>
+
+        <div>
+          <div class="uppercase tracking-[0.2em] mb-3" style="font-size:11px;color:#8a9e7b;">Follow</div>
+          <div class="flex gap-4">
+            <a href="https://www.instagram.com/sandiegotrailcompany/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:opacity-70 transition-opacity">
+              <Icon name="tabler:brand-instagram" class="w-6 h-6" style="color:#8a9e7b;" />
+            </a>
+            <a href="https://www.facebook.com/sandiegotrailcompany/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:opacity-70 transition-opacity">
+              <Icon name="tabler:brand-facebook" class="w-6 h-6" style="color:#8a9e7b;" />
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</SiteLayout>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+    var result = document.getElementById('contact-result');
+    var submit = document.getElementById('contact-submit');
+
+    function show(msg, ok) {
+      result.textContent = msg;
+      result.style.color = ok ? '#3b2314' : '#a23b2c';
+      result.classList.remove('hidden');
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+
+      // If the access key hasn't been set yet, don't attempt a submission.
+      if ((data.get('access_key') || '').indexOf('REPLACE_WITH_YOUR') === 0) {
+        show('This form isn’t connected yet. Please email ride@powayequestriancenter.com or call 858-748-6441.', false);
+        return;
+      }
+
+      submit.disabled = true;
+      var original = submit.textContent;
+      submit.textContent = 'Sending…';
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data,
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (json) {
+          if (json.success) {
+            form.reset();
+            show('Thanks — your message is on its way. We’ll be in touch soon.', true);
+          } else {
+            show(json.message || 'Something went wrong. Please try again or email us directly.', false);
+          }
+        })
+        .catch(function () {
+          show('Network error. Please try again, or email ride@powayequestriancenter.com.', false);
+        })
+        .finally(function () {
+          submit.disabled = false;
+          submit.textContent = original;
+        });
+    });
+  })();
+</script>
