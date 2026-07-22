@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import SiteLayout from '~/layouts/SiteLayout.astro';
+
+const metadata = {
+  title: 'Journal',
+  description:
+    'Stories, guides, and news from San Diego Trail Company — trail rides, ranch life, and our horse rescue mission in Poway, CA.',
+};
+
+const posts = (await getCollection('post', ({ data }) => !data.draft)).sort(
+  (a, b) => (b.data.publishDate?.valueOf() ?? 0) - (a.data.publishDate?.valueOf() ?? 0)
+);
+
+const fmtDate = (d?: Date) =>
+  d ? new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+---
+
+<SiteLayout metadata={metadata}>
+  <!-- Header band (dark so the transparent nav stays readable) -->
+  <section class="px-6 lg:px-12 pt-32 pb-16 lg:pt-40 lg:pb-20" style="background-color:#3b2314;">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">The Journal</div>
+      <h1
+        class="text-white mb-5"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7vw,72px);font-weight:300;line-height:1.05;"
+      >
+        Stories from the Ranch
+      </h1>
+      <p class="text-white" style="font-size:18px;opacity:0.82;max-width:560px;line-height:1.7;">
+        Guides for first-time riders, notes from the trail, and the horses behind our rescue mission.
+      </p>
+    </div>
+  </section>
+
+  <!-- Post grid -->
+  <section class="px-6 lg:px-12 py-16 lg:py-24" style="background-color:#f5f0e8;">
+    <div class="max-w-[1200px] mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {
+        posts.map((post) => (
+          <article class="flex flex-col">
+            <a href={`/blog/${post.id}`} class="block group" style="text-decoration:none;">
+              {post.data.image && (
+                <div
+                  class="w-full h-[220px] bg-cover bg-center rounded-lg mb-5"
+                  style={`background-image:url(${post.data.image});`}
+                />
+              )}
+              {post.data.category && (
+                <div class="uppercase tracking-[0.15em] mb-3" style="font-size:11px;color:#8a9e7b;">
+                  {post.data.category}
+                </div>
+              )}
+              <h2
+                class="mb-3 group-hover:text-[#c49a3c] transition-colors"
+                style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#3b2314;line-height:1.2;"
+              >
+                {post.data.title}
+              </h2>
+              {post.data.excerpt && (
+                <p class="mb-4" style="font-size:15px;color:#2c2c2c;line-height:1.7;opacity:0.85;">
+                  {post.data.excerpt}
+                </p>
+              )}
+              <div style="font-size:12px;color:#8a9e7b;letter-spacing:0.05em;">{fmtDate(post.data.publishDate)}</div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    {posts.length === 0 && <p class="max-w-[1200px] mx-auto" style="color:#2c2c2c;">No posts yet — check back soon.</p>}
+  </section>
+</SiteLayout>

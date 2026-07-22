@@ -8,6 +8,7 @@ const links = [
   { label: 'Ride & Learn', href: '/ride-and-learn' },
   { label: 'Stay & Celebrate', href: '/stay-and-celebrate' },
   { label: 'Give & Support', href: '/give-and-support' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -33,7 +34,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href 
     </a>
 
     <!-- Desktop nav -->
-    <ul class="hidden lg:flex items-center gap-8 xl:gap-10 list-none m-0 p-0" role="list">
+    <ul class="hidden lg:flex items-center gap-6 xl:gap-8 list-none m-0 p-0" role="list">
       {
         links.map((link) => (
           <li>
