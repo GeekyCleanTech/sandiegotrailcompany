@@ -17,30 +17,30 @@ const {
 } = Astro.props;
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
-  <div class="flex flex-wrap justify-center -m-4 text-center">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
     {
       stats &&
-        stats.map(({ amount, title, icon }) => (
-          <div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:border-gray-200 md:last:border-none dark:md:border-slate-500 intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter">
-            {icon && (
-              <div class="flex items-center justify-center mx-auto mb-4 text-primary">
-                <Icon name={icon} class="w-10 h-10" />
-              </div>
-            )}
-            {amount && (
-              <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl">
-                {amount}
-              </div>
-            )}
-            {title && (
-              <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base">
-                {title}
-              </div>
-            )}
-          </div>
-        ))
+        stats.map(({ amount, title, icon }) => {
+          // Clean brackets if present for sleek badge/value display
+          const cleanAmount = typeof amount === 'string' ? amount.replace(/^\[|\]$/g, '') : amount;
+          return (
+            <div class="flex flex-col items-center justify-center p-6 sm:p-8 rounded-xl bg-white dark:bg-slate-900 border border-[#3b2314]/10 shadow-sm hover:shadow-md transition-all intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter">
+              {icon && (
+                <div class="w-12 h-12 mb-4 rounded-full bg-[#7C8B5A]/15 flex items-center justify-center text-[#7C8B5A]">
+                  <Icon name={icon} class="w-6 h-6" />
+                </div>
+              )}
+              {cleanAmount && (
+                <div class="font-serif text-[#3b2314] dark:text-white text-2xl sm:text-3xl font-normal leading-tight mb-2">
+                  {cleanAmount}
+                </div>
+              )}
+              {title && <div class="text-xs font-semibold uppercase tracking-[0.15em] text-[#c49a3c]">{title}</div>}
+            </div>
+          );
+        })
     }
   </div>
 </WidgetWrapper>

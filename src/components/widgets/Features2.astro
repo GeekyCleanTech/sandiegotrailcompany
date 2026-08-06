@@ -34,14 +34,25 @@ const columnsClass =
 
   {
     items.length > 0 && (
-      <div class:list={['grid gap-4 md:gap-6 gap-x-12', columnsClass]}>
+      <div class:list={['grid gap-6 md:gap-8', columnsClass]}>
         {items.map(({ title: itemTitle, description, icon, callToAction }) => (
-          <div class="relative flex flex-col rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-white dark:bg-slate-900 p-6 intersect-once intersect-quarter intersect-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-            {(icon || defaultIcon) && <Icon name={icon || defaultIcon} class="mb-6 w-12 h-12 text-primary" />}
-            <div class="text-xl font-bold">{itemTitle}</div>
-            {description && <p class="text-muted mt-2" set:html={description} />}
+          <div class="relative flex flex-col rounded-xl shadow-sm border border-[#3b2314]/10 bg-white dark:bg-slate-900 p-6 md:p-8 hover:shadow-md hover:border-[#7C8B5A]/40 transition-all intersect-once intersect-quarter intersect-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+            {(icon || defaultIcon) && (
+              <div class="w-12 h-12 mb-5 rounded-lg bg-[#7C8B5A]/15 flex items-center justify-center text-[#7C8B5A]">
+                <Icon name={icon || defaultIcon} class="w-6 h-6" />
+              </div>
+            )}
+            {itemTitle && (
+              <h3 class="text-xl font-serif text-[#3b2314] dark:text-white font-normal mb-2">{itemTitle}</h3>
+            )}
+            {description && (
+              <p
+                class="text-[#2c2c2c]/85 dark:text-slate-300 text-sm md:text-base leading-relaxed"
+                set:html={description}
+              />
+            )}
             {callToAction && (
-              <div class="mt-2">
+              <div class="mt-4">
                 <Button {...callToAction} />
               </div>
             )}
