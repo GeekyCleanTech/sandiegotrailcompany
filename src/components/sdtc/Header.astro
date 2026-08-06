@@ -9,6 +9,11 @@ const links = [
   { label: 'Stay & Celebrate', href: '/stay-and-celebrate' },
   { label: 'Give & Support', href: '/give-and-support' },
   { label: 'Blog', href: '/blog' },
+  {
+    label: 'Events',
+    href: '/events/matcha-on-ice',
+    children: [{ label: 'Matcha on Ice', href: '/events/matcha-on-ice' }],
+  },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -37,15 +42,31 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href 
     <ul class="hidden lg:flex items-center gap-6 xl:gap-8 list-none m-0 p-0" role="list">
       {
         links.map((link) => (
-          <li>
+          <li class="relative group">
             <a
               href={link.href}
-              class={`transition-colors rounded-sm ${isActive(link.href) ? 'text-[#c49a3c]' : 'text-white hover:text-[#c49a3c]'}`}
+              class={`transition-colors rounded-sm flex items-center gap-1 ${isActive(link.href) ? 'text-[#c49a3c]' : 'text-white hover:text-[#c49a3c]'}`}
               style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;"
               aria-current={isActive(link.href) ? 'page' : undefined}
             >
               {link.label}
+              {link.children && <Icon name="tabler:chevron-down" class="w-3.5 h-3.5" />}
             </a>
+            {link.children && (
+              <ul class="absolute left-0 top-full pt-2 hidden group-hover:block list-none m-0 p-0 z-50">
+                <li class="bg-[#3b2314] border border-[#c49a3c]/20 shadow-xl rounded-md py-2 px-4 min-w-[180px]">
+                  {link.children.map((child) => (
+                    <a
+                      href={child.href}
+                      class={`block py-1.5 transition-colors rounded-sm whitespace-nowrap ${isActive(child.href) ? 'text-[#c49a3c]' : 'text-white/90 hover:text-[#c49a3c]'}`}
+                      style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+                    >
+                      {child.label}
+                    </a>
+                  ))}
+                </li>
+              </ul>
+            )}
           </li>
         ))
       }
@@ -101,6 +122,21 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href 
             >
               {link.label}
             </a>
+            {link.children && (
+              <ul role="list" class="list-none m-0 pl-4 py-1 flex flex-col gap-1 border-b border-white/10">
+                {link.children.map((child) => (
+                  <li>
+                    <a
+                      href={child.href}
+                      class={`block py-2 transition-colors rounded-sm ${isActive(child.href) ? 'text-[#c49a3c]' : 'text-white/80 hover:text-[#c49a3c]'}`}
+                      style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+                    >
+                      ↳ {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))
       }
