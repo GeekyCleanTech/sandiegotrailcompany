@@ -1,14 +1,14 @@
 ---
-title: "Rescue, Rehab, Retire: The Horses Behind Our Mission"
+title: 'Rescue, Rehab, Retire: The Horses Behind Our Mission'
 excerpt: "Many of the horses you'll meet at the ranch arrived with a hard story. Here's how our nonprofit gives them a second chance — and how you can help."
 publishDate: 2026-06-05
-image: "/images/give-hero.jpg"
-category: "Give & Support"
+image: '/images/give-hero.jpg'
+category: 'Give & Support'
 tags:
   - rescue
   - nonprofit
   - horses
-author: "San Diego Trail Company"
+author: 'San Diego Trail Company'
 ---
 
 The horse carrying you down the trail may have arrived at the ranch underweight, untrusting, and out of options. That's not a detail we advertise on the sign out front — but it's the heart of who we are.

@@ -1,14 +1,14 @@
 ---
-title: "Golden Hour in the Canyon: Why Sunset Is the Best Time to Ride"
+title: 'Golden Hour in the Canyon: Why Sunset Is the Best Time to Ride'
 excerpt: "There's a reason our sunset rides book out first. When the light goes long and amber over Poway's backcountry, the whole ranch changes."
 publishDate: 2026-06-25
-image: "/images/pillar-ride-learn.png"
-category: "Ride & Learn"
+image: '/images/pillar-ride-learn.png'
+category: 'Ride & Learn'
 tags:
   - sunset rides
   - photography
   - poway
-author: "San Diego Trail Company"
+author: 'San Diego Trail Company'
 ---
 
 Ask any of our guides for their favorite time to ride and you'll get the same answer: the last hour before sunset. We call it golden hour for a reason.

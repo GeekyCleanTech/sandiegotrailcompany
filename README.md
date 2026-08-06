@@ -54,13 +54,13 @@ src/
 
 Colors and fonts live in `src/components/CustomStyles.astro`:
 
-| Token          | Value     | Use                                  |
-| -------------- | --------- | ------------------------------------ |
-| Saddle Brown   | `#3B2314` | Headlines, nav, footer, dark sections |
-| Sunbaked Gold  | `#C49A3C` | CTA buttons, accents                 |
-| Canyon Sage    | `#8A9E7B` | Eyebrow labels, dividers, icons      |
-| Warm Linen     | `#F5F0E8` | Page background                      |
-| Charcoal       | `#2C2C2C` | Body text                           |
+| Token         | Value     | Use                                   |
+| ------------- | --------- | ------------------------------------- |
+| Saddle Brown  | `#3B2314` | Headlines, nav, footer, dark sections |
+| Sunbaked Gold | `#C49A3C` | CTA buttons, accents                  |
+| Canyon Sage   | `#8A9E7B` | Eyebrow labels, dividers, icons       |
+| Warm Linen    | `#F5F0E8` | Page background                       |
+| Charcoal      | `#2C2C2C` | Body text                             |
 
 Fonts: **Cormorant Garamond** (headings) and **DM Sans** (body), loaded via Google Fonts.
 

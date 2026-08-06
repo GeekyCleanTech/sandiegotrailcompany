@@ -1,14 +1,14 @@
 ---
-title: "What to Expect on Your First Guided Trail Ride"
+title: 'What to Expect on Your First Guided Trail Ride'
 excerpt: "Never been on a horse? Here's exactly how a ride at the ranch unfolds — from meeting your horse to that first wide-open view of the canyon."
 publishDate: 2026-07-10
-image: "/images/ride-trail.jpg"
-category: "Ride & Learn"
+image: '/images/ride-trail.jpg'
+category: 'Ride & Learn'
 tags:
   - trail rides
   - beginners
   - poway
-author: "San Diego Trail Company"
+author: 'San Diego Trail Company'
 ---
 
 If you've never ridden before, the idea of climbing onto a 1,000-pound animal and heading into open country can feel like a lot. Good news: our most popular rides are built for exactly that person. Here's how your first guided trail ride actually goes.

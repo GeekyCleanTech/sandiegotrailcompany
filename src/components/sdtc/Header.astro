@@ -110,7 +110,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href 
 
 <script is:inline>
   (function () {
-    var nav = document.getElementById('site-nav');
+    const nav = document.getElementById('site-nav');
     function onScroll() {
       if (!nav) return;
       if (window.scrollY > 50) {
@@ -124,10 +124,10 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    var toggle = document.getElementById('nav-toggle');
-    var menu = document.getElementById('mobile-menu');
-    var iconOpen = document.getElementById('nav-icon-open');
-    var iconClose = document.getElementById('nav-icon-close');
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('nav-icon-open');
+    const iconClose = document.getElementById('nav-icon-close');
 
     function closeMenu() {
       if (!menu || !toggle) return;

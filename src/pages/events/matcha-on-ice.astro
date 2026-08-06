@@ -1,0 +1,222 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const BOOKING_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/?flow=31089&full-items=yes';
+
+const metadata = {
+  title: 'Matcha on Ice × Rustic Ranch | Fall Pop-Up Event in Poway, CA',
+  description:
+    'Join us on [Saturday, Oct 10] for an autumn outdoor movement class and iced-matcha bar on the ranch wood deck in Poway, CA. 50 mats available. Reserve your spot today.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- 1. HERO -->
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Reserve Your Mat',
+        href: BOOKING_URL,
+        target: '_blank',
+        icon: 'tabler:ticket',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1200&q=80',
+      alt: 'Matcha on Ice outdoor movement class on the ranch deck',
+    }}
+  >
+    <Fragment slot="tagline">
+      <span class="text-[#7C8B5A] font-semibold">[Saturday, Oct 10]</span> · San Diego Trail Company · Poway, CA
+    </Fragment>
+    <Fragment slot="title">
+      Matcha on Ice <span class="text-[#7C8B5A]">×</span> Rustic Ranch
+    </Fragment>
+    <Fragment slot="subtitle">
+      An autumn outdoor movement class & iced matcha bar on our ranch wooden deck nestled in Poway's golden backcountry.
+    </Fragment>
+  </Hero>
+
+  <!-- 2. CONTENT (Ranch Pop-Up Overview) -->
+  <Content
+    isReversed
+    tagline="Autumn Ranch Pop-Up"
+    title="Movement, Connection & Backcountry Air"
+    image={{
+      src: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=80',
+      alt: 'Outdoor morning movement session at the ranch',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4 font-heading">
+        Gather on the Ranch Wood Deck
+      </h3>
+      <p class="mb-4 text-muted dark:text-slate-400 leading-relaxed">
+        As autumn morning light washes over Poway’s canyon ridges, join us for an exclusive, grounding pop-up experience
+        hosted right here at San Diego Trail Company. We’re laying down 50 mats on our spacious wooden ranch deck for a
+        guided outdoor movement session surrounded by oak trees, fresh air, and open sky.
+      </p>
+      <p class="mb-4 text-muted dark:text-slate-400 leading-relaxed">
+        Following the 60-minute movement class, step over to our craft iced-matcha bar. Sip artisanal ceremonial-grade
+        matcha chilled over ice and infused with subtle seasonal notes of vanilla and warm spice, while taking in
+        uninterrupted views of the backcountry pastures.
+      </p>
+      <p class="text-muted dark:text-slate-400 leading-relaxed">
+        After refreshing at the bar, stay to explore the grounds: visit with our gentle rescued ranch horses for photo
+        keepsakes, try your hand at traditional ranch rope skills, wander our private trail access, and pick a mini
+        pumpkin from our harvest stand to take home.
+      </p>
+    </Fragment>
+  </Content>
+
+  <!-- 3. FEATURES (What's Included) -->
+  <Features
+    id="whats-included"
+    tagline="Curated Event Features"
+    title="What's Included in Your Mat Reservation"
+    subtitle="Your ticket unlocks a complete autumn morning experience on the ranch grounds."
+    columns={3}
+    items={[
+      {
+        title: '50-Mat Class + Instructor',
+        description:
+          'A 60-minute guided all-levels outdoor movement flow on our wooden ranch deck led by an experienced instructor.',
+        icon: 'tabler:stretching',
+      },
+      {
+        title: 'Matcha on Ice',
+        description:
+          'Unlimited pours at our craft iced-matcha bar featuring ceremonial-grade matcha and autumn-inspired flavors.',
+        icon: 'tabler:cup',
+      },
+      {
+        title: 'Horses for Photos',
+        description:
+          'Meet our friendly rescued ranch horses up close and capture keepsake photo moments with the herd.',
+        icon: 'tabler:camera',
+      },
+      {
+        title: 'Rope Activity',
+        description: 'Try traditional ranch roping techniques with fun hands-on guidance from our trail wranglers.',
+        icon: 'tabler:vector-triangle',
+      },
+      {
+        title: 'Pumpkin Stand',
+        description: 'Complimentary mini pumpkin picking from our seasonal autumn harvest stand set up on the patio.',
+        icon: 'tabler:plant',
+      },
+      {
+        title: 'Full Trail Access',
+        description:
+          'Explore scenic backcountry trails across our private Poway ranch property before or after the event.',
+        icon: 'tabler:map-pin',
+      },
+    ]}
+  />
+
+  <!-- 4. STEPS (How the Day Flows) -->
+  <Steps
+    title="How the Day Flows"
+    subtitle="A relaxed, seamless itinerary from check-in to canyon exploration."
+    items={[
+      {
+        title: 'Step 1: Arrive & Check-In <span class="text-[#7C8B5A] font-semibold">[9:00 AM]</span>',
+        description:
+          'Check in at the main ranch gate, claim your spot on the wooden deck, and soak in the crisp morning backcountry air.',
+        icon: 'tabler:login',
+      },
+      {
+        title: 'Step 2: Outdoor Movement Class <span class="text-[#7C8B5A] font-semibold">[9:30 AM – 10:30 AM]</span>',
+        description:
+          'Unroll your mat for a 60-minute guided movement class designed to awaken energy, focus breath, and release tension.',
+        icon: 'tabler:stretching',
+      },
+      {
+        title: 'Step 3: Iced Matcha Bar & Social Bar <span class="text-[#7C8B5A] font-semibold">[10:30 AM]</span>',
+        description:
+          'Refuel with freshly poured iced ceremonial matcha, chat with fellow attendees, and enjoy seasonal morning treats.',
+        icon: 'tabler:cup',
+      },
+      {
+        title:
+          'Step 4: Explore Trails, Horses & Pumpkins <span class="text-[#7C8B5A] font-semibold">[11:00 AM – 11:30 AM]</span>',
+        description:
+          'Take photos with the ranch horses, practice lasso roping, pick your mini pumpkin, and wander our scenic canyon trails.',
+        icon: 'tabler:sun',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1000&q=80',
+      alt: 'Ranch morning flow and atmosphere',
+    }}
+  />
+
+  <!-- 5. STATS / DETAILS STRIP -->
+  <Stats
+    title="Event Details at a Glance"
+    stats={[
+      { amount: '[Saturday, Oct 10]', title: 'Date', icon: 'tabler:calendar' },
+      { amount: '[9:00 AM – 11:30 AM]', title: 'Time', icon: 'tabler:clock' },
+      { amount: 'Poway, CA', title: 'San Diego Trail Company', icon: 'tabler:map-pin' },
+      { amount: '[$45]', title: 'Ticket Price · Bring Your Own Mat', icon: 'tabler:ticket' },
+    ]}
+  />
+
+  <!-- 6. FAQS -->
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Everything you need to know before stepping onto the ranch."
+    columns={2}
+    items={[
+      {
+        title: 'What movement level is required?',
+        description:
+          'All movement levels are welcome! The instructor provides modifications throughout the class, making it accessible whether you are a beginner or experienced practitioner.',
+      },
+      {
+        title: 'What should I wear and bring?',
+        description:
+          'Please bring your own yoga or exercise mat. Wear comfortable athletic clothing layerable for outdoor autumn mornings, and bring sturdy closed-toe shoes if you plan to walk the trails.',
+      },
+      {
+        title: 'Where do I park when I arrive?',
+        description:
+          'Free parking is provided on site at our ranch property (14875 Mina De Oro, Poway, CA 92064). Signs and staff will point you to designated event parking upon entry.',
+      },
+      {
+        title: 'What is the refund and cancellation policy?',
+        description:
+          'Full refunds are available up to 48 hours prior to the event date [Saturday, Oct 10]. If severe weather forces a reschedule, all tickets will be fully honored or refunded upon request.',
+      },
+    ]}
+  />
+
+  <!-- 7. CALL TO ACTION -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Reserve Your Spot',
+        href: BOOKING_URL,
+        target: '_blank',
+        icon: 'tabler:ticket',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Reserve Your Mat for <span class="text-[#7C8B5A]">Matcha on Ice</span>
+    </Fragment>
+    <Fragment slot="subtitle">
+      Space is limited to 50 guests to preserve an intimate ranch setting. Secure your ticket today for an unforgettable
+      autumn morning in Poway.
+    </Fragment>
+  </CallToAction>
+</Layout>

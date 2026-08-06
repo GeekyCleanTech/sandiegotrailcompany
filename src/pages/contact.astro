@@ -49,7 +49,14 @@ const inputStyle =
           <input type="hidden" name="subject" value="New inquiry from San Diego Trail Company website" />
           <input type="hidden" name="from_name" value="San Diego Trail Company Website" />
           <!-- Honeypot spam trap (hidden from humans) -->
-          <input type="checkbox" name="botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off" />
+          <input
+            type="checkbox"
+            name="botcheck"
+            class="hidden"
+            style="display:none;"
+            tabindex="-1"
+            autocomplete="off"
+          />
 
           <div class="grid sm:grid-cols-2 gap-6">
             <div class={fieldWrap}>
@@ -92,7 +99,9 @@ const inputStyle =
             >
               Send Message
             </button>
-            <span style="font-size:12px;color:rgba(44,44,44,0.6);">We'll only use your details to reply to your inquiry.</span>
+            <span style="font-size:12px;color:rgba(44,44,44,0.6);"
+              >We'll only use your details to reply to your inquiry.</span
+            >
           </div>
 
           <!-- Inline result message -->
@@ -118,8 +127,16 @@ const inputStyle =
         <div>
           <div class="uppercase tracking-[0.2em] mb-3" style="font-size:11px;color:#8a9e7b;">Call or Email</div>
           <p style="font-size:16px;color:#2c2c2c;line-height:1.9;">
-            <a href="tel:+18587486441" class="hover:text-[#c49a3c] transition-colors" style="color:#2c2c2c;text-decoration:none;">858-748-6441</a><br />
-            <a href="mailto:ride@powayequestriancenter.com" class="hover:text-[#c49a3c] transition-colors break-all" style="color:#2c2c2c;text-decoration:none;">ride@powayequestriancenter.com</a>
+            <a
+              href="tel:+18587486441"
+              class="hover:text-[#c49a3c] transition-colors"
+              style="color:#2c2c2c;text-decoration:none;">858-748-6441</a
+            ><br />
+            <a
+              href="mailto:ride@powayequestriancenter.com"
+              class="hover:text-[#c49a3c] transition-colors break-all"
+              style="color:#2c2c2c;text-decoration:none;">ride@powayequestriancenter.com</a
+            >
           </p>
         </div>
 
@@ -133,10 +150,22 @@ const inputStyle =
         <div>
           <div class="uppercase tracking-[0.2em] mb-3" style="font-size:11px;color:#8a9e7b;">Follow</div>
           <div class="flex gap-4">
-            <a href="https://www.instagram.com/sandiegotrailcompany/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:opacity-70 transition-opacity">
+            <a
+              href="https://www.instagram.com/sandiegotrailcompany/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              class="hover:opacity-70 transition-opacity"
+            >
               <Icon name="tabler:brand-instagram" class="w-6 h-6" style="color:#8a9e7b;" />
             </a>
-            <a href="https://www.facebook.com/sandiegotrailcompany/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:opacity-70 transition-opacity">
+            <a
+              href="https://www.facebook.com/sandiegotrailcompany/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              class="hover:opacity-70 transition-opacity"
+            >
               <Icon name="tabler:brand-facebook" class="w-6 h-6" style="color:#8a9e7b;" />
             </a>
           </div>
@@ -148,10 +177,10 @@ const inputStyle =
 
 <script is:inline>
   (function () {
-    var form = document.getElementById('contact-form');
+    const form = document.getElementById('contact-form');
     if (!form) return;
-    var result = document.getElementById('contact-result');
-    var submit = document.getElementById('contact-submit');
+    const result = document.getElementById('contact-result');
+    const submit = document.getElementById('contact-submit');
 
     function show(msg, ok) {
       result.textContent = msg;
@@ -161,7 +190,7 @@ const inputStyle =
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var data = new FormData(form);
+      const data = new FormData(form);
 
       // If the access key hasn't been set yet, don't attempt a submission.
       if ((data.get('access_key') || '').indexOf('REPLACE_WITH_YOUR') === 0) {
@@ -170,7 +199,7 @@ const inputStyle =
       }
 
       submit.disabled = true;
-      var original = submit.textContent;
+      const original = submit.textContent;
       submit.textContent = 'Sending…';
 
       fetch('https://api.web3forms.com/submit', {
@@ -178,7 +207,9 @@ const inputStyle =
         headers: { Accept: 'application/json' },
         body: data,
       })
-        .then(function (r) { return r.json(); })
+        .then(function (r) {
+          return r.json();
+        })
         .then(function (json) {
           if (json.success) {
             form.reset();

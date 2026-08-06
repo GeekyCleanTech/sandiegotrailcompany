@@ -69,6 +69,12 @@ const fmtDate = (d?: Date) =>
       }
     </div>
 
-    {posts.length === 0 && <p class="max-w-[1200px] mx-auto" style="color:#2c2c2c;">No posts yet — check back soon.</p>}
+    {
+      posts.length === 0 && (
+        <p class="max-w-[1200px] mx-auto" style="color:#2c2c2c;">
+          No posts yet — check back soon.
+        </p>
+      )
+    }
   </section>
 </SiteLayout>

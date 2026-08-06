@@ -111,6 +111,15 @@ export const headerData = {
       ],
     },
     {
+      text: 'Events',
+      links: [
+        {
+          text: 'Matcha on Ice',
+          href: getPermalink('/events/matcha-on-ice'),
+        },
+      ],
+    },
+    {
       text: 'Widgets',
       href: '#',
     },
@@ -120,6 +129,10 @@ export const headerData = {
 
 export const footerData = {
   links: [
+    {
+      title: 'Events',
+      links: [{ text: 'Matcha on Ice', href: getPermalink('/events/matcha-on-ice') }],
+    },
     {
       title: 'Product',
       links: [
