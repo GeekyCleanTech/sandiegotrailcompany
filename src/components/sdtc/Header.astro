@@ -26,8 +26,8 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href 
   id="site-nav"
   role="navigation"
   aria-label="Main navigation"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-  style="background-color: transparent;"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-md"
+  style="background-color: #3b2314;"
 >
   <div class="max-w-[1600px] mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
     <a
@@ -149,12 +149,12 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href 
     const nav = document.getElementById('site-nav');
     function onScroll() {
       if (!nav) return;
-      if (window.scrollY > 50) {
+      if (window.scrollY > 20) {
         nav.style.backgroundColor = '#3b2314';
-        nav.classList.add('shadow-md');
+        nav.classList.add('shadow-lg', 'border-b', 'border-[#c49a3c]/20');
       } else {
-        nav.style.backgroundColor = 'transparent';
-        nav.classList.remove('shadow-md');
+        nav.style.backgroundColor = '#3b2314';
+        nav.classList.remove('shadow-lg', 'border-b', 'border-[#c49a3c]/20');
       }
     }
     window.addEventListener('scroll', onScroll, { passive: true });
