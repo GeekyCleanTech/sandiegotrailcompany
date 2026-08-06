@@ -1,5 +1,5 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
+import SiteLayout from '~/layouts/SiteLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -17,7 +17,7 @@ const metadata = {
 };
 ---
 
-<Layout metadata={metadata}>
+<SiteLayout metadata={metadata}>
   <!-- 1. HERO -->
   <Hero
     actions={[
@@ -219,4 +219,4 @@ const metadata = {
       autumn morning in Poway.
     </Fragment>
   </CallToAction>
-</Layout>
+</SiteLayout>
