@@ -3,17 +3,18 @@ import { Icon } from 'astro-icon/components';
 
 const BOOK_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/';
 
-const links = [
+interface NavLink {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+}
+
+const links: NavLink[] = [
   { label: 'Home', href: '/' },
   { label: 'Ride & Learn', href: '/ride-and-learn' },
   { label: 'Stay & Celebrate', href: '/stay-and-celebrate' },
   { label: 'Give & Support', href: '/give-and-support' },
   { label: 'Blog', href: '/blog' },
-  {
-    label: 'Events',
-    href: '/events/matcha-on-ice',
-    children: [{ label: 'Matcha on Ice', href: '/events/matcha-on-ice' }],
-  },
   { label: 'Contact', href: '/contact' },
 ];
 

@@ -111,15 +111,6 @@ export const headerData = {
       ],
     },
     {
-      text: 'Events',
-      links: [
-        {
-          text: 'Matcha on Ice',
-          href: getPermalink('/events/matcha-on-ice'),
-        },
-      ],
-    },
-    {
       text: 'Widgets',
       href: '#',
     },
@@ -166,17 +157,12 @@ export const footerData = {
       links: [
         { text: 'About', href: '#' },
         { text: 'Blog', href: '#' },
-        { text: 'Events', href: getPermalink('/events/matcha-on-ice') },
         { text: 'Careers', href: '#' },
         { text: 'Press', href: '#' },
         { text: 'Inclusion', href: '#' },
         { text: 'Social Impact', href: '#' },
         { text: 'Shop', href: '#' },
       ],
-    },
-    {
-      title: 'Events',
-      links: [{ text: 'Matcha on Ice', href: getPermalink('/events/matcha-on-ice') }],
     },
   ],
   secondaryLinks: [
