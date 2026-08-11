@@ -1,226 +1,473 @@
 ---
 import SiteLayout from '~/layouts/SiteLayout.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Content from '~/components/widgets/Content.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import { Icon } from 'astro-icon/components';
 
-const BOOKING_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/?flow=31089&full-items=yes';
+const BOOKING_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/';
 
 const metadata = {
-  title: 'Matcha on Ice × Rustic Ranch | Fall Pop-Up Event in Poway, CA',
+  title: 'Matcha on Ice × Rustic Ranch Horseback Rides | Poway, CA',
   description:
-    'Join us on [Saturday, Oct 10] for an autumn outdoor movement class and iced-matcha bar on the ranch wood deck in Poway, CA. 50 mats available. Reserve your spot today.',
+    'Meet us in the saddle on October 10, 2026. Enjoy a 15-minute horseback ride at Rustic Ranch following your Matcha on Ice pilates class in Poway, CA.',
   robots: {
     index: false,
     follow: false,
   },
 };
+
+const benefits = [
+  {
+    title: '$25 Horseback Ride',
+    description:
+      'Enjoy a 15-minute guided horseback ride across Rustic Ranch pastures for just $25. The perfect post-pilates experience.',
+    image: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80',
+    alt: 'Group of women horseback riding on a sunny Western trail',
+    icon: 'tabler:horseshoe',
+  },
+  {
+    title: 'Ranch & Horse Connection',
+    description:
+      'Experience authentic ranch life up close. Meet our gentle horses, take candid photos, and soak in backcountry Poway views.',
+    image: 'https://images.unsplash.com/photo-1598974357801-cbca100e65d3?auto=format&fit=crop&w=800&q=80',
+    alt: 'Candid photo of a woman connecting with a gentle ranch horse',
+    icon: 'tabler:heart',
+  },
+  {
+    title: 'Seamless Itinerary',
+    description:
+      'Reserve your time slot in advance so your ride is ready to go immediately following your pilates class and iced matcha.',
+    image: 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=800&q=80',
+    alt: 'Styled artisanal iced matcha tea served over ice',
+    icon: 'tabler:clock-hour-4',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Is horseback riding experience necessary?',
+    answer:
+      'Not at all! No prior horseback riding experience is required. Our patient trail wranglers guide you every step of the way, making it safe, fun, and relaxing for first-time riders.',
+  },
+  {
+    question: 'What should I wear for pilates and riding?',
+    answer:
+      'We recommend wearing comfortable athletic wear for pilates. For safety while riding, please bring or wear sturdy closed-toe shoes (sneakers or boots). Long pants or leggings are recommended for riding comfort.',
+  },
+  {
+    question: 'Where is the venue located?',
+    answer:
+      'The event takes place at San Diego Trail Company / Poway Equestrian Center Ranch: 14875 Mina De Oro Rd, Poway, CA 92064. Free parking is available on site.',
+  },
+  {
+    question: 'How do I schedule my specific ride time?',
+    answer:
+      'Click any "Reserve Your Ride" or "Select Time" button on this page to open our online booking system. You can choose your preferred 15-minute window following your pilates class.',
+  },
+];
 ---
 
 <SiteLayout metadata={metadata}>
-  <!-- 1. HERO -->
-  <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Reserve Your Mat',
-        href: BOOKING_URL,
-        target: '_blank',
-        icon: 'tabler:ticket',
-      },
-    ]}
-    image={{
-      src: '/images/ranch-yoga-matcha.png',
-      alt: 'Matcha on Ice outdoor movement class on a wooden ranch deck surrounded by oak trees and rolling Poway pastures',
-    }}
-  >
-    <Fragment slot="tagline">
-      <span class="text-[#7C8B5A] font-semibold">[Saturday, Oct 10]</span> · San Diego Trail Company · Poway, CA
-    </Fragment>
-    <Fragment slot="title">
-      Matcha on Ice <span class="text-[#7C8B5A]">×</span> Rustic Ranch
-    </Fragment>
-    <Fragment slot="subtitle">
-      An autumn outdoor movement class & iced matcha bar on our ranch wooden deck nestled in Poway's golden backcountry.
-    </Fragment>
-  </Hero>
+  <!-- CUSTOM STYLING TOKENS FOR DUSTY PINK COOL-GIRL COWGIRL AESTHETIC -->
+  <style>
+    .bg-dusty-pink-subtle {
+      background-color: #fcf4f4;
+    }
+    .bg-dusty-pink-pill {
+      background-color: #f3dfdf;
+    }
+    .border-dusty-pink {
+      border-color: #d8a4a6;
+    }
+    .text-dusty-pink {
+      color: #b87b7e;
+    }
+    .btn-dusty-pink {
+      background-color: #c48b8e;
+      color: #ffffff;
+      transition: all 0.2s ease-in-out;
+    }
+    .btn-dusty-pink:hover {
+      background-color: #b3787b;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(196, 139, 142, 0.35);
+    }
+    .badge-pink {
+      background-color: #f5e4e5;
+      color: #9c5c60;
+      border: 1px solid #e5c3c5;
+    }
+  </style>
 
-  <!-- 2. CONTENT (Ranch Pop-Up Overview) -->
-  <Content
-    isReversed
-    tagline="Autumn Ranch Pop-Up"
-    title="Movement, Connection & Backcountry Air"
-    image={{
-      src: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=80',
-      alt: 'Outdoor morning movement session at the ranch',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-serif text-[#3b2314] font-normal dark:text-white sm:text-3xl mb-4">
-        Gather on the Ranch Wood Deck
-      </h3>
-      <p class="mb-4 text-[#2c2c2c]/85 dark:text-slate-300 leading-relaxed">
-        As autumn morning light washes over Poway’s canyon ridges, join us for an exclusive, grounding pop-up experience
-        hosted right here at San Diego Trail Company. We’re laying down 50 mats on our spacious wooden ranch deck for a
-        guided outdoor movement session surrounded by oak trees, fresh air, and open sky.
-      </p>
-      <p class="mb-4 text-[#2c2c2c]/85 dark:text-slate-300 leading-relaxed">
-        Following the 60-minute movement class, step over to our craft iced-matcha bar. Sip artisanal ceremonial-grade
-        matcha chilled over ice and infused with subtle seasonal notes of vanilla and warm spice, while taking in
-        uninterrupted views of the backcountry pastures.
-      </p>
-      <p class="text-[#2c2c2c]/85 dark:text-slate-300 leading-relaxed">
-        After refreshing at the bar, stay to explore the grounds: visit with our gentle rescued ranch horses for photo
-        keepsakes, try your hand at traditional ranch rope skills, wander our private trail access, and pick a mini
-        pumpkin from our harvest stand to take home.
-      </p>
-    </Fragment>
-  </Content>
+  <main id="main-content" class="bg-[#faf7f2] text-[#2c2c2c]">
+    <!-- 1. PARTNER LOGO BAR -->
+    <div class="border-b border-[#3b2314]/10 bg-[#3b2314] text-white py-4 px-6">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="text-xs uppercase tracking-[0.2em] text-[#c49a3c] font-medium">Official Event Pop-Up</span>
+          <span class="text-white/30">•</span>
+          <span class="text-xs tracking-wider text-white/80">Matcha on Ice × Rustic Ranch Events</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <!-- Matcha on Ice Badge Container -->
+          <div class="px-3 py-1 rounded-full bg-[#f5e4e5]/15 border border-[#e5c3c5]/30 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#e5c3c5]"></span>
+            <span class="text-xs font-semibold uppercase tracking-widest text-[#f5e4e5]">Matcha on Ice</span>
+          </div>
+          <!-- Rustic Ranch Badge Container -->
+          <div class="px-3 py-1 rounded-full bg-[#c49a3c]/15 border border-[#c49a3c]/30 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#c49a3c]"></span>
+            <span class="text-xs font-semibold uppercase tracking-widest text-[#c49a3c]">Rustic Ranch Events</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- 3. FEATURES (What's Included) -->
-  <Features2
-    id="whats-included"
-    tagline="Curated Event Features"
-    title="What's Included in Your Mat Reservation"
-    subtitle="Your ticket unlocks a complete autumn morning experience on the ranch grounds."
-    columns={3}
-    items={[
-      {
-        title: '50-Mat Class + Instructor',
-        description:
-          'A 60-minute guided all-levels outdoor movement flow on our wooden ranch deck led by an experienced instructor.',
-        icon: 'tabler:stretching',
-      },
-      {
-        title: 'Matcha on Ice',
-        description:
-          'Unlimited pours at our craft iced-matcha bar featuring ceremonial-grade matcha and autumn-inspired flavors.',
-        icon: 'tabler:cup',
-      },
-      {
-        title: 'Horses for Photos',
-        description:
-          'Meet our friendly rescued ranch horses up close and capture keepsake photo moments with the herd.',
-        icon: 'tabler:camera',
-      },
-      {
-        title: 'Rope Activity',
-        description: 'Try traditional ranch roping techniques with fun hands-on guidance from our trail wranglers.',
-        icon: 'tabler:vector-triangle',
-      },
-      {
-        title: 'Pumpkin Stand',
-        description: 'Complimentary mini pumpkin picking from our seasonal autumn harvest stand set up on the patio.',
-        icon: 'tabler:plant',
-      },
-      {
-        title: 'Full Trail Access',
-        description:
-          'Explore scenic backcountry trails across our private Poway ranch property before or after the event.',
-        icon: 'tabler:map-pin',
-      },
-    ]}
-  />
+    <!-- 2. HERO SECTION -->
+    <section class="relative pt-12 pb-20 lg:pt-16 lg:pb-28 px-6 overflow-hidden">
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+        <!-- Left Text Column -->
+        <div class="lg:col-span-7 space-y-6">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full badge-pink text-xs font-semibold tracking-wider uppercase"
+          >
+            <Icon name="tabler:sparkles" class="w-4 h-4 text-[#9c5c60]" />
+            Cool-Girl Cowgirl Collaboration
+          </div>
 
-  <!-- 4. STEPS (How the Day Flows) -->
-  <Steps
-    title="How the Day Flows"
-    subtitle="A relaxed, seamless itinerary from check-in to canyon exploration."
-    items={[
-      {
-        title: 'Step 1: Arrive & Check-In <span class="text-[#7C8B5A] font-semibold">[9:00 AM]</span>',
-        description:
-          'Check in at the main ranch gate, claim your spot on the wooden deck, and soak in the crisp morning backcountry air.',
-        icon: 'tabler:login',
-      },
-      {
-        title: 'Step 2: Outdoor Movement Class <span class="text-[#7C8B5A] font-semibold">[9:30 AM – 10:30 AM]</span>',
-        description:
-          'Unroll your mat for a 60-minute guided movement class designed to awaken energy, focus breath, and release tension.',
-        icon: 'tabler:stretching',
-      },
-      {
-        title: 'Step 3: Iced Matcha Bar & Social Bar <span class="text-[#7C8B5A] font-semibold">[10:30 AM]</span>',
-        description:
-          'Refuel with freshly poured iced ceremonial matcha, chat with fellow attendees, and enjoy seasonal morning treats.',
-        icon: 'tabler:cup',
-      },
-      {
-        title:
-          'Step 4: Explore Trails, Horses & Pumpkins <span class="text-[#7C8B5A] font-semibold">[11:00 AM – 11:30 AM]</span>',
-        description:
-          'Take photos with the ranch horses, practice lasso roping, pick your mini pumpkin, and wander our scenic canyon trails.',
-        icon: 'tabler:sun',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1000&q=80',
-      alt: 'Ranch morning flow and atmosphere',
-    }}
-  />
+          <h1
+            class="text-4xl sm:text-5xl lg:text-6xl font-serif text-[#3b2314] leading-[1.1] font-normal tracking-tight"
+          >
+            Matcha on Ice <span class="text-[#c48b8e]">×</span> Rustic Ranch Horseback Rides
+          </h1>
 
-  <!-- 5. STATS / DETAILS STRIP -->
-  <Stats
-    title="Event Details at a Glance"
-    stats={[
-      { amount: '[Saturday, Oct 10]', title: 'Date', icon: 'tabler:calendar' },
-      { amount: '[9:00 AM – 11:30 AM]', title: 'Time', icon: 'tabler:clock' },
-      { amount: 'Poway, CA', title: 'San Diego Trail Company', icon: 'tabler:map-pin' },
-      { amount: '[$45]', title: 'Ticket Price · Bring Your Own Mat', icon: 'tabler:ticket' },
-    ]}
-  />
+          <p class="text-2xl sm:text-3xl font-serif italic text-[#c48b8e]">Meet us in the saddle.</p>
 
-  <!-- 6. FAQS -->
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Everything you need to know before stepping onto the ranch."
-    columns={2}
-    items={[
-      {
-        title: 'What movement level is required?',
-        description:
-          'All movement levels are welcome! The instructor provides modifications throughout the class, making it accessible whether you are a beginner or experienced practitioner.',
-      },
-      {
-        title: 'What should I wear and bring?',
-        description:
-          'Please bring your own yoga or exercise mat. Wear comfortable athletic clothing layerable for outdoor autumn mornings, and bring sturdy closed-toe shoes if you plan to walk the trails.',
-      },
-      {
-        title: 'Where do I park when I arrive?',
-        description:
-          'Free parking is provided on site at our ranch property (14875 Mina De Oro, Poway, CA 92064). Signs and staff will point you to designated event parking upon entry.',
-      },
-      {
-        title: 'What is the refund and cancellation policy?',
-        description:
-          'Full refunds are available up to 48 hours prior to the event date [Saturday, Oct 10]. If severe weather forces a reschedule, all tickets will be fully honored or refunded upon request.',
-      },
-    ]}
-  />
+          <p class="text-lg text-[#2c2c2c]/85 leading-relaxed max-w-2xl">
+            Elevate your event day with a 15-minute post-pilates horseback ride across our golden Poway pastures. Sip
+            ceremonial iced matcha, ground yourself on the ranch deck, and step right into the saddle.
+          </p>
 
-  <!-- 7. CALL TO ACTION -->
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Reserve Your Spot',
-        href: BOOKING_URL,
-        target: '_blank',
-        icon: 'tabler:ticket',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Reserve Your Mat for <span class="text-[#7C8B5A]">Matcha on Ice</span>
-    </Fragment>
-    <Fragment slot="subtitle">
-      Space is limited to 50 guests to preserve an intimate ranch setting. Secure your ticket today for an unforgettable
-      autumn morning in Poway.
-    </Fragment>
-  </CallToAction>
+          <!-- Key Details Callout Card -->
+          <div
+            class="p-5 rounded-2xl bg-white border border-dusty-pink/40 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 max-w-xl"
+          >
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-[#c49a3c]">
+                <Icon name="tabler:calendar" class="w-4 h-4" />
+                October 10, 2026
+              </div>
+              <div class="flex items-center gap-2 text-sm text-[#2c2c2c]/80">
+                <Icon name="tabler:map-pin" class="w-4 h-4 text-[#c48b8e]" />
+                14875 Mina De Oro Rd, Poway, CA 92064
+              </div>
+            </div>
+            <div
+              class="text-left sm:text-right border-t sm:border-t-0 sm:border-l border-black/10 pt-3 sm:pt-0 sm:pl-4"
+            >
+              <span class="block text-2xl font-serif font-bold text-[#3b2314]">$25</span>
+              <span class="block text-xs uppercase tracking-wider text-[#9c5c60] font-semibold">General Admission</span>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="pt-2 flex flex-col sm:flex-row gap-4">
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-8 py-4 rounded-full btn-dusty-pink font-medium text-center text-sm uppercase tracking-widest inline-flex items-center justify-center gap-2 shadow-lg"
+            >
+              <Icon name="tabler:ticket" class="w-5 h-5" />
+              Reserve Your Ride
+            </a>
+            <a
+              href="#overview"
+              class="px-8 py-4 rounded-full bg-white border border-[#3b2314]/20 hover:border-[#3b2314]/50 text-[#3b2314] font-medium text-center text-sm uppercase tracking-widest inline-flex items-center justify-center gap-2 transition-all"
+            >
+              Event Details
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Image Column -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <!-- Decorative Backdrop Frame -->
+            <div
+              class="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#f3dfdf] via-[#faf7f2] to-[#e8c8ca] transform rotate-2 -z-10 border border-dusty-pink/30"
+            >
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=1200&q=80"
+              alt="Sunny Western ranch pasture with horses in Poway, CA"
+              class="w-full h-[460px] object-cover rounded-2xl shadow-xl border-2 border-white"
+              loading="eager"
+            />
+            <!-- Badge Overlay -->
+            <div
+              class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-xl border border-dusty-pink/30 shadow-lg flex items-center justify-between"
+            >
+              <div>
+                <span class="block text-xs font-semibold uppercase tracking-wider text-[#9c5c60]"
+                  >Poway Equestrian Center</span
+                >
+                <span class="block text-sm font-serif font-semibold text-[#3b2314]">Rustic Ranch Horseback Rides</span>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#f5e4e5] text-[#9c5c60]">$25 Add-On</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PARTNER / SPONSOR SECTION -->
+    <section class="py-12 bg-white border-y border-[#3b2314]/10">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <p class="text-xs uppercase tracking-[0.25em] text-[#9c5c60] font-semibold mb-6">In Proud Collaboration With</p>
+        <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
+          <!-- Partner Badge 1: Matcha on Ice -->
+          <div
+            class="flex items-center gap-4 px-6 py-4 rounded-2xl bg-dusty-pink-subtle border border-dusty-pink/40 shadow-sm"
+          >
+            <div class="w-12 h-12 rounded-full bg-[#f5e4e5] flex items-center justify-center text-[#9c5c60]">
+              <Icon name="tabler:cup" class="w-6 h-6" />
+            </div>
+            <div class="text-left">
+              <span class="block text-lg font-serif font-bold text-[#3b2314]">Matcha on Ice</span>
+              <span class="block text-xs tracking-wider text-[#9c5c60] uppercase font-medium"
+                >Movement & Iced Matcha Bar</span
+              >
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="hidden sm:block text-2xl font-serif text-[#c48b8e] font-light">×</div>
+
+          <!-- Partner Badge 2: Rustic Ranch Events -->
+          <div class="flex items-center gap-4 px-6 py-4 rounded-2xl bg-[#fcf9f2] border border-[#c49a3c]/30 shadow-sm">
+            <div class="w-12 h-12 rounded-full bg-[#c49a3c]/15 flex items-center justify-center text-[#3b2314]">
+              <Icon name="tabler:horseshoe" class="w-6 h-6 text-[#c49a3c]" />
+            </div>
+            <div class="text-left">
+              <span class="block text-lg font-serif font-bold text-[#3b2314]">Rustic Ranch Events</span>
+              <span class="block text-xs tracking-wider text-[#c49a3c] uppercase font-medium"
+                >San Diego Trail Company</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. EVENT OVERVIEW & VALUE PROPOSITION -->
+    <section id="overview" class="py-20 px-6">
+      <div class="max-w-7xl mx-auto space-y-16">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+          <span class="text-xs uppercase tracking-[0.2em] font-semibold text-[#c48b8e] block">
+            Exclusive Event Add-On
+          </span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#3b2314] font-normal">
+            From the Pilates Mat to the Saddle
+          </h2>
+          <p class="text-lg text-[#2c2c2c]/85 leading-relaxed">
+            We’re opening our pastures for an exclusive add-on experience for Matcha on Ice guests. Following your
+            outdoor pilates movement class and iced matcha, hop into the saddle for a 15-minute guided horseback ride
+            across Rustic Ranch.
+          </p>
+          <div
+            class="inline-block px-5 py-2 rounded-full bg-[#f5e4e5] text-[#9c5c60] text-sm font-semibold tracking-wide"
+          >
+            ✨ No horseback riding experience necessary!
+          </div>
+        </div>
+
+        <!-- 3 TAKEAWAYS / BENEFITS GRID -->
+        <div class="grid md:grid-cols-3 gap-8">
+          {
+            benefits.map((item) => (
+              <div class="bg-white rounded-2xl border border-dusty-pink/30 shadow-sm overflow-hidden flex flex-col hover:shadow-lg transition-all group">
+                <div class="relative h-56 overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-[#c48b8e] shadow-md">
+                    <Icon name={item.icon} class="w-5 h-5" />
+                  </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div class="space-y-2">
+                    <h3 class="text-2xl font-serif text-[#3b2314] font-semibold">{item.title}</h3>
+                    <p class="text-sm text-[#2c2c2c]/80 leading-relaxed">{item.description}</p>
+                  </div>
+                  <div class="pt-2 border-t border-black/5 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#9c5c60]">
+                    <span>Included Feature</span>
+                    <Icon name="tabler:arrow-right" class="w-4 h-4 text-[#c48b8e]" />
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. TICKETING & BOOKING INTEGRATION SECTION -->
+    <section class="py-20 px-6 bg-dusty-pink-subtle border-y border-dusty-pink/30">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div class="text-center space-y-4">
+          <span class="text-xs uppercase tracking-[0.2em] font-semibold text-[#9c5c60] block">
+            Reserve Your Time Slot
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-serif text-[#3b2314] font-normal">Ticketing & Ride Registration</h2>
+          <p class="text-base text-[#2c2c2c]/85 max-w-xl mx-auto">
+            Book your ride in advance so your horse and wrangler are ready right after your pilates class.
+          </p>
+        </div>
+
+        <!-- Ticket Card -->
+        <div class="bg-white rounded-3xl border-2 border-dusty-pink shadow-xl overflow-hidden">
+          <!-- Card Header -->
+          <div
+            class="bg-[#3b2314] text-white p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+          >
+            <div>
+              <span
+                class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase badge-pink mb-2"
+              >
+                General Admission
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-serif font-normal text-white">Horseback Ride Add-On Ticket</h3>
+              <p class="text-xs text-white/70 tracking-wide">Matcha on Ice × Rustic Ranch Pop-Up</p>
+            </div>
+            <div class="text-left sm:text-right">
+              <span class="block text-4xl sm:text-5xl font-serif font-bold text-[#c49a3c]">$25</span>
+              <span class="block text-xs uppercase tracking-widest text-white/60">Until Sold Out</span>
+            </div>
+          </div>
+
+          <!-- Card Body -->
+          <div class="p-6 sm:p-10 space-y-8">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div class="space-y-3">
+                <h4 class="text-sm font-semibold uppercase tracking-wider text-[#3b2314]">What's Included:</h4>
+                <ul class="space-y-2 text-sm text-[#2c2c2c]/85">
+                  <li class="flex items-center gap-2">
+                    <Icon name="tabler:circle-check" class="w-5 h-5 text-[#c48b8e]" />
+                    One 15-minute guided horseback ride
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <Icon name="tabler:circle-check" class="w-5 h-5 text-[#c48b8e]" />
+                    Trail wrangler guidance & safety gear
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <Icon name="tabler:circle-check" class="w-5 h-5 text-[#c48b8e]" />
+                    Post-pilates seamless scheduling
+                  </li>
+                </ul>
+              </div>
+
+              <div class="space-y-3">
+                <h4 class="text-sm font-semibold uppercase tracking-wider text-[#3b2314]">Event Location & Date:</h4>
+                <div class="p-4 rounded-xl bg-[#faf7f2] border border-black/5 space-y-2 text-xs text-[#2c2c2c]/80">
+                  <p class="flex items-center gap-2 font-medium text-[#3b2314]">
+                    <Icon name="tabler:calendar" class="w-4 h-4 text-[#c48b8e]" />
+                    Saturday, October 10, 2026
+                  </p>
+                  <p class="flex items-center gap-2">
+                    <Icon name="tabler:map-pin" class="w-4 h-4 text-[#c48b8e]" />
+                    14875 Mina De Oro Rd, Poway, CA 92064
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Booking Actions -->
+            <div class="pt-6 border-t border-black/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="text-xs text-[#9c5c60] font-medium flex items-center gap-1.5">
+                <Icon name="tabler:clock" class="w-4 h-4" />
+                Select your preferred ride time window during checkout
+              </div>
+              <div class="flex items-center gap-3 w-full sm:w-auto">
+                <a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-full sm:w-auto px-8 py-3.5 rounded-full btn-dusty-pink font-semibold text-xs uppercase tracking-widest text-center shadow-md"
+                >
+                  Book Now ($25)
+                </a>
+                <a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hidden sm:inline-flex px-6 py-3.5 rounded-full bg-white border border-[#3b2314]/20 hover:border-[#3b2314]/50 text-[#3b2314] font-semibold text-xs uppercase tracking-widest text-center"
+                >
+                  Select Time
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FAQS SECTION -->
+    <section class="py-20 px-6">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div class="text-center space-y-3">
+          <span class="text-xs uppercase tracking-[0.2em] font-semibold text-[#c48b8e]">Got Questions?</span>
+          <h2 class="text-3xl sm:text-4xl font-serif text-[#3b2314] font-normal">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          {
+            faqs.map((faq) => (
+              <div class="p-6 rounded-2xl bg-white border border-dusty-pink/30 space-y-2 shadow-sm">
+                <h3 class="text-lg font-serif font-bold text-[#3b2314] flex items-start gap-2">
+                  <Icon name="tabler:help-circle" class="w-5 h-5 text-[#c48b8e] shrink-0 mt-0.5" />
+                  {faq.question}
+                </h3>
+                <p class="text-sm text-[#2c2c2c]/80 leading-relaxed pl-7">{faq.answer}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. FINAL CALL TO ACTION BANNER -->
+    <section class="py-20 px-6 bg-[#3b2314] text-white relative overflow-hidden">
+      <div
+        class="absolute inset-0 opacity-10 bg-[radial-gradient(#c48b8e_1px,transparent_1px)] [background-size:16px_16px]"
+      >
+      </div>
+      <div class="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#f5e4e5]/20 text-[#f5e4e5] text-xs font-semibold uppercase tracking-widest border border-[#f5e4e5]/30"
+        >
+          October 10, 2026 • Poway, CA
+        </div>
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-normal leading-tight">
+          Ready to meet us in the saddle?
+        </h2>
+        <p class="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
+          Spots are limited to ensure a personal ranch experience. Reserve your $25 horseback ride today.
+        </p>
+        <div>
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-10 py-5 rounded-full btn-dusty-pink font-semibold text-sm uppercase tracking-widest inline-flex items-center gap-3 shadow-xl"
+          >
+            <Icon name="tabler:ticket" class="w-5 h-5" />
+            Reserve Your Ride ($25)
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 </SiteLayout>
