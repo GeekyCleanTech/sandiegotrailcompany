@@ -30,7 +30,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href 
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-md"
   style="background-color: #3b2314;"
 >
-  <div class="max-w-[1600px] mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
+  <div class="max-w-400 mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
     <a
       href="/"
       aria-label="San Diego Trail Company – Home"
@@ -55,7 +55,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href 
             </a>
             {link.children && (
               <ul class="absolute left-0 top-full pt-2 hidden group-hover:block list-none m-0 p-0 z-50">
-                <li class="bg-[#3b2314] border border-[#c49a3c]/20 shadow-xl rounded-md py-2 px-4 min-w-[180px]">
+                <li class="bg-[#3b2314] border border-[#c49a3c]/20 shadow-xl rounded-md py-2 px-4 min-w-45">
                   {link.children.map((child) => (
                     <a
                       href={child.href}
