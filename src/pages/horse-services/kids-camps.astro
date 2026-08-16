@@ -1,0 +1,135 @@
+---
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+
+const BOOK_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/';
+
+const metadata = {
+  title: 'Kids Summer & Holiday Camps | San Diego Trail Company',
+  description:
+    'Enroll your kids in our popular horse camps in Poway, CA. They will learn horsemanship, riding skills, and make lifelong friends in a safe, fun environment.',
+};
+---
+
+<SiteLayout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="Horse Camps in Poway, CA"
+    title="Kids Summer & Holiday Camps"
+    subtitle="Give your child an unforgettable experience at the ranch. Our camps are designed to teach horsemanship, build confidence, and create lasting memories in a safe, supervised environment."
+    actions={[
+      { variant: 'primary', text: 'Book a Camp', href: BOOK_URL, target: '_blank' },
+      { text: 'Contact Us', href: '/contact' },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1628043689405-b07db35be6b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraWRzJTIwaG9yc2V8ZW58MXx8fHwxNzgxNjI4MTEzfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Kids having fun at horse camp',
+    }}
+  />
+
+  <!-- Camp Details -->
+  <Content
+    title="What to Expect"
+    subtitle="Our comprehensive program covers all aspects of horse care and riding."
+    items={[
+      {
+        title: 'Daily Riding Lessons',
+        description:
+          'Campers receive daily instruction in the arena, focusing on balance, control, and basic riding skills.',
+        icon: 'tabler:horse',
+      },
+      {
+        title: 'Horsemanship & Care',
+        description:
+          'Kids learn how to groom, tack, feed, and properly care for horses, fostering a sense of responsibility.',
+        icon: 'tabler:heart',
+      },
+      {
+        title: 'Fun & Games',
+        description:
+          'We mix learning with fun! From mounted games to arts and crafts, every day brings a new adventure.',
+        icon: 'tabler:mood-smile',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1553531580-652231e34e2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxob3JzZWJhY2slMjBsZXNzb258ZW58MXx8fHwxNzgxNjI4MTEwfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Child learning to ride a horse',
+    }}
+  />
+
+  <!-- Pricing -->
+  <Pricing
+    title="Camp Pricing & Schedule"
+    subtitle="We offer weekly summer camps and special holiday camps throughout the year."
+    prices={[
+      {
+        title: 'Half-Day Camp',
+        subtitle: 'Perfect for younger kids or beginners.',
+        price: '350',
+        period: '/ week',
+        items: [
+          { description: '9:00 AM - 12:00 PM' },
+          { description: 'Ages 5 to 12' },
+          { description: 'Daily riding lesson' },
+          { description: 'Horsemanship activities' },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Book Half-Day',
+          href: BOOK_URL,
+        },
+      },
+      {
+        title: 'Full-Day Camp',
+        subtitle: 'A fully immersive ranch experience.',
+        price: '550',
+        period: '/ week',
+        hasRibbon: true,
+        ribbonTitle: 'Most Popular',
+        items: [
+          { description: '9:00 AM - 3:00 PM' },
+          { description: 'Ages 7 to 14' },
+          { description: 'Two riding sessions' },
+          { description: 'Advanced horsemanship' },
+          { description: 'Lunch not included' },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Book Full-Day',
+          href: BOOK_URL,
+        },
+      },
+    ]}
+  />
+
+  <!-- FAQs -->
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Everything you need to know to prepare for camp."
+    items={[
+      {
+        title: 'What should my child wear?',
+        description:
+          'Campers must wear long pants (jeans or leggings) and closed-toe shoes with a small heel (boots are ideal). We provide ASTM-approved helmets.',
+      },
+      {
+        title: 'Do they need prior riding experience?',
+        description:
+          'Not at all! Our camps are designed to accommodate all skill levels, from absolute beginners to more advanced riders.',
+      },
+      {
+        title: 'What should we pack for the day?',
+        description:
+          'Please pack a water bottle, sunscreen, snacks, and a packed lunch (for full-day campers). Label all personal items.',
+      },
+      {
+        title: 'What is the camper to counselor ratio?',
+        description:
+          'We maintain a low ratio of 4 campers per instructor to ensure safety and individualized attention during riding activities.',
+      },
+    ]}
+  />
+</SiteLayout>

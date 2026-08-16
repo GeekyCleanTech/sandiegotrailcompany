@@ -1,0 +1,168 @@
+---
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import Content from '~/components/widgets/Content.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+
+const BOOK_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/';
+
+const metadata = {
+  title: 'Our Services | San Diego Trail Company',
+  description:
+    'Explore our offerings including horseback riding lessons, guided trail rides, horse boarding, kids camps, and a true dude ranch experience in Poway, CA.',
+};
+---
+
+<SiteLayout metadata={metadata}>
+  <HeroText
+    title="Our Services"
+    subtitle="Discover the perfect equestrian experience at San Diego Trail Company. From beginner lessons to unforgettable sunset trail rides."
+  />
+
+  <!-- Horseback Riding Lessons -->
+  <Content
+    id="horseback-riding-lessons"
+    isReversed
+    title="Horseback Riding Lessons"
+    subtitle="Build a strong foundation and learn the art of horsemanship with our experienced instructors."
+    items={[
+      {
+        title: 'For All Ages & Skill Levels',
+        description: 'Whether you are a complete beginner or looking to refine your skills, we have a program for you.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Safe, Reliable Horses',
+        description: 'Learn on our well-trained and gentle lesson horses in a supportive environment.',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1553531580-652231e34e2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxob3JzZWJhY2slMjBsZXNzb258ZW58MXx8fHwxNzgxNjI4MTEwfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Horseback riding lessons',
+    }}
+    callToAction={{
+      text: 'Get Info',
+      href: '/contact',
+      variant: 'primary',
+    }}
+  />
+
+  <!-- Trail Riding -->
+  <Content
+    id="trail-riding"
+    isAfterContent
+    title="Guided Trail Rides"
+    subtitle="Experience the beauty of Southern California's backcountry on horseback."
+    items={[
+      {
+        title: 'Scenic Canyons & Vistas',
+        description: 'Ride through winding trails, ancient oak groves, and breathtaking viewpoints.',
+        icon: 'tabler:mountain',
+      },
+      {
+        title: 'Small, Private Groups',
+        description: 'Enjoy an intimate experience with our knowledgeable and friendly guides.',
+        icon: 'tabler:users',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1765313273854-fcee815acdea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxob3JzZWJhY2slMjByaWRpbmclMjB0cmFpbHxlbnwxfHx8fDE3ODA2MjgxMDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Trail riding at golden hour',
+    }}
+    callToAction={{
+      text: 'Book Now',
+      href: BOOK_URL,
+      target: '_blank',
+      variant: 'primary',
+    }}
+  />
+
+  <!-- Horse Boarding -->
+  <Content
+    id="horse-boarding"
+    isReversed
+    isAfterContent
+    title="Premium Horse Boarding"
+    subtitle="A safe, clean, and welcoming home for your equine partner at our Poway facility."
+    items={[
+      {
+        title: 'Exceptional Care',
+        description: "Daily stall cleaning, premium feed, and dedicated staff to monitor your horse's well-being.",
+        icon: 'tabler:heart',
+      },
+      {
+        title: 'Top-Notch Amenities',
+        description: 'Access to arenas, turnouts, wash racks, and miles of adjacent trails.',
+        icon: 'tabler:map-pin',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1598974357801-cbca100e65d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxob3JzZSUyMHN0YWJsZXxlbnwxfHx8fDE3ODE2MjgxMTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Clean and safe horse stables',
+    }}
+    callToAction={{
+      text: 'Inquire About Availability',
+      href: '/contact',
+      variant: 'primary',
+    }}
+  />
+
+  <!-- Kids Camps -->
+  <Content
+    id="kids-camps"
+    isAfterContent
+    title="Kids Summer & Holiday Camps"
+    subtitle="Unforgettable outdoor experiences where kids learn horsemanship, teamwork, and confidence."
+    items={[
+      {
+        title: 'Hands-On Learning',
+        description: 'Daily riding, grooming, tacking, and fun educational horse-related games.',
+        icon: 'tabler:mood-smile',
+      },
+      {
+        title: 'Safe & Supervised',
+        description: 'Low camper-to-counselor ratio ensures safety and personalized attention.',
+        icon: 'tabler:shield',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1628043689405-b07db35be6b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraWRzJTIwaG9yc2V8ZW58MXx8fHwxNzgxNjI4MTEzfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Kids having fun at horse camp',
+    }}
+    callToAction={{
+      text: 'View Camp Details',
+      href: '/horse-services/kids-camps',
+      variant: 'primary',
+    }}
+  />
+
+  <!-- Dude Ranch Experience -->
+  <Content
+    id="dude-ranch-experience"
+    isReversed
+    isAfterContent
+    title="The Dude Ranch Experience"
+    subtitle="Escape the city and step into the Old West with our boutique ranch stays and experiences."
+    items={[
+      {
+        title: 'Rustic Luxury',
+        description: 'Comfortable accommodations combined with authentic ranch living.',
+        icon: 'tabler:tent',
+      },
+      {
+        title: 'Immersive Activities',
+        description: 'Combine your stay with trail rides, cookouts, and stargazing.',
+        icon: 'tabler:campfire',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1777245397327-042bf06abfcc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw1fHxyYW5jaCUyMGFlcmlhbCUyMHZpZXclMjBkdXNrfGVufDF8fHx8MTc4MDYyODEwOXww&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Beautiful ranch at dusk',
+    }}
+    callToAction={{
+      text: 'Explore Ranch Stays',
+      href: '/stay-and-celebrate',
+      variant: 'primary',
+    }}
+  />
+</SiteLayout>
