@@ -165,4 +165,41 @@ const metadata = {
       variant: 'primary',
     }}
   />
+  <!-- Birthday Party Packages -->
+  <Content
+    id="birthday-party"
+    isAfterContent
+    title="Birthday Party Packages"
+    subtitle="Host an unforgettable birthday celebration at the ranch with a custom trail ride and dedicated party space."
+    items={[
+      {
+        title: 'Guided Trail Rides',
+        description:
+          "Saddle up with friends and family for a scenic ride tailored to your group's age and experience level.",
+        icon: 'tabler:horse',
+      },
+      {
+        title: 'Ranch & Horse Access',
+        description:
+          'Meet our friendly horses, learn basic horsemanship, and enjoy the beautiful natural surroundings.',
+        icon: 'tabler:trees',
+      },
+      {
+        title: 'Dedicated Party Space',
+        description:
+          'Use our shaded picnic areas and facilities to cut the cake, open presents, and celebrate after the ride.',
+        icon: 'tabler:confetti',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      alt: 'Children enjoying a birthday party celebration',
+    }}
+    callToAction={{
+      text: 'Book a Party',
+      href: BOOK_URL,
+      target: '_blank',
+      variant: 'primary',
+    }}
+  />
 </SiteLayout>
