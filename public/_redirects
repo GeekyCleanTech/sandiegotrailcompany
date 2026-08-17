@@ -21,6 +21,9 @@
 # /service-area/equus-coaching/ is a real page again — no rule needed.
 
 # --- Horse services (legacy WP) -----------------------------------------
+# Renamed, not removed: the camps page still exists as kids-camps.
+/horse-services/summer-horse-camps/    /horse-services/kids-camps/      301
+/horse-services/summer-horse-camps     /horse-services/kids-camps/      301
 /horse-services/airbnb-ranches/        /stay-and-celebrate/             301
 /horse-services/airbnb-ranches         /stay-and-celebrate/             301
 /horse-services/glamping/              /stay-and-celebrate/             301
