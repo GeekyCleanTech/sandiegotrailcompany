@@ -1,0 +1,146 @@
+---
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Horse Boarding in Poway, CA – Full-Service Ranch Boarding',
+  description:
+    'Full-service horse boarding in Poway, CA. Daily turnout and feeding, direct backcountry trail access, and veterinary and farrier coordination. Monthly and long-term rates available.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Horse Boarding – San Diego Trail Company',
+  description:
+    'Full-service horse boarding with daily turnout, quality feed, attentive care, and direct trail access in Poway, CA.',
+  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://sandiegotrailcompany.com' },
+  areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
+};
+---
+
+<SiteLayout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <Hero
+    tagline="Horse Boarding in Poway, CA"
+    title="Full-Service Ranch Boarding"
+    subtitle="Bring your horse home to Poway. Daily turnout, quality feed, attentive care, and trails that start right at the property line — for riders who want the best for their horse."
+    actions={[
+      { variant: 'primary', text: 'Inquire About Boarding', href: '/contact' },
+      { text: 'See All Services', href: '/ride-and-learn' },
+    ]}
+    image={{
+      src: '/images/pillar-give-support.jpg',
+      alt: 'Horses turned out in a pasture at the Poway boarding ranch',
+    }}
+  />
+
+  <Content
+    title="What Your Board Includes"
+    subtitle="Everyday care handled properly, so your time here is spent riding."
+    items={[
+      {
+        title: 'Daily Turnout & Feeding',
+        description:
+          'Your horse is fed and turned out every day on a consistent schedule, with feed adjusted to their condition and workload.',
+        icon: 'tabler:clock-hour-8',
+      },
+      {
+        title: 'Direct Trail Access',
+        description:
+          'Ride out straight from the property into the Poway backcountry. No trailering, no hauling out to find a trailhead.',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'Veterinary & Farrier Coordination',
+        description:
+          'We schedule and hold for your vet and farrier appointments, and keep you informed on anything we notice between visits.',
+        icon: 'tabler:stethoscope',
+      },
+      {
+        title: 'Monthly & Long-Term Rates',
+        description:
+          'Flexible arrangements for seasonal boarders and long-term residents alike. Contact us for current availability and rates.',
+        icon: 'tabler:calendar',
+      },
+    ]}
+    image={{
+      src: '/images/ride-trail.jpg',
+      alt: 'Trail leading out from the ranch into the Poway backcountry',
+    }}
+  />
+
+  <Content
+    isReversed
+    isAfterContent
+    title="A Working Ranch, Not a Parking Lot"
+    items={[
+      {
+        title: 'Eyes on your horse daily',
+        description:
+          'We are a small operation and our team is hands-on with every horse on the property, every day. Changes get noticed early.',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'A community of riders',
+        description:
+          'Boarders share the property with our lesson and trail programs — an active, friendly barn rather than an empty one.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Room to actually ride',
+        description:
+          'Arena time plus miles of open backcountry trail. Your horse gets worked and turned out, not just stalled.',
+        icon: 'tabler:horse',
+      },
+    ]}
+    image={{
+      src: '/images/pillar-ride-learn.png',
+      alt: 'Riders and horses at the San Diego Trail Company ranch',
+    }}
+  />
+
+  <FAQs
+    title="Boarding Questions"
+    subtitle="What prospective boarders ask us most."
+    items={[
+      {
+        title: 'What are your current rates?',
+        description:
+          'Rates depend on the care level and term you need. Get in touch and we will walk you through current pricing and what is open right now.',
+      },
+      {
+        title: 'Do you have availability?',
+        description:
+          'Space at the ranch is limited and turns over periodically. Contact us and we will tell you what is available or add you to the waitlist.',
+      },
+      {
+        title: 'Can I use my own vet and farrier?',
+        description:
+          'Yes. You are welcome to keep your existing providers — we coordinate scheduling and hold your horse for appointments.',
+      },
+      {
+        title: 'Is there trail access from the property?',
+        description:
+          'Yes. Trails into the Poway backcountry start at the property line, so you can ride out directly without trailering.',
+      },
+      {
+        title: 'Can I take lessons while boarding here?',
+        description:
+          'Absolutely. Our instructors work with boarders on their own horses, and boarders are welcome to join guided rides and clinics.',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Looking for a home for your horse?"
+    subtitle="Tell us about your horse and we will let you know what is available."
+    actions={[{ variant: 'primary', text: 'Inquire About Boarding', href: '/contact' }]}
+  />
+</SiteLayout>

@@ -1,0 +1,142 @@
+---
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const BOOK_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/';
+
+const metadata = {
+  title: 'Horseback Riding in San Diego – Guided Trail Rides & Lessons in Poway, CA',
+  description:
+    'Book horseback riding in San Diego County. Guided canyon trail rides in small groups of six or fewer, plus private and group riding lessons for all skill levels in Poway, CA.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Horseback Riding – San Diego Trail Company',
+  description:
+    'Guided horseback trail rides and riding lessons for all experience levels in the Poway backcountry, San Diego County.',
+  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://sandiegotrailcompany.com' },
+  areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
+};
+---
+
+<SiteLayout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <Hero
+    tagline="Horseback Riding in Poway, CA"
+    title="Horseback Riding in San Diego"
+    subtitle="Ride the golden hills and chaparral canyons of the Poway backcountry. Small groups, patient horses, and guides who know every ridge and ravine — whether it's your first time in the saddle or your five hundredth."
+    actions={[
+      { variant: 'primary', text: 'Book a Ride', href: BOOK_URL, target: '_blank' },
+      { text: 'Contact Us', href: '/contact' },
+    ]}
+    image={{
+      src: '/images/ride-trail.jpg',
+      alt: 'Riders on a guided horseback trail ride through a San Diego canyon',
+    }}
+  />
+
+  <Content
+    title="Ways to Ride With Us"
+    subtitle="Two paths into horsemanship — pick the one that fits where you are today."
+    items={[
+      {
+        title: 'Guided Canyon Trail Rides',
+        description:
+          'Our signature backcountry rides wind through the golden hills and chaparral canyons of Poway. One- and two-hour options, groups of six or fewer, and all equipment provided. Ages 7 and up.',
+        icon: 'tabler:horse',
+      },
+      {
+        title: 'Riding Lessons for All Levels',
+        description:
+          "Private and small-group lessons taught by certified instructors in English and Western styles. Whether you've never touched a stirrup or you're refining advanced horsemanship, we meet you where you are.",
+        icon: 'tabler:school',
+      },
+      {
+        title: 'First-Time Riders Welcome',
+        description:
+          'No experience necessary. Every ride begins with a hands-on safety and handling orientation, and our guides stay with you from mounting block to finish.',
+        icon: 'tabler:mood-smile',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1763130063689-06fbdb789db8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxob3JzZSUyMGxlc3NvbnMlMjBlcXVlc3RyaWFuJTIwdHJhaW5pbmclMjByaWRpbmclMjBhcmVuYXxlbnwxfHx8fDE3ODA4MzI2MDl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'A rider taking a horseback riding lesson in the arena',
+    }}
+  />
+
+  <Content
+    isReversed
+    isAfterContent
+    title="Why Ride With San Diego Trail Company"
+    items={[
+      {
+        title: 'Groups of six or fewer',
+        description:
+          'Small by design. You get real attention from your guide and a quiet trail instead of a nose-to-tail parade.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Direct backcountry access',
+        description:
+          'Trails start at the property line. No trailering, no road time — you are in the canyon within minutes of mounting up.',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'Rescue horses, well matched',
+        description:
+          'Many of our horses came to us through rescue and rehabilitation. We pair every rider to a horse that suits their build, nerve, and experience.',
+        icon: 'tabler:heart',
+      },
+    ]}
+    image={{
+      src: '/images/pillar-ride-learn.png',
+      alt: 'Horses and riders at the San Diego Trail Company ranch in Poway',
+    }}
+  />
+
+  <FAQs
+    title="Horseback Riding Questions"
+    subtitle="What riders ask us most before their first visit."
+    items={[
+      {
+        title: 'Do I need any riding experience?',
+        description:
+          'No. Our guided trail rides are built for first-timers as well as seasoned riders. Every ride starts with a safety and handling orientation, and your guide stays with the group the whole way.',
+      },
+      {
+        title: 'What is the minimum age?',
+        description:
+          'Guided trail rides are for ages 7 and up. Younger children are welcome at our kids camps and ranch birthday parties, which are designed around shorter, closely supervised time with the horses.',
+      },
+      {
+        title: 'What should I wear?',
+        description:
+          'Long pants and closed-toe shoes with a small heel are required — boots are ideal. Bring sunscreen, sunglasses, and a water bottle. We provide ASTM-approved helmets and all tack.',
+      },
+      {
+        title: 'How long are the rides?',
+        description:
+          'We offer one- and two-hour trail ride options. The two-hour ride reaches the higher ridgelines and is the better choice if you want the full canyon views.',
+      },
+      {
+        title: 'Where are you located?',
+        description:
+          'We are in Poway, in the backcountry of San Diego County — an easy drive from central San Diego, North County, and the coast.',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Ready to get in the saddle?"
+    subtitle="Check live availability and reserve your ride online."
+    actions={[{ variant: 'primary', text: 'Book a Ride', href: BOOK_URL, target: '_blank' }]}
+  />
+</SiteLayout>

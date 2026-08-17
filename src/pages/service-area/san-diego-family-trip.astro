@@ -1,0 +1,148 @@
+---
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const BOOK_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/';
+
+const metadata = {
+  title: 'San Diego Family Trips – Horseback Riding & Ranch Days in Poway, CA',
+  description:
+    'Plan a San Diego family trip the kids will actually remember. Family horseback trail rides, ranch days, kids camps, and overnight ranch stays in Poway, CA — under an hour from downtown.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'San Diego Family Trips – San Diego Trail Company',
+  description:
+    'Family-friendly horseback riding, ranch days, kids camps, and overnight ranch stays in Poway, San Diego County.',
+  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://sandiegotrailcompany.com' },
+  areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
+};
+---
+
+<SiteLayout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <Hero
+    tagline="Family Trips in Poway, CA"
+    title="San Diego Family Trips"
+    subtitle="Skip the theme park lines. Spend a day — or a weekend — on a working ranch in the San Diego backcountry, where the kids meet the horses, everyone gets in the saddle, and nobody looks at a screen."
+    actions={[
+      { variant: 'primary', text: 'Book a Family Ride', href: BOOK_URL, target: '_blank' },
+      { text: 'Contact Us', href: '/contact' },
+    ]}
+    image={{
+      src: '/images/ride-kids-camps.png',
+      alt: 'A family spending the day with horses at a San Diego ranch',
+    }}
+  />
+
+  <Content
+    title="Ways to Spend the Day"
+    subtitle="Build the trip around what your family actually wants to do."
+    items={[
+      {
+        title: 'Family Trail Rides',
+        description:
+          'Guided canyon rides in groups of six or fewer, so your family rides together rather than folded into a crowd. One- and two-hour options, ages 7 and up.',
+        icon: 'tabler:horse',
+      },
+      {
+        title: 'Kids Camps',
+        description:
+          'Half-day and full-day ranch camps where kids learn riding, horse care, and trail safety. Great for a school break in the middle of a longer San Diego trip.',
+        icon: 'tabler:backpack',
+      },
+      {
+        title: 'Ranch Birthday Parties',
+        description:
+          'Pony rides, ranch games, and dedicated party space. A birthday at the ranch beats a birthday at the pizza place.',
+        icon: 'tabler:cake',
+      },
+      {
+        title: 'Overnight Ranch Stays',
+        description:
+          'Turn the day into a weekend with a ranch home or a glamping tent, and wake up to horses in the pasture instead of hotel hallway noise.',
+        icon: 'tabler:tent',
+      },
+    ]}
+    image={{
+      src: '/images/pillar-stay-celebrate.jpg',
+      alt: 'Ranch accommodation for a family weekend stay',
+    }}
+  />
+
+  <Content
+    isReversed
+    isAfterContent
+    title="Why Families Choose the Ranch"
+    items={[
+      {
+        title: 'Small groups, real attention',
+        description:
+          'Six riders or fewer per guide. Nervous first-timers get talked through it instead of being waved along.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'No experience needed',
+        description:
+          'Most of our family guests have never ridden. Every ride starts with a hands-on safety and handling orientation.',
+        icon: 'tabler:mood-smile',
+      },
+      {
+        title: 'Close to the city',
+        description:
+          'Poway sits in the San Diego County backcountry — an easy drive from downtown, North County, and the coast. Out and back in a day if you want.',
+        icon: 'tabler:map-pin',
+      },
+    ]}
+    image={{
+      src: '/images/ride-trail.jpg',
+      alt: 'Guided family trail ride through the Poway canyons',
+    }}
+  />
+
+  <FAQs
+    title="Family Trip Questions"
+    subtitle="What visiting families ask us most."
+    items={[
+      {
+        title: 'How old do kids have to be to ride?',
+        description:
+          'Guided trail rides are for ages 7 and up. Younger children can still join the fun through our kids camps and ranch birthday parties, which are built around shorter, closely supervised time with the horses.',
+      },
+      {
+        title: 'Nobody in our family has ridden before. Is that a problem?',
+        description:
+          'Not at all — that describes most of our family guests. Every ride opens with a safety and handling orientation, and your guide stays with the group throughout.',
+      },
+      {
+        title: 'What should we wear?',
+        description:
+          'Long pants and closed-toe shoes with a small heel for everyone riding. Bring sunscreen, hats, and water. Helmets and all tack are provided.',
+      },
+      {
+        title: 'How far is the ranch from downtown San Diego?',
+        description:
+          'We are in Poway, in the San Diego County backcountry, and easy to reach from central San Diego, North County, and the coastal towns.',
+      },
+      {
+        title: 'Can we stay overnight?',
+        description:
+          'Yes. Ranch home stays and glamping tents are available on the property, so you can stretch a day trip into a full ranch weekend.',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Planning a family trip to San Diego?"
+    subtitle="Check availability and reserve your family's ride."
+    actions={[{ variant: 'primary', text: 'Book a Family Ride', href: BOOK_URL, target: '_blank' }]}
+  />
+</SiteLayout>

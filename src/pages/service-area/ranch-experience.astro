@@ -1,0 +1,142 @@
+---
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const BOOK_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/';
+
+const metadata = {
+  title: 'The Ranch Experience – Dude Ranch Stays & Glamping in Poway, CA',
+  description:
+    'Escape the city for a true dude ranch experience in Poway, CA. Boutique ranch home stays, safari tents and yurts, horseback riding, and the full cowboy weekend in the San Diego backcountry.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'The Ranch Experience – San Diego Trail Company',
+  description:
+    'Boutique dude ranch stays, glamping, and immersive cowboy experiences in the Poway backcountry, San Diego County.',
+  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://sandiegotrailcompany.com' },
+  areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
+};
+---
+
+<SiteLayout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <Hero
+    tagline="Dude Ranch Experience in Poway, CA"
+    title="The Ranch Experience"
+    subtitle="Step out of the city and into the Old West. Ride the canyons by day, sleep under an open sky at night, and trade traffic for the sound of horses in the pasture — forty minutes from downtown San Diego."
+    actions={[
+      { variant: 'primary', text: 'Book Your Stay', href: BOOK_URL, target: '_blank' },
+      { text: 'Contact Us', href: '/contact' },
+    ]}
+    image={{
+      src: '/images/pillar-stay-celebrate.jpg',
+      alt: 'Guests enjoying the dude ranch experience at a Poway ranch',
+    }}
+  />
+
+  <Content
+    title="Ways to Stay"
+    subtitle="Rustic or refined — the ranch has room for both."
+    items={[
+      {
+        title: 'Rustic Ranch Home Stays',
+        description:
+          'Our ranch homes put you right on the property, with real beds, full kitchens, and the horses just outside the window. Ideal for families and small groups.',
+        icon: 'tabler:home',
+      },
+      {
+        title: 'Safari Tents, Yurts & Treehouses',
+        description:
+          'Glamping done properly. Canvas and timber, comfortable bedding, and canyon views — the outdoors without giving up a good night of sleep.',
+        icon: 'tabler:tent',
+      },
+      {
+        title: 'The Full Cowboy Experience',
+        description:
+          'Multi-day stays built around the working rhythm of the ranch: morning rides, horsemanship, ranch chores if you want them, and evenings around the fire.',
+        icon: 'tabler:campfire',
+      },
+    ]}
+    image={{
+      src: '/images/stay-yurt.jpg',
+      alt: 'Glamping yurt accommodation at the ranch',
+    }}
+  />
+
+  <Content
+    isReversed
+    isAfterContent
+    title="What Fills the Days"
+    items={[
+      {
+        title: 'Guided canyon trail rides',
+        description:
+          'Small-group rides through the golden hills and chaparral canyons of Poway, led by guides who know the country.',
+        icon: 'tabler:horse',
+      },
+      {
+        title: 'Time with the horses',
+        description:
+          'Grooming, tacking, and groundwork. Many of our horses came through rescue and rehabilitation, and guests are part of their day.',
+        icon: 'tabler:heart',
+      },
+      {
+        title: 'Room to do nothing at all',
+        description:
+          'Open country, big sky, and no schedule. Plenty of guests come for the riding and stay for the quiet.',
+        icon: 'tabler:sun',
+      },
+    ]}
+    image={{
+      src: '/images/ride-trail.jpg',
+      alt: 'Guided trail ride through the canyon at golden hour',
+    }}
+  />
+
+  <FAQs
+    title="Ranch Experience Questions"
+    subtitle="What guests ask before booking a stay."
+    items={[
+      {
+        title: 'Do I need riding experience to book a ranch stay?',
+        description:
+          'Not at all. Most of our guests are new to horses. Rides are matched to your comfort level, and time in the saddle is entirely optional.',
+      },
+      {
+        title: 'Is the ranch good for families?',
+        description:
+          'Yes. Ranch homes and glamping tents suit families well, and we can build the stay around kid-friendly ranch time. Guided trail rides are for ages 7 and up.',
+      },
+      {
+        title: 'How far is the ranch from San Diego?',
+        description:
+          'We are in Poway, in the San Diego County backcountry — a straightforward drive from central San Diego, North County, and the coast.',
+      },
+      {
+        title: 'What is included in a stay?',
+        description:
+          'Accommodation plus access to the ranch and its rhythm. Guided rides, lessons, and add-on experiences are booked alongside your stay — tell us what you want and we will put it together.',
+      },
+      {
+        title: 'Can you host a group or a private event?',
+        description:
+          'Yes. The ranch hosts weddings, corporate retreats, birthday parties, and team-building days. Get in touch and we will scope it with you.',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Trade the freeway for a fence line."
+    subtitle="Check availability and book your ranch stay."
+    actions={[{ variant: 'primary', text: 'Book Your Stay', href: BOOK_URL, target: '_blank' }]}
+  />
+</SiteLayout>

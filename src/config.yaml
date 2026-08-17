@@ -1,6 +1,6 @@
 site:
   name: San Diego Trail Company
-  site: 'https://sdtc.pages.dev'
+  site: 'https://sandiegotrailcompany.com'
   base: '/'
   trailingSlash: false
 
