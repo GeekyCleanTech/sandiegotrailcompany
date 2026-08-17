@@ -18,8 +18,7 @@
 /service-area/horse-riding-lessons     /service-area/horseback-riding/  301
 /service-area/kids-camps/              /horse-services/kids-camps/      301
 /service-area/kids-camps               /horse-services/kids-camps/      301
-/service-area/equus-coaching/          /ride-and-learn/                 301
-/service-area/equus-coaching           /ride-and-learn/                 301
+# /service-area/equus-coaching/ is a real page again — no rule needed.
 
 # --- Horse services (legacy WP) -----------------------------------------
 /horse-services/airbnb-ranches/        /stay-and-celebrate/             301
@@ -48,10 +47,5 @@
 /for-sale                              /give-and-support/               301
 /sitemap/                              /sitemap-index.xml               301
 /sitemap                               /sitemap-index.xml               301
-# No merchandise store exists post-migration; park on the homepage until one does.
-/shop/                                 /                                301
-/shop                                  /                                301
-# TODO: no privacy policy page exists yet. Google Ads expects one — replace
-# this stopgap with a real /privacy page.
-/privacy-policy/                       /                                301
-/privacy-policy                        /                                301
+# /shop/ (gift certificates) and /privacy-policy/ are real pages now —
+# no rules needed. Cloudflare Pages serves the static page directly.

@@ -1,0 +1,161 @@
+---
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+// ─────────────────────────────────────────────────────────────
+// Gift certificates are sold through FareHarbor, the same system
+// that handles ride bookings.
+//
+// TODO: if your FareHarbor account has a dedicated gift-card flow,
+// replace GIFT_URL with that link. It could not be verified from
+// outside — FareHarbor serves an identical client-rendered shell
+// for every path, so a 200 response does not prove a page exists.
+// The booking URL below is the one already used across the site.
+// ─────────────────────────────────────────────────────────────
+const GIFT_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/';
+
+const metadata = {
+  title: 'Gift Certificates – Give a Day at the Ranch in Poway, CA',
+  description:
+    'Give a San Diego Trail Company gift certificate — guided canyon trail rides, riding lessons, ranch stays, and kids camps in Poway, CA. Redeemable across everything we offer.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'San Diego Trail Company Gift Certificate',
+  description:
+    'A gift certificate redeemable for guided trail rides, riding lessons, kids camps, and ranch stays at San Diego Trail Company in Poway, CA.',
+  brand: { '@type': 'Brand', name: 'San Diego Trail Company' },
+};
+---
+
+<SiteLayout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <Hero
+    tagline="Gift Certificates"
+    title="Give a Day at the Ranch"
+    subtitle="Nobody needs another candle. Give a canyon trail ride at golden hour, a first riding lesson, or a weekend under an open sky — a gift that turns into a memory instead of clutter."
+    actions={[
+      { variant: 'primary', text: 'Buy a Gift Certificate', href: GIFT_URL, target: '_blank' },
+      { text: 'Ask Us a Question', href: '/contact' },
+    ]}
+    image={{
+      src: '/images/ride-trail.jpg',
+      alt: 'A guided horseback trail ride through a San Diego canyon at golden hour',
+    }}
+  />
+
+  <Content
+    title="What a Certificate Can Be Used For"
+    subtitle="One certificate, redeemable across everything we offer — let them choose."
+    items={[
+      {
+        title: 'Guided Canyon Trail Rides',
+        description:
+          'Our signature backcountry ride through the golden hills of Poway. Groups of six or fewer, all equipment provided, ages 7 and up.',
+        icon: 'tabler:horse',
+      },
+      {
+        title: 'Riding Lessons',
+        description:
+          'Private or small-group instruction in English and Western styles, for absolute beginners through advancing riders.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Kids Camps',
+        description:
+          'Half-day and full-day ranch camps — a favourite for grandparents looking for a present that is not another plastic toy.',
+        icon: 'tabler:backpack',
+      },
+      {
+        title: 'Ranch Stays & Glamping',
+        description:
+          'A night in a ranch home or a safari tent, for the couple or family who would rather have the weekend than the object.',
+        icon: 'tabler:tent',
+      },
+    ]}
+    image={{
+      src: '/images/pillar-stay-celebrate.jpg',
+      alt: 'Ranch accommodation available with a gift certificate',
+    }}
+  />
+
+  <Steps
+    title="How It Works"
+    items={[
+      {
+        title: 'Choose an amount or an experience',
+        description:
+          'Buy a certificate for a specific ride or stay, or pick a value and let them decide how to spend it.',
+        icon: 'tabler:gift',
+      },
+      {
+        title: 'We send it to you',
+        description:
+          'Your certificate arrives by email, ready to forward or print. Buying last minute is genuinely fine.',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'They book whenever suits',
+        description:
+          'The recipient reserves their date online or by calling the ranch. No pressure to use it next weekend.',
+        icon: 'tabler:calendar-check',
+      },
+    ]}
+    image={{
+      src: '/images/pillar-ride-learn.png',
+      alt: 'Horses at the San Diego Trail Company ranch in Poway',
+    }}
+  />
+
+  <FAQs
+    title="Gift Certificate Questions"
+    subtitle="The practical details."
+    items={[
+      {
+        title: 'How is the certificate delivered?',
+        description:
+          'By email, so it works even if you have left it until the night before. You can forward it directly or print it to hand over.',
+      },
+      {
+        title: 'Can it be used for anything on the ranch?',
+        description:
+          'Yes — trail rides, lessons, kids camps, and ranch stays. If the recipient wants to put it toward something not listed, call us and we will sort it out.',
+      },
+      {
+        title: 'Does it expire?',
+        description:
+          'Expiration follows the terms shown at checkout and applicable California law. If you are unsure about a certificate you already hold, call us at 858-748-6441 and we will look it up.',
+      },
+      {
+        title: 'What if the amount does not cover the full experience?',
+        description:
+          'No problem. The certificate is applied to the balance and the recipient pays the difference when they book.',
+      },
+      {
+        title: 'Do you sell ranch merchandise?',
+        description:
+          'Not online at the moment. We do keep a small selection of gear at the ranch — ask when you visit, or call us and we will tell you what is in stock.',
+      },
+      {
+        title: 'Can I buy one for a group or a corporate gift?',
+        description:
+          'Yes. For team gifts, corporate retreats, or several certificates at once, get in touch and we will arrange it directly rather than making you buy them one at a time.',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Give the canyon, not the candle."
+    subtitle="Certificates are delivered by email and redeemable across everything we do."
+    actions={[{ variant: 'primary', text: 'Buy a Gift Certificate', href: GIFT_URL, target: '_blank' }]}
+  />
+</SiteLayout>

@@ -1,0 +1,255 @@
+---
+import SiteLayout from '~/layouts/SiteLayout.astro';
+
+// NOTE FOR MAINTAINERS
+// This policy describes what the site actually does as built: a Web3Forms
+// contact form, FareHarbor bookings, Cloudflare Pages hosting, Google Fonts,
+// Unsplash images, and Google Ads measurement. Google Analytics is NOT
+// configured (analytics.vendors.googleAnalytics.id is null in config.yaml).
+// If you add an analytics tag, a pixel, or a chat widget, update the
+// "Information collected automatically" and "Advertising" sections and bump
+// LAST_UPDATED. Have counsel review before relying on this document.
+
+const LAST_UPDATED = 'August 17, 2026';
+
+const metadata = {
+  title: 'Privacy Policy',
+  description:
+    'How San Diego Trail Company collects, uses, and protects your information when you use sandiegotrailcompany.com, contact us, or book a ride in Poway, CA.',
+  robots: { index: true, follow: true },
+};
+
+const h2 = 'font-family:\'Cormorant Garamond\',serif;font-size:clamp(24px,3vw,32px);font-weight:400;color:#3b2314;';
+const h3 = 'font-size:17px;font-weight:600;color:#3b2314;';
+---
+
+<SiteLayout metadata={metadata}>
+  <!-- Header band (dark so the transparent nav stays readable) -->
+  <section class="px-6 lg:px-12 pt-32 pb-16 lg:pt-40 lg:pb-20" style="background-color:#3b2314;">
+    <div class="max-w-[900px] mx-auto">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">Legal</div>
+      <h1
+        class="text-white mb-5"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7vw,72px);font-weight:300;line-height:1.05;"
+      >
+        Privacy Policy
+      </h1>
+      <p class="text-white" style="font-size:16px;opacity:0.75;">Last updated: {LAST_UPDATED}</p>
+    </div>
+  </section>
+
+  <section class="px-6 lg:px-12 py-16 lg:py-24" style="background-color:#f5f0e8;">
+    <div
+      class="max-w-[900px] mx-auto flex flex-col gap-10"
+      style="font-size:16px;line-height:1.8;color:#2c2c2c;"
+    >
+      <p>
+        This policy explains what San Diego Trail Company (&ldquo;we,&rdquo; &ldquo;us,&rdquo; &ldquo;our&rdquo;)
+        collects when you visit <strong>sandiegotrailcompany.com</strong>, send us a message, or book an experience
+        with us &mdash; and what we do with it. We have tried to write it in plain language rather than legal padding.
+      </p>
+
+      <div>
+        <h2 style={h2} class="mb-4">Who we are</h2>
+        <p>
+          San Diego Trail Company operates a working ranch in Poway, California, offering guided horseback trail rides,
+          riding lessons, kids camps, ranch stays, and equine-assisted coaching. You can reach us at:
+        </p>
+        <p class="mt-4">
+          14875 Mina De Oro, Poway, CA 92064<br />
+          <a href="tel:+18587486441" style="color:#c49a3c;">858-748-6441</a><br />
+          <a href="mailto:ride@powayequestriancenter.com" style="color:#c49a3c;" class="break-all"
+            >ride@powayequestriancenter.com</a
+          >
+        </p>
+      </div>
+
+      <div>
+        <h2 style={h2} class="mb-4">Information you give us</h2>
+        <h3 style={h3} class="mt-4 mb-2">Contact form</h3>
+        <p>
+          When you use the form on our <a href="/contact" style="color:#c49a3c;">contact page</a>, we collect your name,
+          email address, an optional phone number, the subject you select, and your message. Submissions are delivered
+          to our inbox by <strong>Web3Forms</strong>, a third-party form-relay service. We use these details only to
+          answer you.
+        </p>
+        <h3 style={h3} class="mt-6 mb-2">Bookings and payments</h3>
+        <p>
+          Rides, lessons, camps, stays, and gift certificates are booked and paid for through <strong>FareHarbor</strong>,
+          our reservation provider. FareHarbor collects the booking and payment information needed to process your
+          reservation, under its own privacy policy. <strong
+            >We never see or store your full payment card number.</strong
+          >
+        </p>
+        <h3 style={h3} class="mt-6 mb-2">Talking to us directly</h3>
+        <p>
+          If you call, email, or message us on social media, we keep what you send so we can help you and maintain a
+          record of the conversation.
+        </p>
+      </div>
+
+      <div>
+        <h2 style={h2} class="mb-4">Information collected automatically</h2>
+        <p>
+          Our site is hosted on <strong>Cloudflare Pages</strong>. Like essentially all web hosting, Cloudflare records
+          technical request data &mdash; IP address, browser and device type, referring page, and timestamps &mdash; to
+          serve the site, defend against attacks and bots, and diagnose faults.
+        </p>
+        <p class="mt-4">Loading a page also makes requests to a small number of outside services:</p>
+        <ul class="mt-3 flex flex-col gap-2 pl-5" style="list-style:disc;">
+          <li>
+            <strong>Google Fonts</strong> (fonts.googleapis.com, fonts.gstatic.com) supplies our typefaces. Google
+            receives your IP address as part of that request.
+          </li>
+          <li><strong>Unsplash</strong> (images.unsplash.com) serves some photography on the site.</li>
+        </ul>
+        <p class="mt-4">
+          We do <strong>not</strong> currently run Google Analytics or any general website-analytics product, and we do
+          not operate a social media tracking pixel on this site.
+        </p>
+      </div>
+
+      <div>
+        <h2 style={h2} class="mb-4">Cookies and local storage</h2>
+        <p>
+          We do not set our own advertising or analytics cookies. Your browser may store a small display preference
+          locally on your device so the site renders consistently; this stays on your device and is not transmitted to
+          us. Cloudflare may set cookies strictly necessary for security and load balancing, and Google may set cookies
+          in connection with the advertising described below. You can clear or block cookies in your browser settings,
+          though blocking strictly necessary cookies may affect how the site works.
+        </p>
+      </div>
+
+      <div>
+        <h2 style={h2} class="mb-4">Advertising</h2>
+        <p>
+          We advertise through <strong>Google Ads</strong>. If you reach our site by clicking one of our ads, the link
+          may carry a click identifier (for example a <em>gclid</em> parameter) that lets Google report whether the ad
+          led to a booking or an inquiry. This tells us that an ad worked; it does not tell us who you are.
+        </p>
+        <p class="mt-4">
+          Google may use its own cookies and identifiers for ad measurement and remarketing under its policies. You can
+          review and adjust these at
+          <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer" style="color:#c49a3c;"
+            >Google My Ad Center</a
+          >
+          and
+          <a
+            href="https://policies.google.com/technologies/partner-sites"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color:#c49a3c;">Google&rsquo;s partner-sites policy</a
+          >.
+        </p>
+      </div>
+
+      <div>
+        <h2 style={h2} class="mb-4">How we use your information</h2>
+        <ul class="flex flex-col gap-2 pl-5" style="list-style:disc;">
+          <li>To answer questions and respond to inquiries you send us.</li>
+          <li>To arrange, confirm, and deliver rides, lessons, camps, stays, and events.</li>
+          <li>To operate, secure, and troubleshoot the website.</li>
+          <li>To measure whether our advertising is working.</li>
+          <li>To meet legal, tax, insurance, and safety obligations.</li>
+        </ul>
+        <p class="mt-4">
+          <strong>We do not sell your personal information, and we do not share it with third parties for their own
+            marketing.</strong>
+        </p>
+      </div>
+
+      <div>
+        <h2 style={h2} class="mb-4">Who we share it with</h2>
+        <p>We share information only with the service providers that make the ranch and this site run:</p>
+        <ul class="mt-3 flex flex-col gap-2 pl-5" style="list-style:disc;">
+          <li><strong>FareHarbor</strong> &mdash; reservations and payment processing.</li>
+          <li><strong>Web3Forms</strong> &mdash; delivering contact form submissions to our inbox.</li>
+          <li><strong>Cloudflare</strong> &mdash; website hosting, delivery, and security.</li>
+          <li><strong>Google</strong> &mdash; advertising measurement and font delivery.</li>
+        </ul>
+        <p class="mt-4">
+          We may also disclose information where the law requires it, or where it is necessary to protect the safety of
+          our guests, our staff, or our horses.
+        </p>
+      </div>
+
+      <div>
+        <h2 style={h2} class="mb-4">Your California privacy rights</h2>
+        <p>
+          If you are a California resident, the CCPA as amended by the CPRA gives you the right to know what personal
+          information we hold about you, to request a copy, to ask us to correct or delete it, and not to be treated
+          differently for exercising those rights. Because we do not sell or share personal information for
+          cross-context behavioral advertising, there is no sale to opt out of.
+        </p>
+        <p class="mt-4">
+          To make a request, email
+          <a href="mailto:ride@powayequestriancenter.com" style="color:#c49a3c;" class="break-all"
+            >ride@powayequestriancenter.com</a
+          > or call 858-748-6441. We may need to verify your identity before acting, and we will respond within the time
+          the law allows.
+        </p>
+      </div>
+
+      <div>
+        <h2 style={h2} class="mb-4">Children</h2>
+        <p>
+          We run camps and programs for children, but this website is intended for adults and we do not knowingly
+          collect personal information online from children under 13. Registration for youth programs is completed by a
+          parent or guardian, who provides the participant&rsquo;s details along with any medical or emergency
+          information we need to keep that child safe. If you believe a child has given us information online without a
+          parent&rsquo;s involvement, contact us and we will delete it.
+        </p>
+      </div>
+
+      <div>
+        <h2 style={h2} class="mb-4">How long we keep it</h2>
+        <p>
+          We keep inquiries and booking records for as long as needed to serve you and to satisfy our legal, tax,
+          insurance, and safety obligations &mdash; then we dispose of them. Waivers, incident records, and minors&rsquo;
+          program paperwork are retained longer where law or our insurers require it.
+        </p>
+      </div>
+
+      <div>
+        <h2 style={h2} class="mb-4">Security</h2>
+        <p>
+          The site is served over HTTPS, and we rely on established providers for hosting, forms, and payments. No
+          method of transmission or storage is completely secure, so we cannot guarantee absolute security &mdash; but
+          we do not collect payment card details ourselves, which removes the most sensitive category of data from our
+          hands entirely.
+        </p>
+      </div>
+
+      <div>
+        <h2 style={h2} class="mb-4">Links to other sites</h2>
+        <p>
+          Our site links out to FareHarbor, Google Maps, and our social media profiles. Once you follow a link, that
+          organization&rsquo;s privacy policy governs what happens to your information. We are not responsible for
+          their practices.
+        </p>
+      </div>
+
+      <div>
+        <h2 style={h2} class="mb-4">Changes to this policy</h2>
+        <p>
+          If we change how we handle information &mdash; for example by adding analytics or a new booking tool &mdash;
+          we will update this page and revise the date at the top. Material changes will be made clear rather than
+          buried.
+        </p>
+      </div>
+
+      <div>
+        <h2 style={h2} class="mb-4">Contact us</h2>
+        <p>Questions about this policy, or about information we hold on you:</p>
+        <p class="mt-4">
+          San Diego Trail Company<br />
+          14875 Mina De Oro, Poway, CA 92064<br />
+          <a href="tel:+18587486441" style="color:#c49a3c;">858-748-6441</a><br />
+          <a href="mailto:ride@powayequestriancenter.com" style="color:#c49a3c;" class="break-all"
+            >ride@powayequestriancenter.com</a
+          >
+        </p>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
