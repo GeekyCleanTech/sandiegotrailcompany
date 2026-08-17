@@ -38,8 +38,7 @@
 /horse-services/corporate-sponsorship  /give-and-support/               301
 
 # --- Ranch events (legacy WP) -------------------------------------------
-/ranch-events/kids-birthday-party/     /stay-and-celebrate/             301
-/ranch-events/kids-birthday-party      /stay-and-celebrate/             301
+# /ranch-events/kids-birthday-party/ is a real page now — no rule needed.
 /ranch-events/dream-ranch-wedding/     /stay-and-celebrate/             301
 /ranch-events/dream-ranch-wedding      /stay-and-celebrate/             301
 /ranch-events/teambuilding-san-diego/  /stay-and-celebrate/             301

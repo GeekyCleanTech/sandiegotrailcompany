@@ -1,0 +1,165 @@
+---
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+// Parties are custom-built rather than self-serve, so every call to action
+// routes to the contact page instead of the FareHarbor booking flow.
+const INQUIRE_URL = '/contact';
+
+const metadata = {
+  title: 'Kids Birthday Parties in San Diego – Pony Rides & Ranch Parties in Poway, CA',
+  description:
+    'Host a kids birthday party at our Poway ranch. Pony ride stations, themed ranch decorations, a dedicated party space, and room for up to 30 guests. Weekend dates available.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Kids Birthday Parties – San Diego Trail Company',
+  description:
+    'Ranch birthday parties with pony rides, themed decorations, and a dedicated party space for up to 30 guests in Poway, San Diego County.',
+  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://sandiegotrailcompany.com' },
+  areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
+};
+---
+
+<SiteLayout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <Hero
+    tagline="Ranch Birthday Parties in Poway, CA"
+    title="Pony Rides & Ranch Parties"
+    subtitle="Give your child a birthday they'll talk about for years. Pony rides, themed ranch games, and wide open space make for a celebration no indoor venue can match — and no parent has to clean up afterward."
+    actions={[
+      { variant: 'primary', text: 'Plan a Party', href: INQUIRE_URL },
+      { text: 'See All Ranch Events', href: '/stay-and-celebrate' },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1515203675075-e88c2b5600e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxraWRzJTIwaG9yc2UlMjBjYW1wJTIwY2hpbGRyZW4lMjBwb255JTIwcmlkaW5nfGVufDF8fHx8MTc4MDgzMjYwOHww&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Children enjoying pony rides at a ranch birthday party in Poway',
+    }}
+  />
+
+  <Content
+    title="What's Included"
+    subtitle="The horses do most of the entertaining. You bring the cake."
+    items={[
+      {
+        title: 'Pony Ride Stations',
+        description:
+          'Led pony rides for the birthday child and their guests, run by our wranglers at a pace that suits even the smallest first-timers.',
+        icon: 'tabler:horse',
+      },
+      {
+        title: 'Themed Ranch Decorations',
+        description:
+          'We dress the party space in a ranch theme so you are not hauling in bunting and folding tables the morning of.',
+        icon: 'tabler:confetti',
+      },
+      {
+        title: 'Dedicated Party Space',
+        description:
+          'A shaded picnic area of your own for cake, presents, and the part of the afternoon where everyone finally sits down.',
+        icon: 'tabler:tent',
+      },
+      {
+        title: 'Room for Up to 30 Guests',
+        description:
+          'Space for the whole class and their parents — outdoors, where noise stops being a problem and running around is the point.',
+        icon: 'tabler:users',
+      },
+    ]}
+    image={{
+      src: '/images/ride-kids-camps.png',
+      alt: 'Children meeting the horses at the ranch',
+    }}
+  />
+
+  <Steps
+    title="How the Day Runs"
+    items={[
+      {
+        title: 'Arrive and meet the horses',
+        description:
+          'Guests are welcomed at the ranch and introduced to the horses, with a short safety and handling briefing pitched at their age.',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'Pony rides and ranch time',
+        description:
+          'Kids rotate through the pony ride stations while the rest explore the ranch, meet the animals, and burn off the sugar they have not eaten yet.',
+        icon: 'tabler:horse',
+      },
+      {
+        title: 'Cake in the party space',
+        description:
+          'Everyone gathers in your shaded area for food, cake, and presents once the riding is done.',
+        icon: 'tabler:cake',
+      },
+      {
+        title: 'Go home tired',
+        description:
+          'The reliable outcome of a ranch party, and the one most parents are quietly hoping for.',
+        icon: 'tabler:mood-smile',
+      },
+    ]}
+    image={{
+      src: '/images/pillar-stay-celebrate.jpg',
+      alt: 'The party space and open country at the Poway ranch',
+    }}
+  />
+
+  <FAQs
+    title="Birthday Party Questions"
+    subtitle="What parents ask before booking."
+    items={[
+      {
+        title: 'What ages are the parties suitable for?',
+        description:
+          'Pony rides are led at walking pace and work well for young children, including those who have never been near a horse. For older kids who want a real ride, we can build the party around a guided trail ride instead — those run for ages 7 and up.',
+      },
+      {
+        title: 'How many guests can we bring?',
+        description:
+          'Up to 30 guests. If your list is longer than that, call us and we will talk through what is workable.',
+      },
+      {
+        title: 'When are parties available?',
+        description:
+          'Weekend dates are the norm. Weekday parties are sometimes possible around our camps and ride schedule — ask and we will check the calendar.',
+      },
+      {
+        title: 'What does it cost?',
+        description:
+          'Parties are quoted individually, since guest count, ride format, and add-ons all change the shape of the day. Tell us what you have in mind and we will send you a price.',
+      },
+      {
+        title: 'Can we bring our own food and cake?',
+        description:
+          'Yes. The party space is yours for the session — bring your own catering, cake, and decorations on top of ours if you like.',
+      },
+      {
+        title: 'What should the kids wear?',
+        description:
+          'Long pants and closed-toe shoes for anyone going on a pony. Sunscreen and hats are a good idea year-round; helmets and all equipment are provided.',
+      },
+      {
+        title: 'What happens if it rains?',
+        description:
+          'San Diego weather rarely gets in the way, but if conditions are genuinely unsafe for riding we will work with you to reschedule.',
+      },
+    ]}
+  />
+
+  <CallToAction
+    title="Beats a bouncy castle."
+    subtitle="Tell us the date, the age, and roughly how many are coming — we'll build the party around it."
+    actions={[{ variant: 'primary', text: 'Plan a Party', href: INQUIRE_URL }]}
+  />
+</SiteLayout>
