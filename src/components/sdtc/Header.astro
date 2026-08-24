@@ -11,21 +11,25 @@ interface NavLink {
 
 const links: NavLink[] = [
   { label: 'Home', href: '/' },
-  { label: 'Ride & Learn', href: '/ride-and-learn' },
-  { label: 'Stay & Celebrate', href: '/stay-and-celebrate' },
-  { label: 'Give & Support', href: '/give-and-support' },
-  { label: 'Blog', href: '/blog' },
+  { label: 'Ride & Learn', href: '/ride-and-learn/' },
+  { label: 'Stay & Celebrate', href: '/stay-and-celebrate/' },
+  { label: 'Give & Support', href: '/give-and-support/' },
+  { label: 'Blog', href: '/blog/' },
   {
     label: 'Events',
-    href: '/events/matcha-on-ice',
-    children: [{ label: 'Matcha on Ice', href: '/events/matcha-on-ice' }],
+    href: '/events/matcha-on-ice/',
+    children: [{ label: 'Matcha on Ice', href: '/events/matcha-on-ice/' }],
   },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Contact', href: '/contact/' },
 ];
 
 const raw = Astro.url.pathname;
 const path = raw !== '/' && raw.endsWith('/') ? raw.slice(0, -1) : raw;
-const isActive = (href: string) => (href === '/' ? path === '/' : path === href || path.startsWith(href + '/'));
+const stripSlash = (p: string) => (p !== '/' && p.endsWith('/') ? p.slice(0, -1) : p);
+const isActive = (href: string) => {
+  const h = stripSlash(href);
+  return h === '/' ? path === '/' : path === h || path.startsWith(h + '/');
+};
 ---
 
 <nav

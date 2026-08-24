@@ -51,3 +51,31 @@
 /sitemap                               /sitemap-index.xml               301
 # /shop/ (gift certificates) and /privacy-policy/ are real pages now —
 # no rules needed. Cloudflare Pages serves the static page directly.
+
+# --- Service area hub + duplicate legacy prefixes (found via GSC 404s, Aug 2026) ---
+/service-area/                          /ride-and-learn/                 301
+/service-area                           /ride-and-learn/                 301
+/service-area/airbnb-ranches/           /stay-and-celebrate/             301
+/service-area/airbnb-ranches            /stay-and-celebrate/             301
+/service-area/summer-horse-camps/       /horse-services/kids-camps/      301
+/service-area/summer-horse-camps        /horse-services/kids-camps/      301
+/service-area/corporate-sponsorship/    /give-and-support/               301
+/service-area/corporate-sponsorship     /give-and-support/               301
+
+# --- Ranch events hub (legacy WP) ---
+/ranch-events/                          /stay-and-celebrate/             301
+/ranch-events                           /stay-and-celebrate/             301
+
+# --- Legacy WP blog posts, no direct successor — closest topical match ---
+/guide-to-horse-trail-riding/           /blog/first-guided-trail-ride/   301
+/guide-to-horse-trail-riding            /blog/first-guided-trail-ride/   301
+/first-horse-riding-lesson-san-diego/   /blog/first-guided-trail-ride/   301
+/first-horse-riding-lesson-san-diego    /blog/first-guided-trail-ride/   301
+/what-is-horse-riding-good-for/         /service-area/equus-coaching/    301
+/what-is-horse-riding-good-for          /service-area/equus-coaching/    301
+
+# --- No current equivalent — stopgap to homepage ---
+/gallery/                               /                                301
+/gallery                                /                                301
+/our-staff/                              /                                301
+/our-staff                               /                                301

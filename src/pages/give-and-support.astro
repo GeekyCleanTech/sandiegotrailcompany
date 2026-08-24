@@ -14,7 +14,7 @@ const structuredData = {
   name: 'San Diego Trail Company – Give & Support',
   description:
     'A 501(c) nonprofit committed to the rescue, rehabilitation, and retirement of horses in Southern California.',
-  url: 'https://sandiegotrailcompany.com',
+  url: 'https://www.sandiegotrailcompany.com',
   telephone: '+1-858-748-6441',
   address: {
     '@type': 'PostalAddress',
@@ -49,7 +49,7 @@ const ways = [
       'Annual impact reports',
     ],
     cta: 'Donate Now',
-    href: 'https://sandiegotrailcompany.com/horse-services/ptc-give-501-c/',
+    href: '/contact/',
     image: '/images/sdtc/direct-donations.jpg',
   },
   {
@@ -65,7 +65,7 @@ const ways = [
       'Monthly & annual tiers',
     ],
     cta: 'Join as a Member',
-    href: 'https://sandiegotrailcompany.com/horse-services/individual-sponsorship/',
+    href: '/contact/',
     image: '/images/sdtc/ranch-supporter.jpg',
   },
   {
@@ -81,7 +81,7 @@ const ways = [
       'Custom partnership tiers',
     ],
     cta: 'Explore Corporate Partnerships',
-    href: 'https://sandiegotrailcompany.com/horse-services/corporate-sponsorship/',
+    href: '/contact/',
     image: '/images/give-corporate.jpg',
   },
   {
@@ -97,7 +97,7 @@ const ways = [
       'Transparent health histories',
     ],
     cta: 'View Available Horses',
-    href: 'https://sandiegotrailcompany.com/for-sale/',
+    href: '/contact/',
     image: '/images/sdtc/adopt-rehabilitated-horse.jpg',
   },
 ];
@@ -130,9 +130,7 @@ const ways = [
         donations, memberships, partnerships, and adoption.
       </p>
       <a
-        href="https://sandiegotrailcompany.com/horse-services/ptc-give-501-c/"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="/contact/"
         class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
         style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
       >
@@ -220,8 +218,6 @@ const ways = [
             </ul>
             <a
               href={way.href}
-              target="_blank"
-              rel="noopener noreferrer"
               class="inline-flex items-center gap-2 hover:gap-3 transition-all"
               style="font-size:13px;color:#c49a3c;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
             >
@@ -255,14 +251,14 @@ const ways = [
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
-          href="/ride-and-learn"
+          href="/ride-and-learn/"
           class="inline-flex items-center justify-center gap-2 rounded-full transition-all hover:brightness-110"
           style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:28px;padding-right:28px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
         >
           Book a Ride <Icon name="tabler:arrow-right" class="w-4 h-4" />
         </a>
         <a
-          href="/stay-and-celebrate"
+          href="/stay-and-celebrate/"
           class="inline-flex items-center justify-center gap-2 rounded-full transition-all"
           style="border:1px solid rgba(255,255,255,0.6);color:#fff;font-size:13px;font-weight:500;height:48px;padding-left:28px;padding-right:28px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
         >

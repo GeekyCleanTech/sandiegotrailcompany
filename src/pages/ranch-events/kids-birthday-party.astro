@@ -8,7 +8,7 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 
 // Parties are custom-built rather than self-serve, so every call to action
 // routes to the contact page instead of the FareHarbor booking flow.
-const INQUIRE_URL = '/contact';
+const INQUIRE_URL = '/contact/';
 
 const metadata = {
   title: 'Kids Birthday Parties in San Diego – Pony Rides & Ranch Parties in Poway, CA',
@@ -22,7 +22,7 @@ const structuredData = {
   name: 'Kids Birthday Parties – San Diego Trail Company',
   description:
     'Ranch birthday parties with pony rides, themed decorations, and a dedicated party space for up to 30 guests in Poway, San Diego County.',
-  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://sandiegotrailcompany.com' },
+  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://www.sandiegotrailcompany.com' },
   areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
 };
 ---
@@ -38,7 +38,7 @@ const structuredData = {
     subtitle="Give your child a birthday they'll talk about for years. Pony rides, themed ranch games, and wide open space make for a celebration no indoor venue can match — and no parent has to clean up afterward."
     actions={[
       { variant: 'primary', text: 'Plan a Party', href: INQUIRE_URL },
-      { text: 'See All Ranch Events', href: '/stay-and-celebrate' },
+      { text: 'See All Ranch Events', href: '/stay-and-celebrate/' },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1515203675075-e88c2b5600e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxraWRzJTIwaG9yc2UlMjBjYW1wJTIwY2hpbGRyZW4lMjBwb255JTIwcmlkaW5nfGVufDF8fHx8MTc4MDgzMjYwOHww&ixlib=rb-4.1.0&q=80&w=1080',

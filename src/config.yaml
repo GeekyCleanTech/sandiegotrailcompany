@@ -1,8 +1,8 @@
 site:
   name: San Diego Trail Company
-  site: 'https://sandiegotrailcompany.com'
+  site: 'https://www.sandiegotrailcompany.com'
   base: '/'
-  trailingSlash: false
+  trailingSlash: true
 
   googleSiteVerificationId: ''
 

@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon/components';
 import SiteLayout from '~/layouts/SiteLayout.astro';
 import ServiceCard from '~/components/sdtc/ServiceCard.astro';
 
-const BOOK_URL = 'https://sandiegotrailcompany.com/contact/';
+const BOOK_URL = '/contact/';
 
 const metadata = {
   title: 'Stay & Celebrate – Ranch Stays, Glamping, Weddings & Events in Poway, CA',
@@ -16,7 +16,7 @@ const structuredData = {
   '@type': 'Service',
   name: 'Stay & Celebrate – San Diego Trail Company',
   description: 'Ranch stays, glamping, weddings, birthday parties, and team-building events in Poway, CA.',
-  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://sandiegotrailcompany.com' },
+  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://www.sandiegotrailcompany.com' },
   areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
 };
 
@@ -33,7 +33,7 @@ const hospitality = [
       'Morning horse-feeding access',
       'Couples & family rates',
     ],
-    href: 'https://sandiegotrailcompany.com/horse-services/airbnb-ranches/',
+    href: '/contact/',
     image: '/images/sdtc/rustic-ranch-home.jpg',
   },
   {
@@ -48,7 +48,7 @@ const hospitality = [
       'Outdoor dining and campfire settings',
       'Seasonal availability',
     ],
-    href: 'https://sandiegotrailcompany.com/horse-services/glamping/',
+    href: '/contact/',
     image: '/images/stay-yurt.jpg',
   },
   {
@@ -63,7 +63,7 @@ const hospitality = [
       'Western meals & activities',
       'Private groups & families',
     ],
-    href: 'https://sandiegotrailcompany.com/horse-services/dude-ranch-experience/',
+    href: '/service-area/ranch-experience/',
     image: '/images/sdtc/full-cowboy-experience.jpg',
   },
 ];
@@ -92,7 +92,7 @@ const events = [
       'Catering & vendor coordination',
       'Sunset golden-hour timing',
     ],
-    href: 'https://sandiegotrailcompany.com/ranch-events/dream-ranch-wedding/',
+    href: '/contact/',
     image:
       'https://images.unsplash.com/photo-1768179123386-a86a85f1c35c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxyYW5jaCUyMHdlZGRpbmclMjBnbGFtcGluZyUyMGx1eHVyeSUyMHRlbnQlMjBvdXRkb29yfGVufDF8fHx8MTc4MDgzMjYwMHww&ixlib=rb-4.1.0&q=80&w=1080',
   },
@@ -108,7 +108,7 @@ const events = [
       'Custom group activities',
       'Up to 40 participants',
     ],
-    href: 'https://sandiegotrailcompany.com/ranch-events/teambuilding-san-diego/',
+    href: '/contact/',
     image: '/images/sdtc/leadership-retreats.jpg',
   },
 ];
@@ -149,8 +149,6 @@ const events = [
       </p>
       <a
         href={BOOK_URL}
-        target="_blank"
-        rel="noopener noreferrer"
         class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
         style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
       >
@@ -232,7 +230,7 @@ const events = [
         experiences are the perfect complement to an overnight at the ranch.
       </p>
       <a
-        href="/ride-and-learn"
+        href="/ride-and-learn/"
         class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
         style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
       >
