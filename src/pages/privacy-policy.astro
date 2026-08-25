@@ -4,13 +4,14 @@ import SiteLayout from '~/layouts/SiteLayout.astro';
 // NOTE FOR MAINTAINERS
 // This policy describes what the site actually does as built: a Web3Forms
 // contact form, FareHarbor bookings, Cloudflare Pages hosting, Google Fonts,
-// Unsplash images, and Google Ads measurement. Google Analytics is NOT
-// configured (analytics.vendors.googleAnalytics.id is null in config.yaml).
-// If you add an analytics tag, a pixel, or a chat widget, update the
-// "Information collected automatically" and "Advertising" sections and bump
-// LAST_UPDATED. Have counsel review before relying on this document.
+// Unsplash images, Google Analytics, and Google Ads measurement. Google
+// Analytics is configured via analytics.vendors.googleAnalytics.id in
+// config.yaml. If you add another analytics tag, a pixel, or a chat widget,
+// update the "Information collected automatically" and "Advertising"
+// sections and bump LAST_UPDATED. Have counsel review before relying on this
+// document.
 
-const LAST_UPDATED = 'August 17, 2026';
+const LAST_UPDATED = 'August 25, 2026';
 
 const metadata = {
   title: 'Privacy Policy',
@@ -102,21 +103,24 @@ const h3 = 'font-size:17px;font-weight:600;color:#3b2314;';
             receives your IP address as part of that request.
           </li>
           <li><strong>Unsplash</strong> (images.unsplash.com) serves some photography on the site.</li>
+          <li>
+            <strong>Google Analytics</strong> (googletagmanager.com) collects standard usage data &mdash; pages
+            viewed, referring site, device/browser type, and approximate location &mdash; to help us understand how
+            visitors use the site.
+          </li>
         </ul>
-        <p class="mt-4">
-          We do <strong>not</strong> currently run Google Analytics or any general website-analytics product, and we do
-          not operate a social media tracking pixel on this site.
-        </p>
+        <p class="mt-4">We do not operate a social media tracking pixel on this site.</p>
       </div>
 
       <div>
         <h2 style={h2} class="mb-4">Cookies and local storage</h2>
         <p>
-          We do not set our own advertising or analytics cookies. Your browser may store a small display preference
-          locally on your device so the site renders consistently; this stays on your device and is not transmitted to
-          us. Cloudflare may set cookies strictly necessary for security and load balancing, and Google may set cookies
-          in connection with the advertising described below. You can clear or block cookies in your browser settings,
-          though blocking strictly necessary cookies may affect how the site works.
+          We do not set our own advertising cookies. Your browser may store a small display preference locally on your
+          device so the site renders consistently; this stays on your device and is not transmitted to us. Google
+          Analytics sets cookies to distinguish visitors and sessions, Cloudflare may set cookies strictly necessary
+          for security and load balancing, and Google may set cookies in connection with the advertising described
+          below. You can clear or block cookies in your browser settings, though blocking strictly necessary cookies
+          may affect how the site works.
         </p>
       </div>
 
@@ -165,7 +169,7 @@ const h3 = 'font-size:17px;font-weight:600;color:#3b2314;';
           <li><strong>FareHarbor</strong> &mdash; reservations and payment processing.</li>
           <li><strong>Web3Forms</strong> &mdash; delivering contact form submissions to our inbox.</li>
           <li><strong>Cloudflare</strong> &mdash; website hosting, delivery, and security.</li>
-          <li><strong>Google</strong> &mdash; advertising measurement and font delivery.</li>
+          <li><strong>Google</strong> &mdash; analytics, advertising measurement, and font delivery.</li>
         </ul>
         <p class="mt-4">
           We may also disclose information where the law requires it, or where it is necessary to protect the safety of
