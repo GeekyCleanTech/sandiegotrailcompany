@@ -4,11 +4,14 @@ import SiteLayout from '~/layouts/SiteLayout.astro';
 // NOTE FOR MAINTAINERS
 // This policy describes what the site actually does as built: a Web3Forms
 // contact form, FareHarbor bookings, Cloudflare Pages hosting, Google Fonts,
-// Unsplash images, Google Analytics, and Google Ads measurement. Google
-// Analytics is configured via analytics.vendors.googleAnalytics.id in
-// config.yaml. If you add another analytics tag, a pixel, or a chat widget,
-// update the "Information collected automatically" and "Advertising"
-// sections and bump LAST_UPDATED. Have counsel review before relying on this
+// Unsplash images, Google Analytics, and Google Ads measurement. Tags are
+// served through the Google Tag Manager container set in
+// analytics.vendors.googleTagManager.id in config.yaml; the
+// analytics.vendors.googleAnalytics.id gtag tag is a fallback used only while
+// no container is set. Because tags can now be added in the GTM UI without a
+// code change, review this policy whenever you publish a new tag: if you add
+// another analytics tag, a pixel, or a chat widget, update the "Information
+// collected automatically" and "Advertising" sections and bump LAST_UPDATED. Have counsel review before relying on this
 // document.
 
 const LAST_UPDATED = 'August 25, 2026';
