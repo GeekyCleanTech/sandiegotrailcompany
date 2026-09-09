@@ -67,6 +67,10 @@ analytics:
   vendors:
     googleAnalytics:
       id: 'G-9WKN8YVVT9'
+    googleTagManager:
+      # Paste the container ID from tagmanager.google.com (format: GTM-XXXXXXX).
+      # Leave empty to disable GTM site-wide; no GTM code is emitted when unset.
+      id: ''
 
 ui:
   theme: 'light:only'
