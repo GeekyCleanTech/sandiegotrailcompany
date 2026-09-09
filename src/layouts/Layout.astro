@@ -1,7 +1,7 @@
 ---
 import '~/assets/styles/tailwind.css';
 
-import { I18N, ANALYTICS } from 'astrowind:config';
+import { I18N } from 'astrowind:config';
 
 import CommonMeta from '~/components/common/CommonMeta.astro';
 import Favicons from '~/components/Favicons.astro';
@@ -9,7 +9,6 @@ import CustomStyles from '~/components/CustomStyles.astro';
 import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
 import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
-import Analytics from '~/components/common/Analytics.astro';
 import GoogleTagManager from '~/components/common/GoogleTagManager.astro';
 import GoogleTagManagerNoscript from '~/components/common/GoogleTagManagerNoscript.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
@@ -22,11 +21,6 @@ export interface Props {
 
 const { metadata = {} } = Astro.props;
 const { language, textDirection } = I18N;
-
-// GA4 is managed inside the GTM container. The hardcoded gtag tag below is a
-// fallback that only renders while no GTM container is configured, so the site
-// is never left untracked between deploying GTM and publishing tags in it.
-const gtmId = ANALYTICS?.vendors?.googleTagManager?.id ? String(ANALYTICS.vendors.googleTagManager.id) : '';
 ---
 
 <!doctype html>
@@ -39,7 +33,6 @@ const gtmId = ANALYTICS?.vendors?.googleTagManager?.id ? String(ANALYTICS.vendor
     <ApplyColorMode />
     <Metadata {...metadata} />
     <SiteVerification />
-    {!gtmId && <Analytics />}
 
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

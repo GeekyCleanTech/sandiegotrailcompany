@@ -65,17 +65,10 @@ apps:
 
 analytics:
   vendors:
-    googleAnalytics:
-      # Fallback only. This gtag tag renders ONLY while googleTagManager.id below
-      # is empty. Once GTM is configured, GA4 is served from the GTM container
-      # instead and this tag is not emitted, so pageviews are never double-counted.
-      id: 'G-9WKN8YVVT9'
     googleTagManager:
-      # Paste the container ID from tagmanager.google.com (format: GTM-XXXXXXX).
-      # Leave empty to disable GTM site-wide; no GTM code is emitted when unset.
-      # Before setting this, publish a GA4 Configuration tag for G-9WKN8YVVT9
-      # inside the container, or GA4 tracking stops when this goes live.
-      id: ''
+      # Container ID from tagmanager.google.com. GA4 (G-9WKN8YVVT9) is managed
+      # as a tag inside this container, not hardcoded in the site anymore.
+      id: 'GTM-KGZJDL64'
 
 ui:
   theme: 'light:only'

@@ -71,10 +71,6 @@ export interface AppBlogConfig {
 }
 export interface AnalyticsConfig {
   vendors: {
-    googleAnalytics: {
-      id?: string;
-      partytown?: boolean;
-    };
     googleTagManager: {
       id?: string;
     };
@@ -186,10 +182,6 @@ const getUI = (config: Config) => {
 const getAnalytics = (config: Config) => {
   const _default = {
     vendors: {
-      googleAnalytics: {
-        id: undefined,
-        partytown: true,
-      },
       googleTagManager: {
         id: undefined,
       },
