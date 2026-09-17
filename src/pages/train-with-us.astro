@@ -1,0 +1,95 @@
+---
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Bring Your Training Program to Poway Equestrian Center',
+  description:
+    'Poway Equestrian Center has room for experienced trainers and clinicians. Barn stalls, pipe corrals, and multiple riding areas available for your training program in Poway, CA.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Trainer & Clinician Programs at Poway Equestrian Center',
+  description:
+    'Facility space for professional trainers and clinicians at Poway Equestrian Center, San Diego County — barn stalls, pipe corrals, and riding areas for training programs and clinics.',
+  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://www.sandiegotrailcompany.com' },
+  areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
+};
+---
+
+<SiteLayout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <Hero
+    tagline="For Trainers & Clinicians"
+    title="Bring Your Training Program to Poway Equestrian Center"
+    subtitle="Poway Equestrian Center is home to an active and diverse equestrian community, and we have room to grow. If you have an existing clientele and are looking for a facility where you can train horses, teach riders, board client horses, and host clinics, we would like to meet you."
+    actions={[
+      { variant: 'primary', text: 'Schedule a Facility Tour', href: '/contact/' },
+      { text: 'Contact Us', href: '/contact/' },
+    ]}
+    image={{
+      src: '/images/sdtc/poway-ranch-aerial-grayscale.png',
+      alt: 'Aerial view of the Poway Equestrian Center ranch property',
+    }}
+  />
+
+  <Content
+    title="Your Program. Your Clients. An Established Facility."
+    subtitle="Room to grow alongside our existing trainers, not in place of them."
+    items={[
+      {
+        title: 'An active, established facility',
+        description:
+          'Our facility currently has one established English trainer and one established Western trainer. Because of the size and layout of the property, we have the ability to accommodate additional professional trainers and their clientele.',
+        icon: 'tabler:building-estate',
+      },
+      {
+        title: 'Barn stalls & pipe corrals',
+        description:
+          'Barn stalls and pipe corrals are available, with opportunities for multiple client horses.',
+        icon: 'tabler:home',
+      },
+      {
+        title: 'Grow your own business',
+        description:
+          'Our goal is not to replace our existing trainers, but to expand the professional programs available at the facility while creating an environment where trainers can operate and grow their own businesses.',
+        icon: 'tabler:trending-up',
+      },
+    ]}
+    image={{
+      src: '/images/sdtc/poway-backcountry-trail.png',
+      alt: 'Riding and training areas at Poway Equestrian Center',
+    }}
+  />
+
+  <Content
+    isReversed
+    title="Clinicians Are Welcome, Too"
+    subtitle="We are interested in developing relationships with professional clinicians looking for a San Diego location for:"
+    content="With multiple riding and training areas, extensive equestrian infrastructure, stall options, trail access, and a large ranch setting, Poway Equestrian Center provides an opportunity to host programs without having to build or maintain an entire facility independently."
+    items={[
+      { title: 'One-day & multi-day clinics', icon: 'tabler:calendar-event' },
+      { title: 'Specialty discipline clinics', icon: 'tabler:award' },
+      { title: 'Group & private instruction', icon: 'tabler:users' },
+      { title: 'Recurring clinics & training days', icon: 'tabler:repeat' },
+      { title: 'Educational equestrian programs', icon: 'tabler:school' },
+    ]}
+    image={{
+      src: '/images/sdtc/equine-assisted-growth.png',
+      alt: 'Open training and riding space at Poway Equestrian Center',
+    }}
+  />
+
+  <CallToAction
+    title="Let's meet."
+    subtitle="Schedule a private facility tour and let's discuss what your program needs."
+    actions={[{ variant: 'primary', text: 'Schedule a Facility Tour', href: '/contact/' }]}
+  />
+</SiteLayout>

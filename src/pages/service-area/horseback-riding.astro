@@ -2,10 +2,11 @@
 import SiteLayout from '~/layouts/SiteLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
-const BOOK_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/';
+const BOOK_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/659635/?full-items=yes&flow=no';
 
 const metadata = {
   title: 'Horseback Riding in San Diego – Guided Trail Rides & Lessons in Poway, CA',
@@ -50,13 +51,13 @@ const structuredData = {
       {
         title: 'Guided Canyon Trail Rides',
         description:
-          'Our signature backcountry rides wind through the golden hills and chaparral canyons of Poway. One- and two-hour options, groups of six or fewer, and all equipment provided. Ages 7 and up.',
+          'Our signature backcountry rides wind through the golden hills and chaparral canyons of Poway. 30-minute, 1-hour, and 1.5-hour options starting at $65 per person, groups of six or fewer, and all equipment provided. Ages 7 and up.',
         icon: 'tabler:horse',
       },
       {
         title: 'Riding Lessons for All Levels',
         description:
-          "Private and small-group lessons taught by certified instructors in English and Western styles. Whether you've never touched a stirrup or you're refining advanced horsemanship, we meet you where you are.",
+          "Private and small-group lessons and monthly programs starting at $110. We work with beginner adults, so no previous horse experience is necessary — lessons include riding instruction, grooming and tacking, groundwork, and hands-on horse care.",
         icon: 'tabler:school',
       },
       {
@@ -102,6 +103,136 @@ const structuredData = {
     }}
   />
 
+  <!-- Trail Ride Pricing -->
+  <Pricing
+    title="Trail Ride Pricing"
+    subtitle="For ages 7 and up. Maximum rider weight is 220 lbs. All rides are by reservation only."
+    prices={[
+      {
+        title: '30-Minute Ride',
+        subtitle: 'New option — every day of the week.',
+        price: '65',
+        period: '/ person',
+        items: [{ description: 'Available weekdays and weekends' }],
+        callToAction: { target: '_blank', text: 'Book a Ride', href: BOOK_URL },
+      },
+      {
+        title: '1-Hour Ride',
+        subtitle: 'Weekdays (Mon–Thu)',
+        price: '110',
+        period: '/ person',
+        callToAction: { target: '_blank', text: 'Book a Ride', href: BOOK_URL },
+      },
+      {
+        title: '1-Hour Ride',
+        subtitle: 'Weekends (Fri–Sun)',
+        price: '125',
+        period: '/ person',
+        callToAction: { target: '_blank', text: 'Book a Ride', href: BOOK_URL },
+      },
+      {
+        title: '1.5-Hour Ride',
+        subtitle: 'Weekdays (Mon–Thu)',
+        price: '165',
+        period: '/ person',
+        callToAction: { target: '_blank', text: 'Book a Ride', href: BOOK_URL },
+      },
+      {
+        title: '1.5-Hour Ride',
+        subtitle: 'Weekends (Fri–Sun)',
+        price: '167.50',
+        period: '/ person',
+        callToAction: { target: '_blank', text: 'Book a Ride', href: BOOK_URL },
+      },
+      {
+        title: 'Pony Rides',
+        subtitle: 'Ages 2–6, Mon, Thu & Fri at 10:00 AM',
+        price: '40',
+        period: '/ 30 min ride',
+        callToAction: { target: '_blank', text: 'Book a Pony Ride', href: BOOK_URL },
+      },
+    ]}
+  />
+
+  <!-- Adult Lesson Program -->
+  <Content
+    isReversed
+    title="Adult Riding & Horsemanship Lessons"
+    subtitle="No previous experience necessary — we work with beginner adults every day."
+    content="Our program is a little different from a traditional riding school. We believe learning to ride also means learning how to confidently handle, understand, and care for a horse. Every program day offers two riding groups, 3:30 PM and 4:30 PM, based on experience and horse availability — while one group rides, the other works on horsemanship and hands-on horse care. Non-riding days round out the program with groundwork, grooming, tacking, horse anatomy, feeding and nutrition, and ranch chores, so riders leave as well-rounded horse people, not just riders."
+    items={[
+      {
+        title: 'Groom, tack & groundwork',
+        description: 'Learn to groom, pick hooves, saddle and bridle, and handle your horse from the ground up.',
+        icon: 'tabler:hand-stop',
+      },
+      {
+        title: 'Mounted instruction',
+        description: 'Balance, position, steering, stopping, transitions, and confidence-building in the saddle.',
+        icon: 'tabler:horse',
+      },
+      {
+        title: 'Untack & horse care',
+        description: 'Cool down, untack, groom, and learn proper after-ride care and equipment upkeep.',
+        icon: 'tabler:heart',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1763130063689-06fbdb789db8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxob3JzZSUyMGxlc3NvbnMlMjBlcXVlc3RyaWFuJTIwdHJhaW5pbmclMjByaWRpbmclMjBhcmVuYXxlbnwxfHx8fDE3ODA4MzI2MDl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'An adult beginner taking a horsemanship lesson',
+    }}
+  />
+
+  <!-- Lesson Pricing -->
+  <Pricing
+    title="Lesson & Program Pricing"
+    subtitle="Once enrolled in a monthly program, additional rides are $35 each, subject to horse and instructor availability."
+    prices={[
+      {
+        title: 'Single Lesson',
+        subtitle: 'Perfect for trying it out or an occasional ride.',
+        price: '110',
+        period: '/ lesson',
+        callToAction: { text: 'Contact Us', href: '/contact/' },
+      },
+      {
+        title: '1 Day / Week',
+        subtitle: '1 ride per week, plus horsemanship instruction.',
+        price: '300',
+        period: '/ month',
+        callToAction: { text: 'Contact Us', href: '/contact/' },
+      },
+      {
+        title: '2 Days / Week',
+        subtitle: 'Tue & Thu — 1 ride, plus a hands-on horsemanship day.',
+        price: '300',
+        period: '/ month',
+        callToAction: { text: 'Contact Us', href: '/contact/' },
+      },
+      {
+        title: '3 Days / Week',
+        subtitle: 'Mon, Wed & Fri — 1 ride per week.',
+        price: '415',
+        period: '/ month',
+        callToAction: { text: 'Contact Us', href: '/contact/' },
+      },
+      {
+        title: '4 Days / Week',
+        subtitle: 'Mon–Thu — 2 rides per week.',
+        price: '490',
+        period: '/ month',
+        callToAction: { text: 'Contact Us', href: '/contact/' },
+      },
+      {
+        title: '5 Days / Week',
+        subtitle: 'Mon–Fri — 2 rides per week.',
+        price: '540',
+        period: '/ month',
+        callToAction: { text: 'Contact Us', href: '/contact/' },
+      },
+    ]}
+  />
+
   <FAQs
     title="Horseback Riding Questions"
     subtitle="What riders ask us most before their first visit."
@@ -114,7 +245,7 @@ const structuredData = {
       {
         title: 'What is the minimum age?',
         description:
-          'Guided trail rides are for ages 7 and up. Younger children are welcome at our kids camps and ranch birthday parties, which are designed around shorter, closely supervised time with the horses.',
+          'Guided trail rides are for ages 7 and up. Younger children (ages 2–6) can enjoy a pony ride, available Mondays, Thursdays, and Fridays at 10:00 AM, or join our kids camps and ranch birthday parties.',
       },
       {
         title: 'What should I wear?',
@@ -124,7 +255,11 @@ const structuredData = {
       {
         title: 'How long are the rides?',
         description:
-          'We offer one- and two-hour trail ride options. The two-hour ride reaches the higher ridgelines and is the better choice if you want the full canyon views.',
+          'We offer 30-minute, 1-hour, and 1.5-hour trail ride options. The 1.5-hour ride reaches the higher ridgelines and is the better choice if you want the full canyon views.',
+      },
+      {
+        title: 'Is there a weight limit for trail rides?',
+        description: 'Yes, the maximum rider weight is 220 lbs.',
       },
       {
         title: 'Where are you located?',
