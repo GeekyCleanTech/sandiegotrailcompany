@@ -1,0 +1,207 @@
+---
+import { Icon } from 'astro-icon/components';
+import SiteLayout from '~/layouts/SiteLayout.astro';
+
+const BOOK_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/';
+
+const metadata = {
+  title: 'About Us – Our Story',
+  description:
+    'For over two decades, San Diego Trail Company has been a family-owned ranch and horse sanctuary in Poway, CA — offering trail rides, lessons, kids camps, and equine rescue.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About San Diego Trail Company',
+  description: 'The story, mission, and people behind San Diego Trail Company in Poway, CA.',
+  mainEntity: {
+    '@type': 'LocalBusiness',
+    name: 'San Diego Trail Company',
+    url: 'https://www.sandiegotrailcompany.com',
+    telephone: '+1-858-748-6441',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '14875 Mina De Oro',
+      addressLocality: 'Poway',
+      addressRegion: 'CA',
+      postalCode: '92064',
+      addressCountry: 'US',
+    },
+  },
+};
+
+const heroImg =
+  'https://images.unsplash.com/photo-1553531580-652231e34e2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxob3JzZWJhY2slMjBsZXNzb258ZW58MXx8fHwxNzgxNjI4MTEwfDA&ixlib=rb-4.1.0&q=80&w=1080';
+
+const missionStats = [
+  { value: '20+ yrs', label: 'Serving Poway & San Diego County' },
+  { value: '200+', label: 'Horses rescued & rehabilitated' },
+  { value: '501(c)', label: 'Certified nonprofit status' },
+  { value: '5-Star', label: 'Google rating' },
+];
+
+const pillars = [
+  {
+    label: 'Ride & Learn',
+    title: 'Trail Rides, Lessons & Camps',
+    description:
+      'Guided canyon trail rides, private and group riding lessons, and our summer youth camp — all led by experienced guides who know this land and these horses.',
+    href: '/ride-and-learn/',
+  },
+  {
+    label: 'Give & Support',
+    title: 'Rescue, Rehab, Retire',
+    description:
+      'Alongside our riding programs, we run a 501(c) nonprofit dedicated to rescuing and rehabilitating neglected horses, giving them a second chance at the ranch.',
+    href: '/give-and-support/',
+  },
+  {
+    label: 'Stay & Celebrate',
+    title: 'Ranch Stays & Events',
+    description:
+      'From overnight ranch stays to birthday parties and group events, we open the property beyond riding hours so more people can experience life on the ranch.',
+    href: '/stay-and-celebrate/',
+  },
+];
+---
+
+<SiteLayout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section aria-label="About us hero" class="relative flex items-end" style="height:70vh;min-height:480px;">
+    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center" style={`background-image:url(${heroImg});`}>
+      <div
+        class="absolute inset-0"
+        style="background:linear-gradient(to top, rgba(30,12,4,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);"
+      >
+      </div>
+    </div>
+    <div class="relative w-full max-w-[1400px] mx-auto px-6 lg:px-12 pb-16 lg:pb-24">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">San Diego Trail Company</div>
+      <h1
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7vw,80px);font-weight:300;line-height:1.1;max-width:720px;"
+      >
+        About Us
+      </h1>
+      <p class="text-white mb-8" style="font-size:18px;max-width:520px;opacity:0.88;line-height:1.7;">
+        A family-owned ranch in the backcountry of Poway, CA — where horses come first, and everyone else is welcome
+        along for the ride.
+      </p>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section aria-label="Our story" class="py-24 lg:py-32 px-6 lg:px-12" style="background-color:#f5f0e8;">
+    <div class="max-w-[800px] mx-auto text-center">
+      <div class="uppercase tracking-[0.15em] mb-6" style="font-size:12px;color:#8a9e7b;">Our Story</div>
+      <h2
+        class="mb-8 leading-relaxed"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,48px);font-weight:400;font-style:italic;color:#3b2314;"
+      >
+        "We don't sell trail rides. We sell the memory of standing at the canyon's edge, wind in your hair, with
+        nothing but open land ahead."
+      </h2>
+      <p style="font-size:18px;color:#2c2c2c;line-height:1.8;opacity:0.85;">
+        For over two decades, our family-owned ranch has been a sanctuary — for horses rescued from neglect, and for
+        people seeking escape from the everyday. Here, in the rugged beauty of Poway's backcountry, we offer more
+        than an activity. We offer solitude, connection, and the kind of peace that only comes from being on
+        horseback with nowhere to be but right here.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission stats -->
+  <section aria-label="Our impact" class="px-6 lg:px-12 py-16 lg:py-20" style="background-color:#3b2314;">
+    <div class="max-w-[1100px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      {
+        missionStats.map((stat) => (
+          <div>
+            <div
+              class="mb-2"
+              style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,44px);font-weight:400;color:#c49a3c;"
+            >
+              {stat.value}
+            </div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.75);letter-spacing:0.05em;">{stat.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- What we do -->
+  <section aria-label="What we do" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#f5f0e8;">
+    <div class="max-w-[800px] mx-auto text-center mb-16">
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">What We Do</div>
+      <h2
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:400;color:#3b2314;line-height:1.25;"
+      >
+        Three ways to be part of the ranch.
+      </h2>
+    </div>
+    <div class="max-w-[1200px] mx-auto grid md:grid-cols-3 gap-8">
+      {
+        pillars.map((pillar) => (
+          <a
+            href={pillar.href}
+            class="block p-8 rounded-lg transition-all hover:shadow-lg"
+            style="background-color:#edeae0;text-decoration:none;"
+          >
+            <div class="uppercase tracking-[0.15em] mb-4" style="font-size:11px;color:#8a9e7b;">
+              {pillar.label}
+            </div>
+            <h3
+              class="mb-4"
+              style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#3b2314;"
+            >
+              {pillar.title}
+            </h3>
+            <p class="mb-6" style="font-size:15px;color:#2c2c2c;line-height:1.7;opacity:0.85;">
+              {pillar.description}
+            </p>
+            <span
+              class="inline-flex items-center gap-2 hover:gap-3 transition-all"
+              style="font-size:13px;color:#c49a3c;letter-spacing:0.1em;text-transform:uppercase;"
+            >
+              Learn More <Icon name="tabler:arrow-right" class="w-4 h-4" />
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Visit -->
+  <section
+    aria-label="Visit us"
+    class="px-6 lg:px-12 py-20 lg:py-24 text-center"
+    style="background-color:#3b2314;"
+  >
+    <div class="max-w-[640px] mx-auto">
+      <div class="uppercase tracking-[0.2em] mb-5" style="font-size:11px;color:#8a9e7b;">Come See Us</div>
+      <h2
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:300;line-height:1.2;"
+      >
+        14875 Mina De Oro, Poway, CA 92064
+      </h2>
+      <p class="mb-10" style="font-size:16px;color:rgba(255,255,255,0.75);line-height:1.8;">
+        Mon–Fri: 9am – 5pm · Sat–Sun: 9am – 4pm
+      </p>
+      <a
+        href={BOOK_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+      >
+        Book Your Ride <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+  </section>
+</SiteLayout>
