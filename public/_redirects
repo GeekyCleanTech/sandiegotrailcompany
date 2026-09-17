@@ -8,9 +8,8 @@
 # Both the trailing-slash and bare forms are listed: WordPress emitted
 # trailing slashes, but inbound links are inconsistent.
 #
-# Do NOT add rules here for /horse-boarding (handled by its own Astro
-# redirect page), /ranch-experience, or /san-diego-family-trip — those
-# are real pages / self-redirecting stubs.
+# Do NOT add rules here for /horse-boarding — it's handled by its own
+# Astro redirect page.
 
 # --- Service area (legacy WP) -------------------------------------------
 /service-area/horse-trail-ride/        /ride-and-learn/horseback-riding/  301
@@ -38,8 +37,8 @@
 /horse-services/airbnb-ranches         /stay-and-celebrate/             301
 /horse-services/glamping/              /stay-and-celebrate/             301
 /horse-services/glamping               /stay-and-celebrate/             301
-/horse-services/dude-ranch-experience/ /service-area/ranch-experience/  301
-/horse-services/dude-ranch-experience  /service-area/ranch-experience/  301
+/horse-services/dude-ranch-experience/ /stay-and-celebrate/ranch-experience/  301
+/horse-services/dude-ranch-experience  /stay-and-celebrate/ranch-experience/  301
 /horse-services/ptc-give-501-c/        /give-and-support/               301
 /horse-services/ptc-give-501-c         /give-and-support/               301
 /horse-services/individual-sponsorship/ /give-and-support/              301
@@ -48,7 +47,6 @@
 /horse-services/corporate-sponsorship  /give-and-support/               301
 
 # --- Ranch events (legacy WP) -------------------------------------------
-# /ranch-events/kids-birthday-party/ is a real page now — no rule needed.
 /ranch-events/dream-ranch-wedding/     /stay-and-celebrate/             301
 /ranch-events/dream-ranch-wedding      /stay-and-celebrate/             301
 /ranch-events/teambuilding-san-diego/  /stay-and-celebrate/             301
@@ -87,6 +85,16 @@
 # --- Restructured pages (moved under Ride & Learn, Sep 2026) ---
 /train-with-us/                         /ride-and-learn/train-with-us/   301
 /train-with-us                          /ride-and-learn/train-with-us/   301
+
+# --- Restructured pages (moved under Stay & Celebrate, Sep 2026) --------
+# ranch-experience, san-diego-family-trip, and kids-birthday-party moved
+# out of service-area/ and ranch-events/ to live under stay-and-celebrate/.
+/service-area/ranch-experience/         /stay-and-celebrate/ranch-experience/        301
+/service-area/ranch-experience          /stay-and-celebrate/ranch-experience/        301
+/service-area/san-diego-family-trip/    /stay-and-celebrate/san-diego-family-trip/   301
+/service-area/san-diego-family-trip     /stay-and-celebrate/san-diego-family-trip/   301
+/ranch-events/kids-birthday-party/      /stay-and-celebrate/kids-birthday-party/     301
+/ranch-events/kids-birthday-party       /stay-and-celebrate/kids-birthday-party/     301
 
 # --- No current equivalent — stopgap to homepage ---
 /gallery/                               /                                301
