@@ -8,22 +8,32 @@
 # Both the trailing-slash and bare forms are listed: WordPress emitted
 # trailing slashes, but inbound links are inconsistent.
 #
-# Do NOT add rules here for /service-area/horseback-riding, /horse-boarding,
-# /ranch-experience, or /san-diego-family-trip — those are real pages now.
+# Do NOT add rules here for /horse-boarding (handled by its own Astro
+# redirect page), /ranch-experience, or /san-diego-family-trip — those
+# are real pages / self-redirecting stubs.
 
 # --- Service area (legacy WP) -------------------------------------------
-/service-area/horse-trail-ride/        /service-area/horseback-riding/  301
-/service-area/horse-trail-ride         /service-area/horseback-riding/  301
-/service-area/horse-riding-lessons/    /service-area/horseback-riding/  301
-/service-area/horse-riding-lessons     /service-area/horseback-riding/  301
-/service-area/kids-camps/              /horse-services/kids-camps/      301
-/service-area/kids-camps               /horse-services/kids-camps/      301
-# /service-area/equus-coaching/ is a real page again — no rule needed.
+/service-area/horse-trail-ride/        /ride-and-learn/horseback-riding/  301
+/service-area/horse-trail-ride         /ride-and-learn/horseback-riding/  301
+/service-area/horse-riding-lessons/    /ride-and-learn/horseback-riding/  301
+/service-area/horse-riding-lessons     /ride-and-learn/horseback-riding/  301
+/service-area/kids-camps/              /ride-and-learn/kids-camps/        301
+/service-area/kids-camps               /ride-and-learn/kids-camps/        301
+
+# --- Services restructured under Ride & Learn (Sep 2026) ----------------
+# horseback-riding, equus-coaching, and kids-camps moved out of
+# service-area/ and horse-services/ to live under ride-and-learn/.
+/service-area/horseback-riding/        /ride-and-learn/horseback-riding/  301
+/service-area/horseback-riding         /ride-and-learn/horseback-riding/  301
+/service-area/equus-coaching/          /ride-and-learn/equus-coaching/    301
+/service-area/equus-coaching           /ride-and-learn/equus-coaching/    301
+/horse-services/kids-camps/            /ride-and-learn/kids-camps/        301
+/horse-services/kids-camps             /ride-and-learn/kids-camps/        301
 
 # --- Horse services (legacy WP) -----------------------------------------
 # Renamed, not removed: the camps page still exists as kids-camps.
-/horse-services/summer-horse-camps/    /horse-services/kids-camps/      301
-/horse-services/summer-horse-camps     /horse-services/kids-camps/      301
+/horse-services/summer-horse-camps/    /ride-and-learn/kids-camps/      301
+/horse-services/summer-horse-camps     /ride-and-learn/kids-camps/      301
 /horse-services/airbnb-ranches/        /stay-and-celebrate/             301
 /horse-services/airbnb-ranches         /stay-and-celebrate/             301
 /horse-services/glamping/              /stay-and-celebrate/             301
@@ -57,8 +67,8 @@
 /service-area                           /ride-and-learn/                 301
 /service-area/airbnb-ranches/           /stay-and-celebrate/             301
 /service-area/airbnb-ranches            /stay-and-celebrate/             301
-/service-area/summer-horse-camps/       /horse-services/kids-camps/      301
-/service-area/summer-horse-camps        /horse-services/kids-camps/      301
+/service-area/summer-horse-camps/       /ride-and-learn/kids-camps/      301
+/service-area/summer-horse-camps        /ride-and-learn/kids-camps/      301
 /service-area/corporate-sponsorship/    /give-and-support/               301
 /service-area/corporate-sponsorship     /give-and-support/               301
 
@@ -71,8 +81,8 @@
 /guide-to-horse-trail-riding            /blog/first-guided-trail-ride/   301
 /first-horse-riding-lesson-san-diego/   /blog/first-guided-trail-ride/   301
 /first-horse-riding-lesson-san-diego    /blog/first-guided-trail-ride/   301
-/what-is-horse-riding-good-for/         /service-area/equus-coaching/    301
-/what-is-horse-riding-good-for          /service-area/equus-coaching/    301
+/what-is-horse-riding-good-for/         /ride-and-learn/equus-coaching/  301
+/what-is-horse-riding-good-for          /ride-and-learn/equus-coaching/  301
 
 # --- Restructured pages (moved under Ride & Learn, Sep 2026) ---
 /train-with-us/                         /ride-and-learn/train-with-us/   301
