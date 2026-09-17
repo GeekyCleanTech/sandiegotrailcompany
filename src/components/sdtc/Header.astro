@@ -11,10 +11,16 @@ interface NavLink {
 
 const links: NavLink[] = [
   { label: 'Home', href: '/' },
-  { label: 'Ride & Learn', href: '/ride-and-learn/' },
+  {
+    label: 'Ride & Learn',
+    href: '/ride-and-learn/',
+    children: [
+      { label: 'Horse Boarding', href: '/ride-and-learn/horse-boarding/' },
+      { label: 'Train With Us', href: '/ride-and-learn/train-with-us/' },
+    ],
+  },
   { label: 'Stay & Celebrate', href: '/stay-and-celebrate/' },
   { label: 'Give & Support', href: '/give-and-support/' },
-  { label: 'Train With Us', href: '/train-with-us/' },
   { label: 'About', href: '/about/' },
   { label: 'Blog', href: '/blog/' },
   {

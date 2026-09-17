@@ -74,6 +74,10 @@
 /what-is-horse-riding-good-for/         /service-area/equus-coaching/    301
 /what-is-horse-riding-good-for          /service-area/equus-coaching/    301
 
+# --- Restructured pages (moved under Ride & Learn, Sep 2026) ---
+/train-with-us/                         /ride-and-learn/train-with-us/   301
+/train-with-us                          /ride-and-learn/train-with-us/   301
+
 # --- No current equivalent — stopgap to homepage ---
 /gallery/                               /                                301
 /gallery                                /                                301

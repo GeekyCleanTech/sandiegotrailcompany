@@ -1,0 +1,204 @@
+---
+import { Icon } from 'astro-icon/components';
+import SiteLayout from '~/layouts/SiteLayout.astro';
+
+const BOARDING_URL = 'https://www.powayequestriancenter.com/boarding';
+const CONTACT_EMAIL = 'ride@powayequestriancenter.com';
+const PHONE_DISPLAY = '858-748-6441';
+const PHONE_TEL = 'tel:+18587486441';
+const PHONE_SMS = 'sms:+18587486441';
+
+const metadata = {
+  title: 'Horse Boarding at Poway Equestrian Center',
+  description:
+    'Full-care horse boarding in Poway, CA — 64 stalls, five arenas, 24/7 on-site staff, and direct Iron Mountain trail access. Presented by our affiliate, Poway Equestrian Center.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Horse Boarding – Poway Equestrian Center',
+  description:
+    'Full-care horse boarding with daily feeding, stall care, turnout, and vet/farrier coordination at Poway Equestrian Center.',
+  provider: { '@type': 'LocalBusiness', name: 'Poway Equestrian Center', url: 'https://www.powayequestriancenter.com' },
+  areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
+};
+
+const heroImg =
+  'https://images.unsplash.com/photo-1553531580-652231e34e2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxob3JzZWJhY2slMjBsZXNzb258ZW58MXx8fHwxNzgxNjI4MTEwfDA&ixlib=rb-4.1.0&q=80&w=1080';
+
+const facts = [
+  { value: '64', label: 'Full-care stalls' },
+  { value: '5', label: 'Arenas & round pens' },
+  { value: '24/7', label: 'On-site staff' },
+  { value: 'Miles', label: 'Of direct trail access' },
+];
+
+const included = [
+  {
+    title: 'Daily feeding & stall care',
+    description: 'Twice-daily feeding tailored to each horse, with stalls cleaned and maintained every morning.',
+    icon: 'tabler:apple',
+  },
+  {
+    title: 'Turnout & grooming checks',
+    description: 'Daily turnout and routine grooming checks so small concerns get caught early.',
+    icon: 'tabler:sun',
+  },
+  {
+    title: 'Vet & farrier coordination',
+    description: "Staff coordinate directly with your horse's vet and farrier for routine and emergency care.",
+    icon: 'tabler:stethoscope',
+  },
+  {
+    title: 'Arena & trail access',
+    description: 'Full use of the arenas, round pens, and direct access to the Iron Mountain trail system.',
+    icon: 'tabler:map-2',
+  },
+];
+---
+
+<SiteLayout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section aria-label="Horse boarding hero" class="relative flex items-end" style="height:70vh;min-height:480px;">
+    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center" style={`background-image:url(${heroImg});`}>
+      <div
+        class="absolute inset-0"
+        style="background:linear-gradient(to top, rgba(30,12,4,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);"
+      >
+      </div>
+    </div>
+    <div class="relative w-full max-w-[1400px] mx-auto px-6 lg:px-12 pb-16 lg:pb-24">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">Ride & Learn</div>
+      <h1
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6.5vw,72px);font-weight:300;line-height:1.1;max-width:760px;"
+      >
+        Horse Boarding at Poway Equestrian Center
+      </h1>
+      <p class="text-white mb-8" style="font-size:18px;max-width:560px;opacity:0.88;line-height:1.7;">
+        Full-care boarding on the same Poway property, provided by our affiliate Poway Equestrian Center — daily
+        feeding, stall care, turnout, and direct trail access, watched over around the clock.
+      </p>
+      <a
+        href={BOARDING_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+      >
+        Learn More & See Rates <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick facts -->
+  <section aria-label="Boarding facility facts" class="px-6 lg:px-12 py-16 lg:py-20" style="background-color:#3b2314;">
+    <div class="max-w-[1100px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      {
+        facts.map((fact) => (
+          <div>
+            <div
+              class="mb-2"
+              style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,44px);font-weight:400;color:#c49a3c;"
+            >
+              {fact.value}
+            </div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.75);letter-spacing:0.05em;">{fact.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- What's included -->
+  <section aria-label="What full-care boarding includes" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#f5f0e8;">
+    <div class="max-w-[800px] mx-auto text-center mb-16">
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Full-Care Boarding</div>
+      <h2
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:400;color:#3b2314;line-height:1.25;"
+      >
+        Every detail, covered.
+      </h2>
+    </div>
+    <div class="max-w-[1100px] mx-auto grid sm:grid-cols-2 gap-8">
+      {
+        included.map((item) => (
+          <div class="p-8 rounded-lg" style="background-color:#edeae0;">
+            <Icon name={item.icon} class="w-7 h-7 mb-4" style="color:#c49a3c;" />
+            <h3 class="mb-3" style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#3b2314;">
+              {item.title}
+            </h3>
+            <p style="font-size:15px;color:#2c2c2c;line-height:1.7;opacity:0.85;">{item.description}</p>
+          </div>
+        ))
+      }
+    </div>
+    <p class="text-center mt-12" style="font-size:14px;color:#2c2c2c;opacity:0.7;">
+      Plans range from self-muck lease board to full board with hay included — every plan can be tailored to your
+      horse.{' '}
+      <a href={BOARDING_URL} target="_blank" rel="noopener noreferrer" style="color:#c49a3c;text-decoration:underline;">
+        See current boarding rates
+      </a>.
+    </p>
+  </section>
+
+  <!-- Inquire -->
+  <section aria-label="Inquire about boarding" class="px-6 lg:px-12 py-20 lg:py-24 text-center" style="background-color:#3b2314;">
+    <div class="max-w-[640px] mx-auto">
+      <div class="uppercase tracking-[0.2em] mb-5" style="font-size:11px;color:#8a9e7b;">Get In Touch</div>
+      <h2
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:300;line-height:1.2;"
+      >
+        Ready to schedule a tour?
+      </h2>
+      <p class="mb-10" style="font-size:16px;color:rgba(255,255,255,0.75);line-height:1.8;">
+        Reach the Poway Equestrian Center boarding team directly by phone, text, or email.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a
+          href={PHONE_TEL}
+          class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
+          style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:28px;padding-right:28px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+        >
+          <Icon name="tabler:phone" class="w-4 h-4" /> Call Now
+        </a>
+        <a
+          href={PHONE_SMS}
+          class="inline-flex items-center gap-2 rounded-full border transition-all hover:brightness-110"
+          style="border-color:#c49a3c;color:#c49a3c;font-size:13px;font-weight:500;height:48px;padding-left:28px;padding-right:28px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+        >
+          <Icon name="tabler:message" class="w-4 h-4" /> Text Us Now
+        </a>
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          class="inline-flex items-center gap-2 rounded-full border transition-all hover:brightness-110"
+          style="border-color:#c49a3c;color:#c49a3c;font-size:13px;font-weight:500;height:48px;padding-left:28px;padding-right:28px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+        >
+          <Icon name="tabler:mail" class="w-4 h-4" /> Email Us
+        </a>
+      </div>
+      <p class="mt-6" style="font-size:13px;color:rgba(255,255,255,0.5);">
+        {PHONE_DISPLAY} — call or text · {CONTACT_EMAIL}
+      </p>
+    </div>
+  </section>
+
+  <!-- Two entities disclaimer -->
+  <section aria-label="About our affiliation with Poway Equestrian Center" class="px-6 lg:px-12 py-16 lg:py-20" style="background-color:#f5f0e8;">
+    <div class="max-w-[720px] mx-auto text-center">
+      <div class="uppercase tracking-[0.2em] mb-5" style="font-size:11px;color:#8a9e7b;">Please Note</div>
+      <p style="font-size:15px;color:#2c2c2c;line-height:1.8;opacity:0.8;">
+        San Diego Trail Company and Poway Equestrian Center are two separate, affiliated businesses sharing the same
+        Poway property. San Diego Trail Company offers guided trail rides, lessons, camps, and other experiences
+        where people and horses interact directly. Poway Equestrian Center is dedicated strictly to horse boarding
+        and care, with human contact limited to the horses' caretakers.
+      </p>
+    </div>
+  </section>
+</SiteLayout>
