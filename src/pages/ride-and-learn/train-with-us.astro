@@ -1,8 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
 import SiteLayout from '~/layouts/SiteLayout.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Content from '~/components/widgets/Content.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Bring Your Training Program to Poway Equestrian Center',
@@ -19,6 +17,43 @@ const structuredData = {
   provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://www.sandiegotrailcompany.com' },
   areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
 };
+
+const heroImg = '/images/sdtc/poway-ranch-aerial-grayscale.png';
+
+const facts = [
+  { value: '2', label: 'Established trainers on-site today' },
+  { value: 'Multiple', label: 'Riding & training areas' },
+  { value: 'Miles', label: 'Of direct trail access' },
+  { value: 'Room', label: 'To grow your own clientele' },
+];
+
+const program = [
+  {
+    title: 'An active, established facility',
+    description:
+      'Our facility currently has one established English trainer and one established Western trainer. Because of the size and layout of the property, we have the ability to accommodate additional professional trainers and their clientele.',
+    icon: 'tabler:building-estate',
+  },
+  {
+    title: 'Barn stalls & pipe corrals',
+    description: 'Barn stalls and pipe corrals are available, with opportunities for multiple client horses.',
+    icon: 'tabler:home',
+  },
+  {
+    title: 'Grow your own business',
+    description:
+      'Our goal is not to replace our existing trainers, but to expand the professional programs available at the facility while creating an environment where trainers can operate and grow their own businesses.',
+    icon: 'tabler:trending-up',
+  },
+];
+
+const clinicians = [
+  { title: 'One-day & multi-day clinics', icon: 'tabler:calendar-event' },
+  { title: 'Specialty discipline clinics', icon: 'tabler:award' },
+  { title: 'Group & private instruction', icon: 'tabler:users' },
+  { title: 'Recurring clinics & training days', icon: 'tabler:repeat' },
+  { title: 'Educational equestrian programs', icon: 'tabler:school' },
+];
 ---
 
 <SiteLayout metadata={metadata}>
@@ -26,70 +61,163 @@ const structuredData = {
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </Fragment>
 
-  <Hero
-    tagline="For Trainers & Clinicians"
-    title="Bring Your Training Program to Poway Equestrian Center"
-    subtitle="Poway Equestrian Center is home to an active and diverse equestrian community, and we have room to grow. If you have an existing clientele and are looking for a facility where you can train horses, teach riders, board client horses, and host clinics, we would like to meet you."
-    actions={[
-      { variant: 'primary', text: 'Schedule a Facility Tour', href: '/contact/' },
-      { text: 'Contact Us', href: '/contact/' },
-    ]}
-    image={{
-      src: '/images/sdtc/poway-ranch-aerial-grayscale.png',
-      alt: 'Aerial view of the Poway Equestrian Center ranch property',
-    }}
-  />
+  <!-- Hero -->
+  <section aria-label="Train with us hero" class="relative flex items-end" style="height:70vh;min-height:480px;">
+    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center" style={`background-image:url(${heroImg});`}>
+      <div
+        class="absolute inset-0"
+        style="background:linear-gradient(to top, rgba(30,12,4,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);"
+      >
+      </div>
+    </div>
+    <div class="relative w-full max-w-[1400px] mx-auto px-6 lg:px-12 pb-16 lg:pb-24">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">Ride & Learn</div>
+      <h1
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(38px,6vw,68px);font-weight:300;line-height:1.1;max-width:800px;"
+      >
+        Bring Your Training Program to Poway Equestrian Center
+      </h1>
+      <p class="text-white mb-8" style="font-size:18px;max-width:580px;opacity:0.88;line-height:1.7;">
+        Poway Equestrian Center is home to an active and diverse equestrian community, and we have room to grow. If
+        you have an existing clientele and are looking for a facility to train horses, teach riders, board client
+        horses, and host clinics, we would like to meet you.
+      </p>
+      <a
+        href="/contact/"
+        class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+      >
+        Schedule a Facility Tour <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+  </section>
 
-  <Content
-    title="Your Program. Your Clients. An Established Facility."
-    subtitle="Room to grow alongside our existing trainers, not in place of them."
-    items={[
+  <!-- Quick facts -->
+  <section aria-label="Facility facts" class="px-6 lg:px-12 py-16 lg:py-20" style="background-color:#3b2314;">
+    <div class="max-w-[1100px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
       {
-        title: 'An active, established facility',
-        description:
-          'Our facility currently has one established English trainer and one established Western trainer. Because of the size and layout of the property, we have the ability to accommodate additional professional trainers and their clientele.',
-        icon: 'tabler:building-estate',
-      },
-      {
-        title: 'Barn stalls & pipe corrals',
-        description:
-          'Barn stalls and pipe corrals are available, with opportunities for multiple client horses.',
-        icon: 'tabler:home',
-      },
-      {
-        title: 'Grow your own business',
-        description:
-          'Our goal is not to replace our existing trainers, but to expand the professional programs available at the facility while creating an environment where trainers can operate and grow their own businesses.',
-        icon: 'tabler:trending-up',
-      },
-    ]}
-    image={{
-      src: '/images/sdtc/poway-backcountry-trail.png',
-      alt: 'Riding and training areas at Poway Equestrian Center',
-    }}
-  />
+        facts.map((fact) => (
+          <div>
+            <div
+              class="mb-2"
+              style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,36px);font-weight:400;color:#c49a3c;"
+            >
+              {fact.value}
+            </div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.75);letter-spacing:0.05em;">{fact.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 
-  <Content
-    isReversed
-    title="Clinicians Are Welcome, Too"
-    subtitle="We are interested in developing relationships with professional clinicians looking for a San Diego location for:"
-    content="With multiple riding and training areas, extensive equestrian infrastructure, stall options, trail access, and a large ranch setting, Poway Equestrian Center provides an opportunity to host programs without having to build or maintain an entire facility independently."
-    items={[
-      { title: 'One-day & multi-day clinics', icon: 'tabler:calendar-event' },
-      { title: 'Specialty discipline clinics', icon: 'tabler:award' },
-      { title: 'Group & private instruction', icon: 'tabler:users' },
-      { title: 'Recurring clinics & training days', icon: 'tabler:repeat' },
-      { title: 'Educational equestrian programs', icon: 'tabler:school' },
-    ]}
-    image={{
-      src: '/images/sdtc/equine-assisted-growth.png',
-      alt: 'Open training and riding space at Poway Equestrian Center',
-    }}
-  />
+  <!-- Your program -->
+  <section aria-label="Your program, your clients" class="grid lg:grid-cols-2">
+    <div
+      role="img"
+      aria-label="A dark horse walks alone toward the camera in the arena"
+      class="h-[380px] lg:h-auto bg-cover bg-center"
+      style="background-image:url(/images/marketing/solo-horse-arena.jpg);min-height:400px;"
+    />
+    <div class="px-8 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center" style="background-color:#f5f0e8;">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">An Established Facility</div>
+      <h2
+        class="mb-5"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,40px);font-weight:400;color:#3b2314;line-height:1.2;"
+      >
+        Your Program. Your Clients.
+      </h2>
+      <p style="font-size:16px;color:#2c2c2c;line-height:1.8;opacity:0.85;max-width:480px;" class="mb-8">
+        Room to grow alongside our existing trainers, not in place of them. With multiple riding and training
+        areas, extensive equestrian infrastructure, stall options, and direct trail access, Poway Equestrian
+        Center provides an opportunity to run your program without having to build or maintain an entire facility
+        independently.
+      </p>
+      <div class="space-y-6">
+        {
+          program.map((item) => (
+            <div class="flex gap-4">
+              <Icon name={item.icon} class="w-6 h-6 flex-shrink-0 mt-1" style="color:#c49a3c;" />
+              <div>
+                <h3 class="mb-1" style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:#3b2314;">
+                  {item.title}
+                </h3>
+                <p style="font-size:14px;color:#2c2c2c;line-height:1.7;opacity:0.85;">{item.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-  <CallToAction
-    title="Let's meet."
-    subtitle="Schedule a private facility tour and let's discuss what your program needs."
-    actions={[{ variant: 'primary', text: 'Schedule a Facility Tour', href: '/contact/' }]}
-  />
+  <!-- Clinicians welcome -->
+  <section aria-label="Clinicians are welcome too" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#edeae0;">
+    <div class="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Clinicians Welcome</div>
+        <h2
+          class="mb-6"
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,40px);font-weight:400;color:#3b2314;line-height:1.2;"
+        >
+          We're interested in developing relationships with professional clinicians looking for a San Diego location.
+        </h2>
+        <p style="font-size:16px;color:#2c2c2c;line-height:1.8;opacity:0.85;">
+          With multiple riding and training areas, extensive equestrian infrastructure, stall options, trail
+          access, and a large ranch setting, we offer the opportunity to host programs without the overhead of an
+          independent facility.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {
+          clinicians.map((item) => (
+            <div class="p-6 rounded-lg flex items-start gap-3" style="background-color:#f5f0e8;">
+              <Icon name={item.icon} class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:#c49a3c;" />
+              <span style="font-size:14px;color:#3b2314;line-height:1.5;">{item.title}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Facility grounds -->
+  <section aria-label="Facility grounds" class="grid sm:grid-cols-2">
+    <div
+      role="img"
+      aria-label="Backcountry trail access at Poway Equestrian Center"
+      class="h-[320px] bg-cover bg-center"
+      style="background-image:url(/images/sdtc/poway-backcountry-trail.png);"
+    />
+    <div
+      role="img"
+      aria-label="Open training and riding space at Poway Equestrian Center"
+      class="h-[320px] bg-cover bg-center"
+      style="background-image:url(/images/sdtc/equine-assisted-growth.png);"
+    />
+  </section>
+
+  <!-- CTA -->
+  <section aria-label="Schedule a facility tour" class="px-6 lg:px-12 py-20 lg:py-24 text-center" style="background-color:#3b2314;">
+    <div class="max-w-[640px] mx-auto">
+      <div class="uppercase tracking-[0.2em] mb-5" style="font-size:11px;color:#8a9e7b;">Get In Touch</div>
+      <h2
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:300;line-height:1.2;"
+      >
+        Let's meet.
+      </h2>
+      <p class="mb-10" style="font-size:16px;color:rgba(255,255,255,0.75);line-height:1.8;">
+        Schedule a private facility tour and let's discuss what your program needs.
+      </p>
+      <a
+        href="/contact/"
+        class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+      >
+        Schedule a Facility Tour <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+  </section>
 </SiteLayout>

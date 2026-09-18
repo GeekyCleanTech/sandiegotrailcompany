@@ -1,10 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
 import SiteLayout from '~/layouts/SiteLayout.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Content from '~/components/widgets/Content.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Equus Coaching in San Diego – Equine-Assisted Personal Growth in Poway, CA',
@@ -21,6 +17,110 @@ const structuredData = {
   provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://www.sandiegotrailcompany.com' },
   areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
 };
+
+const heroImg = '/images/marketing/horse-face-closeup.jpg';
+
+const facts = [
+  { value: '0', label: 'Riding experience required' },
+  { value: '100%', label: 'Ground-based sessions' },
+  { value: '1-on-1', label: 'Groups & corporate formats' },
+  { value: 'Certified', label: 'Equus coach' },
+];
+
+const whatItIs = [
+  {
+    title: 'The horse reads the room',
+    description:
+      'Horses are prey animals, exquisitely tuned to intention and inconsistency. When your words and your body disagree, the horse responds to the body — and that gap becomes something you can finally see and work with.',
+    icon: 'tabler:eye',
+  },
+  {
+    title: 'Guided by a certified coach',
+    description:
+      'Sessions are led by a certified Equus coach who frames the exercise, reads the interaction alongside you, and helps you translate what happened in the arena into what happens in your life.',
+    icon: 'tabler:compass',
+  },
+  {
+    title: 'Feet on the ground',
+    description:
+      'All work is done from the ground. You will not be asked to ride, and there is nothing to master. The horse is a partner in the conversation, not equipment to operate.',
+    icon: 'tabler:shoe',
+  },
+];
+
+const sessionSteps = [
+  {
+    title: 'Arrive and set an intention',
+    description:
+      'We start away from the horses with a short conversation about what you want to look at — a decision, a pattern, a relationship, a role you are stepping into.',
+    icon: 'tabler:message-circle',
+  },
+  {
+    title: 'Meet the horse',
+    description:
+      'You enter the arena and simply be with the horse. No agenda at first. Most people notice the animal responding to something in them before a single exercise begins.',
+    icon: 'tabler:horse',
+  },
+  {
+    title: 'Work the exercise',
+    description:
+      'Your coach introduces a simple task — inviting the horse to follow, asking it to move, holding a boundary. How the horse answers tells you something true about how you are showing up.',
+    icon: 'tabler:target-arrow',
+  },
+  {
+    title: 'Make it portable',
+    description: 'We close by naming what surfaced and translating it into something you can actually use on Monday morning.',
+    icon: 'tabler:notebook',
+  },
+];
+
+const whoFor = [
+  {
+    title: 'Individuals',
+    description:
+      'People navigating a transition, a hard decision, burnout, or a pattern they keep running into. One-to-one sessions, entirely private.',
+    icon: 'tabler:user',
+  },
+  {
+    title: 'Groups & families',
+    description:
+      'Small-group sessions that surface how people communicate with each other — often faster and more honestly than a conversation around a table would.',
+    icon: 'tabler:users',
+  },
+  {
+    title: 'Corporate & leadership teams',
+    description:
+      'Leadership, trust, and communication work for teams. Horses do not care about job titles, which is precisely what makes the exercise useful.',
+    icon: 'tabler:briefcase',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Do I need riding experience?',
+    a: 'None at all. Equus coaching is done entirely from the ground and involves no riding. Many participants have never been near a horse before their first session.',
+  },
+  {
+    q: 'Is this therapy?',
+    a: 'No. Equus coaching is a coaching practice focused on self-awareness, leadership, and communication — it is not psychotherapy and is not a substitute for mental health treatment.',
+  },
+  {
+    q: 'What if I am nervous around horses?',
+    a: 'That is a perfectly good starting point, and often a productive one. Your coach controls the pace entirely, and nothing happens until you are ready for it.',
+  },
+  {
+    q: 'How long is a session?',
+    a: 'Sessions are scheduled individually around your goals and whether you are coming alone, as a group, or with a team. Get in touch and we will build the right format with you.',
+  },
+  {
+    q: 'Can you run this for our company?',
+    a: 'Yes. We run corporate and leadership programs for teams, and can combine a coaching session with a guided trail ride or a full ranch day.',
+  },
+  {
+    q: 'What should I wear?',
+    a: 'Closed-toe shoes and clothes you do not mind getting dusty. You will be standing on arena footing, outdoors, so dress for the weather and bring water.',
+  },
+];
 ---
 
 <SiteLayout metadata={metadata}>
@@ -28,152 +128,218 @@ const structuredData = {
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </Fragment>
 
-  <Hero
-    tagline="Equus Coaching in Poway, CA"
-    title="Equine-Assisted Personal Growth"
-    subtitle="Horses are extraordinary mirrors of human emotion. They respond to what you are actually feeling rather than what you are presenting — which makes them remarkable partners for the work of understanding yourself."
-    actions={[
-      { variant: 'primary', text: 'Inquire About a Session', href: '/contact/' },
-      { text: 'See All Programs', href: '/ride-and-learn/' },
-    ]}
-    image={{
-      src: '/images/marketing/horse-face-closeup.jpg',
-      alt: 'Close-up of a dark horse\'s calm face',
-    }}
-  />
+  <!-- Hero -->
+  <section aria-label="Equus coaching hero" class="relative flex items-end" style="height:80vh;min-height:560px;">
+    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center" style={`background-image:url(${heroImg});`}>
+      <div
+        class="absolute inset-0"
+        style="background:linear-gradient(to top, rgba(30,12,4,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);"
+      >
+      </div>
+    </div>
+    <div class="relative w-full max-w-[1400px] mx-auto px-6 lg:px-12 pb-16 lg:pb-24">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">Ride & Learn</div>
+      <h1
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6.5vw,72px);font-weight:300;line-height:1.1;max-width:720px;"
+      >
+        Equine-Assisted Personal Growth
+      </h1>
+      <p class="text-white mb-8" style="font-size:18px;max-width:560px;opacity:0.88;line-height:1.7;">
+        Horses are extraordinary mirrors of human emotion. They respond to what you are actually feeling rather
+        than what you are presenting — which makes them remarkable partners for the work of understanding
+        yourself.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="/contact/"
+          class="inline-flex items-center justify-center gap-2 rounded-full transition-all hover:brightness-110"
+          style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+        >
+          Inquire About a Session <Icon name="tabler:arrow-right" class="w-4 h-4" />
+        </a>
+        <a
+          href="/ride-and-learn/"
+          class="inline-flex items-center justify-center rounded-full border-2 transition-all hover:bg-white/10"
+          style="border-color:rgba(255,255,255,0.6);color:#ffffff;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+        >
+          See All Programs
+        </a>
+      </div>
+    </div>
+  </section>
 
-  <Content
-    title="What Equus Coaching Is"
-    subtitle="Groundwork for the mind. No riding, no prior horse experience, no performance to get right."
-    items={[
+  <!-- Quick facts -->
+  <section aria-label="Equus coaching facts" class="px-6 lg:px-12 py-16 lg:py-20" style="background-color:#3b2314;">
+    <div class="max-w-[1100px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
       {
-        title: 'The horse reads the room',
-        description:
-          'Horses are prey animals, exquisitely tuned to intention and inconsistency. When your words and your body disagree, the horse responds to the body — and that gap becomes something you can finally see and work with.',
-        icon: 'tabler:eye',
-      },
-      {
-        title: 'Guided by a certified coach',
-        description:
-          'Sessions are led by a certified Equus coach who frames the exercise, reads the interaction alongside you, and helps you translate what happened in the arena into what happens in your life.',
-        icon: 'tabler:compass',
-      },
-      {
-        title: 'Feet on the ground',
-        description:
-          'All work is done from the ground. You will not be asked to ride, and there is nothing to master. The horse is a partner in the conversation, not equipment to operate.',
-        icon: 'tabler:shoe',
-      },
-    ]}
-    image={{
-      src: '/images/marketing/creek-crossing-rider.jpg',
-      alt: 'A rider crosses a sunlit creek lined with dense green brush',
-    }}
-  />
+        facts.map((fact) => (
+          <div>
+            <div
+              class="mb-2"
+              style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,36px);font-weight:400;color:#c49a3c;"
+            >
+              {fact.value}
+            </div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.75);letter-spacing:0.05em;">{fact.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 
-  <Steps
-    title="How a Session Works"
-    items={[
-      {
-        title: 'Arrive and set an intention',
-        description:
-          'We start away from the horses with a short conversation about what you want to look at — a decision, a pattern, a relationship, a role you are stepping into.',
-        icon: 'tabler:message-circle',
-      },
-      {
-        title: 'Meet the horse',
-        description:
-          'You enter the arena and simply be with the horse. No agenda at first. Most people notice the animal responding to something in them before a single exercise begins.',
-        icon: 'tabler:horse',
-      },
-      {
-        title: 'Work the exercise',
-        description:
-          'Your coach introduces a simple task — inviting the horse to follow, asking it to move, holding a boundary. How the horse answers tells you something true about how you are showing up.',
-        icon: 'tabler:target-arrow',
-      },
-      {
-        title: 'Make it portable',
-        description:
-          'We close by naming what surfaced and translating it into something you can actually use on Monday morning.',
-        icon: 'tabler:notebook',
-      },
-    ]}
-    image={{
-      src: '/images/ride-trail.jpg',
-      alt: 'The arena and open country at the Poway ranch',
-    }}
-  />
+  <!-- What Equus coaching is -->
+  <section aria-label="What Equus coaching is" class="grid lg:grid-cols-2">
+    <div
+      role="img"
+      aria-label="Silhouette of a solo rider in the arena at dusk"
+      class="h-[380px] lg:h-auto bg-cover bg-center"
+      style="background-image:url(/images/marketing/sunset-arena-silhouette.jpg);min-height:400px;"
+    />
+    <div class="px-8 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center" style="background-color:#f5f0e8;">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">What Equus Coaching Is</div>
+      <h2
+        class="mb-5"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,40px);font-weight:400;color:#3b2314;line-height:1.2;"
+      >
+        Groundwork for the mind.
+      </h2>
+      <p style="font-size:16px;color:#2c2c2c;line-height:1.8;opacity:0.85;max-width:480px;" class="mb-8">
+        No riding, no prior horse experience, no performance to get right.
+      </p>
+      <div class="space-y-6">
+        {
+          whatItIs.map((item) => (
+            <div class="flex gap-4">
+              <Icon name={item.icon} class="w-6 h-6 flex-shrink-0 mt-1" style="color:#c49a3c;" />
+              <div>
+                <h3 class="mb-1" style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:#3b2314;">
+                  {item.title}
+                </h3>
+                <p style="font-size:14px;color:#2c2c2c;line-height:1.7;opacity:0.85;">{item.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-  <Content
-    isReversed
-    title="Who It's For"
-    items={[
+  <!-- How a session works -->
+  <section aria-label="How a session works" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#edeae0;">
+    <div class="max-w-[800px] mx-auto text-center mb-16">
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">How a Session Works</div>
+      <h2
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:400;color:#3b2314;line-height:1.25;"
+      >
+        Four steps, one arena, no script.
+      </h2>
+    </div>
+    <div class="max-w-[1200px] mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {
-        title: 'Individuals',
-        description:
-          'People navigating a transition, a hard decision, burnout, or a pattern they keep running into. One-to-one sessions, entirely private.',
-        icon: 'tabler:user',
-      },
-      {
-        title: 'Groups & families',
-        description:
-          'Small-group sessions that surface how people communicate with each other — often faster and more honestly than a conversation around a table would.',
-        icon: 'tabler:users',
-      },
-      {
-        title: 'Corporate & leadership teams',
-        description:
-          'Leadership, trust, and communication work for teams. Horses do not care about job titles, which is precisely what makes the exercise useful.',
-        icon: 'tabler:briefcase',
-      },
-    ]}
-    image={{
-      src: '/images/give-corporate.jpg',
-      alt: 'A corporate team taking part in an equine-assisted leadership session',
-    }}
-  />
+        sessionSteps.map((step, index) => (
+          <div class="p-6 rounded-lg" style="background-color:#f5f0e8;">
+            <div class="flex items-center gap-3 mb-4">
+              <span
+                class="flex items-center justify-center rounded-full flex-shrink-0"
+                style="width:32px;height:32px;background-color:#c49a3c;color:#3b2314;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;"
+              >
+                {index + 1}
+              </span>
+              <Icon name={step.icon} class="w-5 h-5" style="color:#8a9e7b;" />
+            </div>
+            <h3 class="mb-2" style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:#3b2314;">
+              {step.title}
+            </h3>
+            <p style="font-size:14px;color:#2c2c2c;line-height:1.7;opacity:0.85;">{step.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 
-  <FAQs
-    title="Equus Coaching Questions"
-    subtitle="What people ask before booking a first session."
-    items={[
-      {
-        title: 'Do I need riding experience?',
-        description:
-          'None at all. Equus coaching is done entirely from the ground and involves no riding. Many participants have never been near a horse before their first session.',
-      },
-      {
-        title: 'Is this therapy?',
-        description:
-          'No. Equus coaching is a coaching practice focused on self-awareness, leadership, and communication — it is not psychotherapy and is not a substitute for mental health treatment. If you are looking for clinical care, please work with a licensed professional.',
-      },
-      {
-        title: 'What if I am nervous around horses?',
-        description:
-          'That is a perfectly good starting point, and often a productive one. Your coach controls the pace entirely, and nothing happens until you are ready for it.',
-      },
-      {
-        title: 'How long is a session?',
-        description:
-          'Sessions are scheduled individually around your goals and whether you are coming alone, as a group, or with a team. Get in touch and we will build the right format with you.',
-      },
-      {
-        title: 'Can you run this for our company?',
-        description:
-          'Yes. We run corporate and leadership programs for teams, and can combine a coaching session with a guided trail ride or a full ranch day. Contact us and we will scope it.',
-      },
-      {
-        title: 'What should I wear?',
-        description:
-          'Closed-toe shoes and clothes you do not mind getting dusty. You will be standing on arena footing, outdoors, so dress for the weather and bring water.',
-      },
-    ]}
-  />
+  <!-- Who it's for -->
+  <section aria-label="Who Equus coaching is for" class="grid lg:grid-cols-2">
+    <div
+      role="img"
+      aria-label="A dark horse walks alone toward the camera in the arena"
+      class="h-[380px] lg:h-auto bg-cover bg-center lg:col-start-2"
+      style="background-image:url(/images/marketing/solo-horse-arena.jpg);min-height:400px;"
+    />
+    <div
+      class="px-8 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center lg:col-start-1 lg:row-start-1"
+      style="background-color:#f5f0e8;"
+    >
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">Who It's For</div>
+      <h2
+        class="mb-8"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,40px);font-weight:400;color:#3b2314;line-height:1.2;"
+      >
+        Anyone ready to see themselves clearly.
+      </h2>
+      <div class="space-y-6">
+        {
+          whoFor.map((item) => (
+            <div class="flex gap-4">
+              <Icon name={item.icon} class="w-6 h-6 flex-shrink-0 mt-1" style="color:#c49a3c;" />
+              <div>
+                <h3 class="mb-1" style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:#3b2314;">
+                  {item.title}
+                </h3>
+                <p style="font-size:14px;color:#2c2c2c;line-height:1.7;opacity:0.85;">{item.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-  <CallToAction
-    title="Curious what a horse would notice about you?"
-    subtitle="Tell us what you're working on and we'll build a session around it."
-    actions={[{ variant: 'primary', text: 'Inquire About a Session', href: '/contact/' }]}
-  />
+  <!-- FAQ -->
+  <section aria-label="Equus coaching questions" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#3b2314;">
+    <div class="max-w-[800px] mx-auto text-center mb-14">
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Questions</div>
+      <h2
+        class="text-white"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:300;line-height:1.2;"
+      >
+        What people ask before booking a first session.
+      </h2>
+    </div>
+    <div class="max-w-[900px] mx-auto grid sm:grid-cols-2 gap-8">
+      {
+        faqs.map((item) => (
+          <div>
+            <h3 class="mb-2" style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:#c49a3c;">
+              {item.q}
+            </h3>
+            <p style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.7;">{item.a}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section aria-label="Inquire about a session" class="px-6 lg:px-12 py-20 lg:py-24 text-center" style="background-color:#f5f0e8;">
+    <div class="max-w-[640px] mx-auto">
+      <div class="uppercase tracking-[0.2em] mb-5" style="font-size:11px;color:#8a9e7b;">Start the Conversation</div>
+      <h2
+        class="mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:400;color:#3b2314;line-height:1.2;"
+      >
+        Curious what a horse would notice about you?
+      </h2>
+      <p class="mb-10" style="font-size:16px;color:#2c2c2c;line-height:1.8;opacity:0.8;">
+        Tell us what you're working on and we'll build a session around it.
+      </p>
+      <a
+        href="/contact/"
+        class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+      >
+        Inquire About a Session <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+  </section>
 </SiteLayout>

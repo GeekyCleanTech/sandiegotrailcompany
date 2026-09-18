@@ -1,9 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
 import SiteLayout from '~/layouts/SiteLayout.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Content from '~/components/widgets/Content.astro';
-import Pricing from '~/components/widgets/Pricing.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
 
 const BOOK_URL = 'https://fareharbor.com/embeds/book/powaytrailcompany/items/71809/?full-items=yes&flow=31089';
 
@@ -13,124 +10,299 @@ const metadata = {
   description:
     'Enroll your kids in our summer horse camp in Poway, CA. Weekdays 8 AM–1 PM, June through July. They will learn horsemanship, riding skills, and make lifelong friends in a safe, fun environment.',
 };
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Kids Summer Camp – San Diego Trail Company',
+  description: 'Weekday summer horse camp for kids in Poway, CA — riding, horsemanship, and ranch life.',
+  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://www.sandiegotrailcompany.com' },
+  areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
+};
+
+const heroImg = '/images/marketing/camp-buddies-wave.jpg';
+
+const facts = [
+  { value: 'Jun–Jul', label: 'Weekly camp season' },
+  { value: '8–1', label: 'Weekdays, 8 AM to 1 PM' },
+  { value: 'Til 3 PM', label: 'Extended care available' },
+  { value: '5%', label: 'Sibling discount, same week' },
+];
+
+const expect = [
+  {
+    title: 'Daily Riding Lessons',
+    description:
+      'Campers receive daily instruction in the arena, focusing on balance, control, and basic riding skills.',
+    icon: 'tabler:horse',
+  },
+  {
+    title: 'Horsemanship & Care',
+    description:
+      'Kids learn how to groom, tack, feed, and properly care for horses, fostering a sense of responsibility.',
+    icon: 'tabler:heart',
+  },
+  {
+    title: 'Fun & Games',
+    description:
+      'We mix learning with fun! From mounted games to arts and crafts, every day brings a new adventure.',
+    icon: 'tabler:mood-smile',
+  },
+  {
+    title: 'Teamwork & Confidence',
+    description:
+      'Small groups and rotating stations build confidence in the saddle and camaraderie on the ground.',
+    icon: 'tabler:users',
+  },
+];
+
+const galleryTop = [
+  { src: '/images/marketing/camp-portrait-arena-1.jpg', alt: 'A camper in a helmet poses on horseback in the riding arena' },
+  { src: '/images/marketing/camp-obstacle-cones.jpg', alt: 'A camper rides through an arena obstacle course marked with orange cones' },
+];
+
+const galleryBottom = [
+  { src: '/images/marketing/camp-arena-fog.jpg', alt: 'Two young campers ride single-file through a foggy arena at dawn' },
+  { src: '/images/marketing/camp-portrait-hillside.jpg', alt: 'A camper rides past ranch buildings and hillside under a partly cloudy sky' },
+  { src: '/images/marketing/camp-road-group.jpg', alt: 'A group of campers rides single-file along a paved ranch road' },
+];
+
+const faqs = [
+  {
+    q: 'What should my child wear?',
+    a: 'Campers must wear long pants (jeans or leggings) and closed-toe shoes with a small heel (boots are ideal). We provide ASTM-approved helmets.',
+  },
+  {
+    q: 'Do they need prior riding experience?',
+    a: 'Not at all! Our camps are designed to accommodate all skill levels, from absolute beginners to more advanced riders.',
+  },
+  {
+    q: 'What should we pack for the day?',
+    a: 'Please pack a water bottle, sunscreen, and a packed lunch. Label all personal items.',
+  },
+  {
+    q: 'Is extended care available?',
+    a: 'Yes. Extended care is available until 3:00 PM for an additional charge and must be arranged in advance. Late pickups after 3:00 PM will incur a $50 fee.',
+  },
+  {
+    q: 'Is there a discount for siblings?',
+    a: 'Yes, we offer a 5% sibling discount for families registering more than one child from the same household for the same week.',
+  },
+];
 ---
 
 <SiteLayout metadata={metadata}>
-  <!-- Hero Section -->
-  <Hero
-    tagline="Horse Camp in Poway, CA"
-    title="Kids Summer Camp"
-    subtitle="Give your child an unforgettable ranch experience filled with horsemanship, riding, and outdoor fun. Camps run weekdays from 8:00 AM to 1:00 PM, beginning June 1 through the end of July."
-    actions={[
-      { variant: 'primary', text: 'Book a Camp', href: BOOK_URL, target: '_blank' },
-      { text: 'Contact Us', href: '/contact/' },
-    ]}
-    image={{
-      src: '/images/marketing/camp-buddies-wave.jpg',
-      alt: 'Two campers ride side by side, one waving cheerfully',
-    }}
-  />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
 
-  <!-- Camp Details -->
-  <Content
-    title="What to Expect"
-    subtitle="Our comprehensive program covers all aspects of horse care and riding."
-    items={[
-      {
-        title: 'Daily Riding Lessons',
-        description:
-          'Campers receive daily instruction in the arena, focusing on balance, control, and basic riding skills.',
-        icon: 'tabler:horse',
-      },
-      {
-        title: 'Horsemanship & Care',
-        description:
-          'Kids learn how to groom, tack, feed, and properly care for horses, fostering a sense of responsibility.',
-        icon: 'tabler:heart',
-      },
-      {
-        title: 'Fun & Games',
-        description:
-          'We mix learning with fun! From mounted games to arts and crafts, every day brings a new adventure.',
-        icon: 'tabler:mood-smile',
-      },
-    ]}
-    image={{
-      src: '/images/marketing/camp-portrait-arena-1.jpg',
-      alt: 'A camper in a helmet poses on horseback in the riding arena',
-    }}
-  />
+  <!-- Hero -->
+  <section aria-label="Kids summer camp hero" class="relative flex items-end" style="height:80vh;min-height:560px;">
+    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center" style={`background-image:url(${heroImg});`}>
+      <div
+        class="absolute inset-0"
+        style="background:linear-gradient(to top, rgba(30,12,4,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);"
+      >
+      </div>
+    </div>
+    <div class="relative w-full max-w-[1400px] mx-auto px-6 lg:px-12 pb-16 lg:pb-24">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">Ride & Learn</div>
+      <h1
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7vw,80px);font-weight:300;line-height:1.1;max-width:720px;"
+      >
+        Kids Summer Camp
+      </h1>
+      <p class="text-white mb-8" style="font-size:18px;max-width:520px;opacity:0.88;line-height:1.7;">
+        Give your child an unforgettable ranch experience filled with horsemanship, riding, and outdoor fun. Camps
+        run weekdays from 8:00 AM to 1:00 PM, beginning June 1 through the end of July.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={BOOK_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 rounded-full transition-all hover:brightness-110"
+          style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+        >
+          Book a Camp <Icon name="tabler:arrow-right" class="w-4 h-4" />
+        </a>
+        <a
+          href="/contact/"
+          class="inline-flex items-center justify-center rounded-full border-2 transition-all hover:bg-white/10"
+          style="border-color:rgba(255,255,255,0.6);color:#ffffff;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
 
-  <!-- Photo strip -->
-  <section aria-label="Camp week in photos" class="grid sm:grid-cols-2">
-    <div
-      role="img"
-      aria-label="A camper rides through an arena obstacle course marked with orange cones"
-      class="h-[300px] bg-cover bg-center"
-      style="background-image:url(/images/marketing/camp-obstacle-cones.jpg);"
-    />
-    <div
-      role="img"
-      aria-label="A group of campers rides single-file along a paved ranch road"
-      class="h-[300px] bg-cover bg-center"
-      style="background-image:url(/images/marketing/camp-road-group.jpg);"
-    />
+  <!-- Quick facts -->
+  <section aria-label="Camp facts" class="px-6 lg:px-12 py-16 lg:py-20" style="background-color:#3b2314;">
+    <div class="max-w-[1100px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      {
+        facts.map((fact) => (
+          <div>
+            <div
+              class="mb-2"
+              style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,40px);font-weight:400;color:#c49a3c;"
+            >
+              {fact.value}
+            </div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.75);letter-spacing:0.05em;">{fact.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- What to expect -->
+  <section aria-label="What to expect at camp" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#f5f0e8;">
+    <div class="max-w-[800px] mx-auto text-center mb-16">
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">What to Expect</div>
+      <h2
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:400;color:#3b2314;line-height:1.25;"
+      >
+        A comprehensive week of horse care and riding.
+      </h2>
+    </div>
+    <div class="max-w-[1200px] mx-auto grid sm:grid-cols-2 gap-8 mb-16">
+      {
+        expect.map((item) => (
+          <div class="p-8 rounded-lg" style="background-color:#edeae0;">
+            <Icon name={item.icon} class="w-7 h-7 mb-4" style="color:#c49a3c;" />
+            <h3 class="mb-3" style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#3b2314;">
+              {item.title}
+            </h3>
+            <p style="font-size:15px;color:#2c2c2c;line-height:1.7;opacity:0.85;">{item.description}</p>
+          </div>
+        ))
+      }
+    </div>
+    <div class="max-w-[1200px] mx-auto grid sm:grid-cols-2 gap-6">
+      {
+        galleryTop.map((img) => (
+          <div role="img" aria-label={img.alt} class="h-[300px] rounded-lg bg-cover bg-center" style={`background-image:url(${img.src});`} />
+        ))
+      }
+    </div>
   </section>
 
   <!-- Pricing -->
-  <Pricing
-    title="Camp Pricing & Schedule"
-    subtitle="Weekly camps run weekdays, 8:00 AM to 1:00 PM, from June 1 through the end of July."
-    prices={[
-      {
-        title: 'Weekly Camp',
-        subtitle: 'A safe, structured, and engaging week at the ranch.',
-        price: '475',
-        period: '/ child / week',
-        items: [
-          { description: 'Weekdays, 8:00 AM - 1:00 PM' },
-          { description: 'Horseback riding & horse care' },
-          { description: 'Teamwork & confidence-building activities' },
-          { description: '5% sibling discount for multiple campers, same week' },
-        ],
-        callToAction: {
-          target: '_blank',
-          text: 'Book Camp',
-          href: BOOK_URL,
-        },
-      },
-    ]}
-  />
+  <section aria-label="Camp pricing and schedule" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#3b2314;">
+    <div class="max-w-[800px] mx-auto text-center mb-14">
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Camp Pricing & Schedule</div>
+      <h2
+        class="text-white"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:300;line-height:1.2;"
+      >
+        Weekly camps, weekdays 8 AM to 1 PM, June 1 through end of July.
+      </h2>
+    </div>
+    <div class="max-w-[560px] mx-auto p-10 rounded-lg text-center" style="background-color:#4a2e1a;">
+      <h3 class="mb-1" style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#fff;">
+        Weekly Camp
+      </h3>
+      <p class="mb-6" style="font-size:14px;color:rgba(255,255,255,0.65);">
+        A safe, structured, and engaging week at the ranch.
+      </p>
+      <div class="mb-8">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:400;color:#c49a3c;">$475</span>
+        <span style="font-size:14px;color:rgba(255,255,255,0.65);"> / child / week</span>
+      </div>
+      <ul class="mb-8 space-y-3 text-left max-w-[320px] mx-auto">
+        <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Weekdays, 8:00 AM – 1:00 PM
+        </li>
+        <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Horseback riding & horse care
+        </li>
+        <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Teamwork & confidence-building activities
+        </li>
+        <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />5% sibling discount, same week
+        </li>
+      </ul>
+      <a
+        href={BOOK_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-full w-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+      >
+        Book Camp
+      </a>
+    </div>
+  </section>
 
-  <!-- FAQs -->
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Everything you need to know to prepare for camp."
-    items={[
+  <!-- Camp week in photos -->
+  <section aria-label="Camp week in photos" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#f5f0e8;">
+    <div class="max-w-[800px] mx-auto text-center mb-12">
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Camp Week</div>
+      <h2
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,40px);font-weight:400;color:#3b2314;line-height:1.25;"
+      >
+        A week that builds lifelong friendships.
+      </h2>
+    </div>
+    <div class="max-w-[1200px] mx-auto grid sm:grid-cols-3 gap-6">
       {
-        title: 'What should my child wear?',
-        description:
-          'Campers must wear long pants (jeans or leggings) and closed-toe shoes with a small heel (boots are ideal). We provide ASTM-approved helmets.',
-      },
+        galleryBottom.map((img) => (
+          <div role="img" aria-label={img.alt} class="h-[260px] rounded-lg bg-cover bg-center" style={`background-image:url(${img.src});`} />
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section aria-label="Camp questions" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#3b2314;">
+    <div class="max-w-[800px] mx-auto text-center mb-14">
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Frequently Asked Questions</div>
+      <h2
+        class="text-white"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:300;line-height:1.2;"
+      >
+        Everything you need to know to prepare for camp.
+      </h2>
+    </div>
+    <div class="max-w-[900px] mx-auto grid sm:grid-cols-2 gap-8">
       {
-        title: 'Do they need prior riding experience?',
-        description:
-          'Not at all! Our camps are designed to accommodate all skill levels, from absolute beginners to more advanced riders.',
-      },
-      {
-        title: 'What should we pack for the day?',
-        description: 'Please pack a water bottle, sunscreen, and a packed lunch. Label all personal items.',
-      },
-      {
-        title: 'Is extended care available?',
-        description:
-          'Yes. Extended care is available until 3:00 PM for an additional charge and must be arranged in advance. Late pickups after 3:00 PM will incur a $50 fee.',
-      },
-      {
-        title: 'Is there a discount for siblings?',
-        description:
-          'Yes, we offer a 5% sibling discount for families registering more than one child from the same household for the same week.',
-      },
-    ]}
-  />
+        faqs.map((item) => (
+          <div>
+            <h3 class="mb-2" style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:#c49a3c;">
+              {item.q}
+            </h3>
+            <p style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.7;">{item.a}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section aria-label="Book camp" class="px-6 lg:px-12 py-20 lg:py-24 text-center" style="background-color:#f5f0e8;">
+    <div class="max-w-[640px] mx-auto">
+      <div class="uppercase tracking-[0.2em] mb-5" style="font-size:11px;color:#8a9e7b;">Save Their Spot</div>
+      <h2
+        class="mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:400;color:#3b2314;line-height:1.2;"
+      >
+        Spots fill up fast every summer.
+      </h2>
+      <p class="mb-10" style="font-size:16px;color:#2c2c2c;line-height:1.8;opacity:0.8;">
+        Reserve your child's week now — check live availability and book online.
+      </p>
+      <a
+        href={BOOK_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+      >
+        Book a Camp <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+  </section>
 </SiteLayout>
