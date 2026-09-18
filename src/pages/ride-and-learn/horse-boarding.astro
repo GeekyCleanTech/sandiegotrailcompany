@@ -24,8 +24,6 @@ const structuredData = {
   areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
 };
 
-const heroImg = '/images/marketing/horses-dusk-path.jpg';
-
 const facts = [
   { value: '64', label: 'Full-care stalls' },
   { value: '5', label: 'Arenas & round pens' },
@@ -63,13 +61,20 @@ const included = [
   </Fragment>
 
   <!-- Hero -->
-  <section aria-label="Horse boarding hero" class="relative flex items-end" style="height:70vh;min-height:480px;">
-    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center" style={`background-image:url(${heroImg});`}>
-      <div
-        class="absolute inset-0"
-        style="background:linear-gradient(to top, rgba(30,12,4,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);"
-      >
-      </div>
+  <section aria-label="Horse boarding hero" class="relative flex items-end overflow-hidden" style="height:70vh;min-height:480px;">
+    <video
+      aria-hidden="true"
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover"
+      src="/videos/horse-boarding-hero.mp4"></video>
+    <div
+      aria-hidden="true"
+      class="absolute inset-0"
+      style="background:linear-gradient(to top, rgba(30,12,4,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);"
+    >
     </div>
     <div class="relative w-full max-w-[1400px] mx-auto px-6 lg:px-12 pb-16 lg:pb-24">
       <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">Ride & Learn</div>
