@@ -37,7 +37,7 @@ const services = [
       'Our signature backcountry trail rides wind through the golden hills and chaparral canyons of Poway. Small groups of six or fewer, led by experienced guides who know every ridge and ravine.',
     details: ['1–2 hour ride options', 'Groups of 6 or fewer', 'All equipment provided', 'Ages 7+'],
     href: '/ride-and-learn/horseback-riding/',
-    media: { type: 'video', src: '/videos/canyon-trail-rides.mp4' },
+    media: { type: 'video', src: '/videos/canyon-trail-rides.mp4', objectPosition: 'top' },
   },
   {
     id: 'lessons',
@@ -165,6 +165,7 @@ const services = [
                 loop
                 playsinline
                 class="absolute inset-0 w-full h-full object-cover"
+                style={`object-position:${service.media.objectPosition || 'center'};`}
                 src={service.media.src}
               />
             )}
