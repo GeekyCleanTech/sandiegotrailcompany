@@ -6,16 +6,16 @@ import ServiceCard from '~/components/sdtc/ServiceCard.astro';
 const BOOK_URL = '/contact/';
 
 const metadata = {
-  title: 'Stay & Celebrate – Ranch Stays, Glamping, Weddings & Events in Poway, CA',
+  title: 'Stay & Celebrate – Ranch Stays, Birthday Parties, Weddings & Events in Poway, CA',
   description:
-    'Book ranch-style vacation home stays, yurt stays, dude ranch experiences, kids birthday parties, country weddings, and corporate team-building retreats at San Diego Trail Company in Poway, CA.',
+    'Book ranch-style vacation home stays, dude ranch experiences, kids birthday parties, country weddings, and corporate team-building retreats at San Diego Trail Company in Poway, CA.',
 };
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Stay & Celebrate – San Diego Trail Company',
-  description: 'Ranch stays, glamping, weddings, birthday parties, and team-building events in Poway, CA.',
+  description: 'Ranch stays, birthday parties, weddings, and team-building events in Poway, CA.',
   provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://www.sandiegotrailcompany.com' },
   areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
 };
@@ -28,6 +28,14 @@ const airbnbPhotos = [
   '/images/marketing/airbnb-carousel/airbnb-5.jpg',
   '/images/marketing/airbnb-carousel/airbnb-6.jpg',
   '/images/marketing/airbnb-carousel/airbnb-7.jpg',
+];
+
+const weddingPhotos = [
+  '/images/marketing/wedding-carousel/wedding-1.jpg',
+  '/images/marketing/wedding-carousel/wedding-2.jpg',
+  '/images/marketing/wedding-carousel/wedding-3.jpg',
+  '/images/marketing/wedding-carousel/wedding-4.jpg',
+  '/images/marketing/wedding-carousel/wedding-5.jpg',
 ];
 
 const hospitality = [
@@ -47,19 +55,15 @@ const hospitality = [
     image: airbnbPhotos,
   },
   {
-    id: 'glamping',
-    label: 'Glamping',
-    title: 'Yurts Under the Stars',
+    id: 'birthday',
+    label: 'Kids Birthday Party',
+    title: 'Pony Rides & Ranch Parties',
     description:
-      'Stay close to the land in a furnished yurt, with the comfort of a thoughtfully prepared overnight retreat and the quiet of the Poway backcountry outside your door.',
-    details: [
-      'Furnished yurt stays',
-      'Comfortable beds and lighting',
-      'Outdoor dining and campfire settings',
-      'Seasonal availability',
-    ],
-    href: '/contact/',
-    image: '/images/stay-yurt.jpg',
+      "Give your child a birthday they'll talk about for years. Pony rides, themed ranch games, and wide open space make for an unforgettable celebration that no indoor venue can match.",
+    details: ['Pony ride stations', 'Themed ranch decorations', 'Up to 30 guests', 'Weekends available'],
+    href: '/stay-and-celebrate/kids-birthday-party/',
+    image:
+      'https://images.unsplash.com/photo-1515203675075-e88c2b5600e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxraWRzJTIwaG9yc2UlMjBjYW1wJTIwY2hpbGRyZW4lMjBwb255JTIwcmlkaW5nfGVufDF8fHx8MTc4MDgzMjYwOHww&ixlib=rb-4.1.0&q=80&w=1080',
   },
   {
     id: 'dude-ranch',
@@ -80,17 +84,6 @@ const hospitality = [
 
 const events = [
   {
-    id: 'birthday',
-    label: 'Kids Birthday Party',
-    title: 'Pony Rides & Ranch Parties',
-    description:
-      "Give your child a birthday they'll talk about for years. Pony rides, themed ranch games, and wide open space make for an unforgettable celebration that no indoor venue can match.",
-    details: ['Pony ride stations', 'Themed ranch decorations', 'Up to 30 guests', 'Weekends available'],
-    href: '/stay-and-celebrate/kids-birthday-party/',
-    image:
-      'https://images.unsplash.com/photo-1515203675075-e88c2b5600e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxraWRzJTIwaG9yc2UlMjBjYW1wJTIwY2hpbGRyZW4lMjBwb255JTIwcmlkaW5nfGVufDF8fHx8MTc4MDgzMjYwOHww&ixlib=rb-4.1.0&q=80&w=1080',
-  },
-  {
     id: 'wedding',
     label: 'Ranch Wedding',
     title: 'Country Weddings Under Open Sky',
@@ -103,7 +96,7 @@ const events = [
       'Sunset golden-hour timing',
     ],
     href: '/contact/',
-    image: '/images/marketing/wedding-arch-ocean-view.jpg',
+    image: weddingPhotos,
   },
   {
     id: 'teambuilding',
@@ -153,8 +146,8 @@ const events = [
         Stay & Celebrate
       </h1>
       <p class="text-white mb-8" style="font-size:18px;max-width:520px;opacity:0.88;line-height:1.7;">
-        Ranch hospitality that matches the magic of the land. From yurt stays under stars to elegant country weddings
-        and team retreats — celebrate life's moments in open air.
+        Ranch hospitality that matches the magic of the land. From ranch stays and kids' birthday parties to elegant
+        country weddings and team retreats — celebrate life's moments in open air.
       </p>
       <a
         href={BOOK_URL}
@@ -181,7 +174,7 @@ const events = [
         Wake up where the horses graze.
       </h2>
       <p style="font-size:18px;color:#2c2c2c;line-height:1.8;opacity:0.85;">
-        Our ranch accommodations include a ranch-style vacation home and furnished yurts, plus full dude-ranch
+        Our ranch accommodations include a ranch-style vacation home, kids' birthday parties, and full dude-ranch
         immersion. Every option puts you at the heart of the Poway backcountry, moments from the trail.
       </p>
     </div>
