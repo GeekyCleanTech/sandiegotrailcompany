@@ -9,6 +9,7 @@ import CustomStyles from '~/components/CustomStyles.astro';
 import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
 import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
+import ConsentDefault from '~/components/common/ConsentDefault.astro';
 import GoogleTagManager from '~/components/common/GoogleTagManager.astro';
 import GoogleTagManagerNoscript from '~/components/common/GoogleTagManagerNoscript.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
@@ -27,6 +28,7 @@ const { language, textDirection } = I18N;
 <html lang={language} dir={textDirection} class="2xl:text-[20px]">
   <head>
     <CommonMeta />
+    <ConsentDefault />
     <GoogleTagManager />
     <Favicons />
     <CustomStyles />
