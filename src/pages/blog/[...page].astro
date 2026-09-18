@@ -1,0 +1,217 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPathsOptions } from 'astro';
+import SiteLayout from '~/layouts/SiteLayout.astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = (await getCollection('post', ({ data }) => !data.draft)).sort(
+    (a, b) => (b.data.publishDate?.valueOf() ?? 0) - (a.data.publishDate?.valueOf() ?? 0)
+  );
+  return paginate(posts, { pageSize: 9 });
+}
+
+const { page } = Astro.props;
+const posts = page.data;
+
+// Full index (all posts, every page) for client-side search — small enough to inline.
+const allPosts = (await getCollection('post', ({ data }) => !data.draft))
+  .sort((a, b) => (b.data.publishDate?.valueOf() ?? 0) - (a.data.publishDate?.valueOf() ?? 0))
+  .map((post) => ({
+    url: `/blog/${post.id}/`,
+    title: post.data.title,
+    excerpt: post.data.excerpt ?? '',
+    category: post.data.category ?? '',
+    image: post.data.image ?? '',
+    date: fmtDate(post.data.publishDate),
+  }));
+
+function fmtDate(d?: Date) {
+  return d ? new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+}
+
+const metadata = {
+  title: page.currentPage > 1 ? `Journal – Page ${page.currentPage}` : 'Journal',
+  description:
+    'Stories, guides, and news from San Diego Trail Company — trail rides, ranch life, and our horse rescue mission in Poway, CA.',
+  robots: { index: page.currentPage === 1, follow: true },
+};
+
+const pageNumbers = Array.from({ length: page.lastPage }, (_, i) => i + 1);
+---
+
+<SiteLayout metadata={metadata}>
+  <!-- Header band (dark so the transparent nav stays readable) -->
+  <section class="px-6 lg:px-12 pt-32 pb-16 lg:pt-40 lg:pb-20" style="background-color:#3b2314;">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">The Journal</div>
+      <h1
+        class="text-white mb-5"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7vw,72px);font-weight:300;line-height:1.05;"
+      >
+        Stories from the Ranch
+      </h1>
+      <p class="text-white mb-8" style="font-size:18px;opacity:0.82;max-width:560px;line-height:1.7;">
+        Guides for first-time riders, notes from the trail, and the horses behind our rescue mission.
+      </p>
+
+      <div class="relative max-w-[420px]">
+        <input
+          id="blog-search"
+          type="search"
+          placeholder="Search articles…"
+          aria-label="Search articles"
+          class="w-full rounded-full outline-none"
+          style="height:46px;padding:0 20px;font-size:15px;background-color:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Post grid -->
+  <section class="px-6 lg:px-12 py-16 lg:py-24" style="background-color:#f5f0e8;">
+    <div class="max-w-[1200px] mx-auto">
+      <p id="search-status" class="mb-8 hidden" style="font-size:14px;color:#8a9e7b;"></p>
+
+      <div id="paged-view">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {
+            posts.map((post) => (
+              <article class="flex flex-col">
+                <a href={`/blog/${post.id}/`} class="block group" style="text-decoration:none;">
+                  {post.data.image && (
+                    <div
+                      class="w-full h-[220px] bg-cover bg-center rounded-lg mb-5"
+                      style={`background-image:url(${post.data.image});`}
+                    />
+                  )}
+                  {post.data.category && (
+                    <div class="uppercase tracking-[0.15em] mb-3" style="font-size:11px;color:#8a9e7b;">
+                      {post.data.category}
+                    </div>
+                  )}
+                  <h2
+                    class="mb-3 group-hover:text-[#c49a3c] transition-colors"
+                    style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#3b2314;line-height:1.2;"
+                  >
+                    {post.data.title}
+                  </h2>
+                  {post.data.excerpt && (
+                    <p class="mb-4" style="font-size:15px;color:#2c2c2c;line-height:1.7;opacity:0.85;">
+                      {post.data.excerpt}
+                    </p>
+                  )}
+                  <div style="font-size:12px;color:#8a9e7b;letter-spacing:0.05em;">
+                    {fmtDate(post.data.publishDate)}
+                  </div>
+                </a>
+              </article>
+            ))
+          }
+        </div>
+
+        {posts.length === 0 && <p style="color:#2c2c2c;">No posts yet — check back soon.</p>}
+
+        {
+          page.lastPage > 1 && (
+            <nav aria-label="Journal pagination" class="flex items-center justify-center gap-2 mt-16">
+              <a
+                href={page.url.prev ?? '#'}
+                aria-disabled={!page.url.prev}
+                class="inline-flex items-center justify-center rounded-full transition-all hover:brightness-110"
+                style={`width:40px;height:40px;background-color:${page.url.prev ? '#3b2314' : '#e2dccf'};color:${page.url.prev ? '#fff' : '#a89f8f'};text-decoration:none;pointer-events:${page.url.prev ? 'auto' : 'none'};`}
+              >
+                ←
+              </a>
+              {pageNumbers.map((n) => (
+                <a
+                  href={n === 1 ? '/blog/' : `/blog/${n}/`}
+                  class="inline-flex items-center justify-center rounded-full transition-all"
+                  style={`width:40px;height:40px;font-size:14px;text-decoration:none;background-color:${n === page.currentPage ? '#c49a3c' : 'transparent'};color:${n === page.currentPage ? '#3b2314' : '#3b2314'};border:1px solid ${n === page.currentPage ? '#c49a3c' : 'rgba(59,35,20,0.2)'};`}
+                >
+                  {n}
+                </a>
+              ))}
+              <a
+                href={page.url.next ?? '#'}
+                aria-disabled={!page.url.next}
+                class="inline-flex items-center justify-center rounded-full transition-all hover:brightness-110"
+                style={`width:40px;height:40px;background-color:${page.url.next ? '#3b2314' : '#e2dccf'};color:${page.url.next ? '#fff' : '#a89f8f'};text-decoration:none;pointer-events:${page.url.next ? 'auto' : 'none'};`}
+              >
+                →
+              </a>
+            </nav>
+          )
+        }
+      </div>
+
+      <div id="search-results" class="hidden grid md:grid-cols-2 lg:grid-cols-3 gap-10"></div>
+      <p id="no-results" class="hidden" style="color:#2c2c2c;">
+        No articles matched your search.
+      </p>
+    </div>
+  </section>
+</SiteLayout>
+
+<script type="application/json" id="all-posts-data" set:html={JSON.stringify(allPosts)} />
+
+<script>
+  const input = document.getElementById('blog-search') as HTMLInputElement;
+  const pagedView = document.getElementById('paged-view');
+  const searchResults = document.getElementById('search-results');
+  const noResults = document.getElementById('no-results');
+  const searchStatus = document.getElementById('search-status');
+  const dataEl = document.getElementById('all-posts-data');
+
+  type IndexedPost = { url: string; title: string; excerpt: string; category: string; image: string; date: string };
+  const allPosts: IndexedPost[] = dataEl ? JSON.parse(dataEl.textContent || '[]') : [];
+
+  function cardHTML(post: IndexedPost) {
+    const image = post.image
+      ? `<div class="w-full h-[220px] bg-cover bg-center rounded-lg mb-5" style="background-image:url(${post.image});"></div>`
+      : '';
+    const category = post.category
+      ? `<div class="uppercase tracking-[0.15em] mb-3" style="font-size:11px;color:#8a9e7b;">${post.category}</div>`
+      : '';
+    const excerpt = post.excerpt
+      ? `<p class="mb-4" style="font-size:15px;color:#2c2c2c;line-height:1.7;opacity:0.85;">${post.excerpt}</p>`
+      : '';
+    return `<article class="flex flex-col"><a href="${post.url}" class="block group" style="text-decoration:none;">${image}${category}<h2 class="mb-3 group-hover:text-[#c49a3c] transition-colors" style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#3b2314;line-height:1.2;">${post.title}</h2>${excerpt}<div style="font-size:12px;color:#8a9e7b;letter-spacing:0.05em;">${post.date}</div></a></article>`;
+  }
+
+  function runSearch(query: string) {
+    const q = query.trim().toLowerCase();
+
+    if (!q) {
+      pagedView?.classList.remove('hidden');
+      searchResults?.classList.add('hidden');
+      noResults?.classList.add('hidden');
+      searchStatus?.classList.add('hidden');
+      return;
+    }
+
+    const matches = allPosts.filter((post) =>
+      [post.title, post.excerpt, post.category].some((field) => field.toLowerCase().includes(q))
+    );
+
+    pagedView?.classList.add('hidden');
+
+    if (searchStatus) {
+      searchStatus.textContent = `${matches.length} article${matches.length === 1 ? '' : 's'} matching “${query.trim()}”`;
+      searchStatus.classList.remove('hidden');
+    }
+
+    if (matches.length === 0) {
+      searchResults?.classList.add('hidden');
+      noResults?.classList.remove('hidden');
+      return;
+    }
+
+    noResults?.classList.add('hidden');
+    if (searchResults) {
+      searchResults.innerHTML = matches.map(cardHTML).join('');
+      searchResults.classList.remove('hidden');
+    }
+  }
+
+  input?.addEventListener('input', () => runSearch(input.value));
+</script>
