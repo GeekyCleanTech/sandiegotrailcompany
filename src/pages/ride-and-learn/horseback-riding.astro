@@ -20,8 +20,6 @@ const structuredData = {
   areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
 };
 
-const heroImg = '/images/marketing/bluff-rider-lake-view.jpg';
-
 const facts = [
   { value: '6 or fewer', label: 'Riders per guided group' },
   { value: '30–90 min', label: 'Trail ride options' },
@@ -37,7 +35,7 @@ const rideWays = [
     description:
       'Our signature backcountry rides wind through the golden hills and chaparral canyons of Poway. 30-minute, 1-hour, and 1.5-hour options starting at $65 per person, in groups of six or fewer, with all equipment provided. Ages 7 and up.',
     details: ['30, 60 & 90-minute options', 'Groups of 6 or fewer', 'All equipment provided', 'Ages 7+'],
-    image: '/images/marketing/creek-crossing-rider.jpg',
+    video: '/videos/guided-horse-rides.mp4',
   },
   {
     id: 'lessons',
@@ -46,7 +44,7 @@ const rideWays = [
     description:
       "Private and small-group lessons and monthly programs starting at $110. We work with beginner adults, so no previous horse experience is necessary — lessons include riding instruction, grooming and tacking, groundwork, and hands-on horse care.",
     details: ['Private & small-group formats', 'Beginner adults welcome', 'Monthly programs available'],
-    image: '/images/marketing/arena-rail-portrait-1.jpg',
+    video: '/videos/for-all-ages-horseback.mp4',
   },
 ];
 
@@ -123,13 +121,20 @@ const faqs = [
   </Fragment>
 
   <!-- Hero -->
-  <section aria-label="Horseback riding hero" class="relative flex items-end" style="height:80vh;min-height:560px;">
-    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center" style={`background-image:url(${heroImg});`}>
-      <div
-        class="absolute inset-0"
-        style="background:linear-gradient(to top, rgba(30,12,4,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);"
-      >
-      </div>
+  <section aria-label="Horseback riding hero" class="relative flex items-end overflow-hidden" style="height:80vh;min-height:560px;">
+    <video
+      aria-hidden="true"
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover"
+      src="/videos/horseback-riding-hero.mp4"></video>
+    <div
+      aria-hidden="true"
+      class="absolute inset-0"
+      style="background:linear-gradient(to top, rgba(30,12,4,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);"
+    >
     </div>
     <div class="relative w-full max-w-[1400px] mx-auto px-6 lg:px-12 pb-16 lg:pb-24">
       <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">Ride & Learn</div>
@@ -190,11 +195,19 @@ const faqs = [
       rideWays.map((way, index) => (
         <article aria-label={way.title} class={`grid lg:grid-cols-2 ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
           <div
-            role="img"
-            aria-label={`${way.title} – scenic photo`}
-            class={`h-[380px] lg:h-auto bg-cover bg-center ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}
-            style={`background-image:url(${way.image});min-height:400px;`}
-          />
+            class={`relative h-[380px] lg:h-auto overflow-hidden ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}
+            style="min-height:400px;"
+          >
+            <video
+              aria-hidden="true"
+              autoplay
+              muted
+              loop
+              playsinline
+              class="absolute inset-0 w-full h-full object-cover"
+              src={way.video}
+            />
+          </div>
           <div
             class={`px-8 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center ${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}
             style={`background-color:${index % 2 === 0 ? '#f5f0e8' : '#edeae0'};`}
@@ -236,12 +249,14 @@ const faqs = [
       </h2>
     </div>
     <div class="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-0 rounded-lg overflow-hidden" style="background-color:#edeae0;">
-      <div
-        role="img"
-        aria-label="Horses being led down a dirt path between ranch buildings at dusk"
-        class="h-[320px] lg:h-auto bg-cover bg-center"
-        style="background-image:url(/images/marketing/horses-dusk-path.jpg);"
-      />
+      <video
+        aria-hidden="true"
+        autoplay
+        muted
+        loop
+        playsinline
+        class="h-[320px] lg:h-auto w-full object-cover"
+        src="/videos/respecting-the-horses.mp4"></video>
       <div class="p-8 lg:p-12 grid sm:grid-cols-1 gap-8">
         {
           whyRide.map((item) => (
