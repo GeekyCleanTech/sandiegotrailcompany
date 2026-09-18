@@ -8,50 +8,71 @@ const metadata = {
   // The brand suffix is appended by metadata.title.template in config.yaml.
   title: 'Kids Summer Camp',
   description:
-    'Enroll your kids in our summer horse camp in Poway, CA. Weekdays 8 AM–1 PM, June through July. They will learn horsemanship, riding skills, and make lifelong friends in a safe, fun environment.',
+    'Camps at the Ranch: a hands-on week of horseback riding, horsemanship, and outdoor adventure for kids in Poway, CA. Small groups, experienced instructors, ages 6–17.',
 };
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Kids Summer Camp – San Diego Trail Company',
+  name: 'Camps at the Ranch – San Diego Trail Company',
   description: 'Weekday summer horse camp for kids in Poway, CA — riding, horsemanship, and ranch life.',
   provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://www.sandiegotrailcompany.com' },
   areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
 };
 
 const facts = [
+  { value: 'Ages 6–17', label: 'Welcoming beginners to advanced riders' },
+  { value: '20 Campers', label: 'Max group size, per session' },
   { value: 'Jun–Jul', label: 'Weekly camp season' },
-  { value: '8–1', label: 'Weekdays, 8 AM to 1 PM' },
   { value: 'Til 3 PM', label: 'Extended care available' },
-  { value: '5%', label: 'Sibling discount, same week' },
 ];
 
 const expect = [
   {
     title: 'Daily Riding Lessons',
-    description:
-      'Campers receive daily instruction in the arena, focusing on balance, control, and basic riding skills.',
+    description: 'Every camper saddles up daily, with instruction focused on balance, control, and confidence in the arena.',
     icon: 'tabler:horse',
   },
   {
     title: 'Horsemanship & Care',
-    description:
-      'Kids learn how to groom, tack, feed, and properly care for horses, fostering a sense of responsibility.',
+    description: 'Grooming, tacking, and groundwork — kids learn to handle a horse from the ground up, not just ride one.',
     icon: 'tabler:heart',
   },
   {
-    title: 'Fun & Games',
-    description:
-      'We mix learning with fun! From mounted games to arts and crafts, every day brings a new adventure.',
-    icon: 'tabler:mood-smile',
+    title: 'Equine Education',
+    description: 'Horse anatomy, behavior, and safety, taught in a way that sticks — because understanding the horse is half the ride.',
+    icon: 'tabler:book',
   },
   {
-    title: 'Teamwork & Confidence',
-    description:
-      'Small groups and rotating stations build confidence in the saddle and camaraderie on the ground.',
-    icon: 'tabler:users',
+    title: 'Trail Walks & Scavenger Hunts',
+    description: 'Nature hikes and scavenger hunts get campers exploring the backcountry beyond the arena fence.',
+    icon: 'tabler:map-pin',
   },
+  {
+    title: 'Arts & Crafts',
+    description: 'Horse-themed craft projects round out the day with a creative outlet after the riding boots come off.',
+    icon: 'tabler:palette',
+  },
+  {
+    title: 'Games & Movement',
+    description: 'Mounted games, stretching, and simple balance exercises keep the energy up and the week feeling like camp.',
+    icon: 'tabler:mood-smile',
+  },
+];
+
+const bringChecklist = [
+  'Packed lunch, snacks, and a labeled water bottle',
+  'Riding boots — closed-toe with a small heel (any closed-toe shoe works if boots aren’t on hand)',
+  'Comfortable riding clothes — jeans or riding pants recommended',
+  'Sunscreen and a hat',
+  'An extra change of clothes (optional, but a good idea)',
+];
+
+const goodToKnow = [
+  { text: 'Helmets are provided — riders just need their own boots.', icon: 'tabler:shield-check' },
+  { text: 'No riding experience needed. We match every camper to a horse suited to their skill level.', icon: 'tabler:sparkles' },
+  { text: 'A signed waiver must be on file before camp begins.', icon: 'tabler:file-check' },
+  { text: 'A 200 lb weight limit applies for horseback riding.', icon: 'tabler:scale' },
 ];
 
 const galleryTop = [
@@ -67,24 +88,36 @@ const galleryBottom = [
 
 const faqs = [
   {
-    q: 'What should my child wear?',
-    a: 'Campers must wear long pants (jeans or leggings) and closed-toe shoes with a small heel (boots are ideal). We provide ASTM-approved helmets.',
-  },
-  {
     q: 'Do they need prior riding experience?',
-    a: 'Not at all! Our camps are designed to accommodate all skill levels, from absolute beginners to more advanced riders.',
+    a: 'Not at all — beginners are welcome. We match each camper with a horse suited to their skill level and provide step-by-step instruction all week.',
   },
   {
-    q: 'What should we pack for the day?',
-    a: 'Please pack a water bottle, sunscreen, and a packed lunch. Label all personal items.',
+    q: 'What should my child wear and bring?',
+    a: 'Closed-toe boots with a small heel, comfortable riding clothes, sunscreen, a hat, and a packed lunch with a labeled water bottle. Helmets are provided.',
+  },
+  {
+    q: 'Is there an age or weight limit?',
+    a: 'Camp welcomes riders ages 6–17. A 200 lb weight limit applies for horseback riding.',
+  },
+  {
+    q: 'How many campers are in each session?',
+    a: 'We cap each session at 20 campers to keep instruction personal and supervision easy.',
+  },
+  {
+    q: 'Can parents stay and watch?',
+    a: 'Parents are welcome to observe during drop-off and pick-up, but camp activities are designed for campers only.',
+  },
+  {
+    q: 'What happens if it rains?',
+    a: 'Camp continues with adjusted activities — indoor horse education, crafts, and games — and riding is modified for safety as needed.',
+  },
+  {
+    q: 'Is lunch provided?',
+    a: 'No — campers bring their own lunch, snacks, and water daily. Please label all personal items.',
   },
   {
     q: 'Is extended care available?',
-    a: 'Yes. Extended care is available until 3:00 PM for an additional charge and must be arranged in advance. Late pickups after 3:00 PM will incur a $50 fee.',
-  },
-  {
-    q: 'Is there a discount for siblings?',
-    a: 'Yes, we offer a 5% sibling discount for families registering more than one child from the same household for the same week.',
+    a: 'Yes. Extended care runs until 3:00 PM and must be arranged in advance; a late fee applies to pickups after 3:00 PM.',
   },
 ];
 ---
@@ -117,11 +150,11 @@ const faqs = [
         class="text-white mb-6"
         style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7vw,80px);font-weight:300;line-height:1.1;max-width:720px;"
       >
-        Kids Summer Camp
+        Camps at the Ranch
       </h1>
-      <p class="text-white mb-8" style="font-size:18px;max-width:520px;opacity:0.88;line-height:1.7;">
-        Give your child an unforgettable ranch experience filled with horsemanship, riding, and outdoor fun. Camps
-        run weekdays from 8:00 AM to 1:00 PM, beginning June 1 through the end of July.
+      <p class="text-white mb-8" style="font-size:18px;max-width:560px;opacity:0.88;line-height:1.7;">
+        A fun, hands-on week of riding, horsemanship, and outdoor adventure that builds confidence, skills, and
+        teamwork at the ranch. Camps run weekdays, beginning June 1 through the end of July.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a
@@ -152,7 +185,7 @@ const faqs = [
           <div>
             <div
               class="mb-2"
-              style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,40px);font-weight:400;color:#c49a3c;"
+              style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);font-weight:400;color:#c49a3c;"
             >
               {fact.value}
             </div>
@@ -168,12 +201,19 @@ const faqs = [
     <div class="max-w-[800px] mx-auto text-center mb-16">
       <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">What to Expect</div>
       <h2
+        class="mb-6"
         style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:400;color:#3b2314;line-height:1.25;"
       >
-        A comprehensive week of horse care and riding.
+        Give your child a summer they'll never forget.
       </h2>
+      <p style="font-size:17px;color:#2c2c2c;line-height:1.8;opacity:0.85;max-width:680px;margin:0 auto;">
+        Our week-long camps combine horseback riding, horsemanship, and outdoor fun in a safe, structured, and
+        supportive setting. Campers learn the foundations of horse care, grooming, tacking, and groundwork, while
+        also building confidence, responsibility, and teamwork — with a mix of riding, hands-on education, and
+        classic camp activities every single day.
+      </p>
     </div>
-    <div class="max-w-[1200px] mx-auto grid sm:grid-cols-2 gap-8 mb-16">
+    <div class="max-w-[1200px] mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
       {
         expect.map((item) => (
           <div class="p-8 rounded-lg" style="background-color:#edeae0;">
@@ -195,6 +235,50 @@ const faqs = [
     </div>
   </section>
 
+  <!-- What to bring / Good to know -->
+  <section aria-label="What to bring and good to know" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#edeae0;">
+    <div class="max-w-[1100px] mx-auto grid lg:grid-cols-2 gap-12">
+      <div>
+        <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">What to Bring</div>
+        <h2
+          class="mb-6"
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,34px);font-weight:400;color:#3b2314;line-height:1.25;"
+        >
+          Pack light, pack smart.
+        </h2>
+        <ul class="space-y-4">
+          {
+            bringChecklist.map((item) => (
+              <li class="flex items-start gap-3" style="font-size:15px;color:#2c2c2c;line-height:1.6;opacity:0.9;">
+                <Icon name="tabler:circle-check" class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:#c49a3c;" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Good to Know</div>
+        <h2
+          class="mb-6"
+          style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,34px);font-weight:400;color:#3b2314;line-height:1.25;"
+        >
+          A few things to plan around.
+        </h2>
+        <ul class="space-y-4">
+          {
+            goodToKnow.map((item) => (
+              <li class="flex items-start gap-3" style="font-size:15px;color:#2c2c2c;line-height:1.6;opacity:0.9;">
+                <Icon name={item.icon} class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:#c49a3c;" />
+                {item.text}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- Camp week -->
   <section aria-label="Camp schedule" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#3b2314;">
     <div class="max-w-[800px] mx-auto text-center mb-14">
@@ -203,7 +287,7 @@ const faqs = [
         class="text-white"
         style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:300;line-height:1.2;"
       >
-        Weekly camps, weekdays 8 AM to 1 PM, June 1 through end of July.
+        Weekly camps, June 1 through the end of July.
       </h2>
     </div>
     <div class="max-w-[560px] mx-auto p-10 rounded-lg text-center" style="background-color:#4a2e1a;">
@@ -213,15 +297,18 @@ const faqs = [
       <p class="mb-8" style="font-size:14px;color:rgba(255,255,255,0.65);">
         A safe, structured, and engaging week at the ranch.
       </p>
-      <ul class="mb-8 space-y-3 text-left max-w-[320px] mx-auto">
+      <ul class="mb-8 space-y-3 text-left max-w-[340px] mx-auto">
         <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
-          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Weekdays, 8:00 AM – 1:00 PM
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Drop-off from 7:45 AM · Pick-up at 1:00 PM
         </li>
         <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
-          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Horseback riding & horse care
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Ages 6–17, capped at 20 campers
         </li>
         <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
-          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Teamwork & confidence-building activities
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Horseback riding, horsemanship & equine education
+        </li>
+        <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Extended care available until 3:00 PM
         </li>
         <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
           <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />5% sibling discount, same week
