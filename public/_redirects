@@ -57,8 +57,12 @@
 /for-sale                              /give-and-support/               301
 /sitemap/                              /sitemap-index.xml               301
 /sitemap                               /sitemap-index.xml               301
-# /shop/ (gift certificates) and /privacy-policy/ are real pages now —
-# no rules needed. Cloudflare Pages serves the static page directly.
+# /shop/ (gift certificates) is a real page now — no rule needed.
+# Cloudflare Pages serves the static page directly.
+
+# --- Privacy policy moved under Contact (Sep 2026) -----------------------
+/privacy-policy/                        /contact/privacy-policy/        301
+/privacy-policy                         /contact/privacy-policy/        301
 
 # --- Service area hub + duplicate legacy prefixes (found via GSC 404s, Aug 2026) ---
 /service-area/                          /ride-and-learn/                 301
