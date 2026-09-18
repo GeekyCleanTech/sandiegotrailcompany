@@ -1,0 +1,160 @@
+---
+import { Icon } from 'astro-icon/components';
+import SiteLayout from '~/layouts/SiteLayout.astro';
+
+const CONTACT_URL = '/contact/';
+
+const metadata = {
+  title: 'Corporate Retreats & Team Building in San Diego',
+  description:
+    'Horse-powered leadership retreats and team building in Poway, CA — 30 minutes from downtown San Diego. Half-day and full-day programs, facilitated debriefs, teams up to 40.',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Corporate Retreats & Team Building – San Diego Trail Company',
+  description:
+    'Equine-assisted corporate retreats and team-building programs on a working ranch in Poway, CA.',
+  provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://www.sandiegotrailcompany.com' },
+  areaServed: { '@type': 'City', name: 'San Diego', addressRegion: 'CA' },
+};
+
+const heroImg = '/images/sdtc/leadership-retreats.jpg';
+
+const facts = [
+  { value: '40', label: 'Participants per team' },
+  { value: '30 min', label: 'From downtown San Diego' },
+  { value: 'Half & Full', label: 'Day program options' },
+  { value: '1', label: 'Working ranch venue' },
+];
+
+const included = [
+  {
+    title: 'Horse-powered team building',
+    description: 'Horses respond to presence, not titles — equine-led exercises that build real trust between teammates.',
+    icon: 'tabler:horse',
+  },
+  {
+    title: 'Facilitated debrief sessions',
+    description: 'Half-day and full-day programs, each with a facilitated debrief so the lessons carry back to the office.',
+    icon: 'tabler:users',
+  },
+  {
+    title: 'Custom group activities',
+    description: "Programs are built around your team's size and goals, on a working ranch 30 minutes from downtown San Diego.",
+    icon: 'tabler:adjustments',
+  },
+  {
+    title: 'Teams up to 40 people',
+    description: 'From small leadership groups to full department offsites, up to 40 participants per program.',
+    icon: 'tabler:users-group',
+  },
+];
+---
+
+<SiteLayout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section aria-label="Corporate retreats hero" class="relative flex items-end" style="height:70vh;min-height:480px;">
+    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center" style={`background-image:url(${heroImg});`}>
+      <div
+        class="absolute inset-0"
+        style="background:linear-gradient(to top, rgba(30,12,4,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);"
+      >
+      </div>
+    </div>
+    <div class="relative w-full max-w-[1400px] mx-auto px-6 lg:px-12 pb-16 lg:pb-24">
+      <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">Stay & Celebrate</div>
+      <h1
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6.5vw,72px);font-weight:300;line-height:1.1;max-width:760px;"
+      >
+        Corporate Retreats & Team Building
+      </h1>
+      <p class="text-white mb-8" style="font-size:18px;max-width:560px;opacity:0.88;line-height:1.7;">
+        Horse-powered leadership retreats on a working ranch in Poway, CA — a team offsite that actually sticks.
+      </p>
+      <a
+        href={CONTACT_URL}
+        class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+      >
+        Request Retreat Pricing <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick facts -->
+  <section aria-label="Corporate retreat facts" class="px-6 lg:px-12 py-16 lg:py-20" style="background-color:#3b2314;">
+    <div class="max-w-[1100px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      {
+        facts.map((fact) => (
+          <div>
+            <div
+              class="mb-2"
+              style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,44px);font-weight:400;color:#c49a3c;"
+            >
+              {fact.value}
+            </div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.75);letter-spacing:0.05em;">{fact.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- What's included -->
+  <section aria-label="What a corporate retreat includes" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#f5f0e8;">
+    <div class="max-w-[800px] mx-auto text-center mb-16">
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Leadership Retreats</div>
+      <h2
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:400;color:#3b2314;line-height:1.25;"
+      >
+        A team offsite that actually sticks.
+      </h2>
+    </div>
+    <div class="max-w-[1100px] mx-auto grid sm:grid-cols-2 gap-8">
+      {
+        included.map((item) => (
+          <div class="p-8 rounded-lg" style="background-color:#edeae0;">
+            <Icon name={item.icon} class="w-7 h-7 mb-4" style="color:#c49a3c;" />
+            <h3 class="mb-3" style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#3b2314;">
+              {item.title}
+            </h3>
+            <p style="font-size:15px;color:#2c2c2c;line-height:1.7;opacity:0.85;">{item.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Inquire -->
+  <section aria-label="Request retreat pricing" class="px-6 lg:px-12 py-20 lg:py-24 text-center" style="background-color:#3b2314;">
+    <div class="max-w-[640px] mx-auto">
+      <div class="uppercase tracking-[0.2em] mb-5" style="font-size:11px;color:#8a9e7b;">Get In Touch</div>
+      <h2
+        class="text-white mb-6"
+        style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:300;line-height:1.2;"
+      >
+        Ready to build your program?
+      </h2>
+      <p class="mb-10" style="font-size:16px;color:rgba(255,255,255,0.75);line-height:1.8;">
+        Send us your dates and headcount and we'll build a tailored quote for your team.
+      </p>
+      <a
+        href={CONTACT_URL}
+        class="inline-flex items-center gap-2 rounded-full transition-all hover:brightness-110"
+        style="background-color:#c49a3c;color:#3b2314;font-size:13px;font-weight:500;height:48px;padding-left:32px;padding-right:32px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;"
+      >
+        Request Retreat Pricing <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </a>
+      <p class="mt-6" style="font-size:13px;color:rgba(255,255,255,0.5);">
+        858-748-6441 · 14875 Mina De Oro, Poway, CA 92064
+      </p>
+    </div>
+  </section>
+</SiteLayout>
