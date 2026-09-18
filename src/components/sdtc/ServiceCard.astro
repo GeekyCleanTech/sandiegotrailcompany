@@ -8,22 +8,36 @@ export interface Props {
     description: string;
     details: string[];
     href: string;
-    image: string;
+    image: string | string[];
   };
   flip?: boolean;
   shade?: boolean;
 }
 
 const { service, flip = false, shade = false } = Astro.props;
+const images = Array.isArray(service.image) ? service.image : [service.image];
+const cycleSeconds = images.length * 4;
 ---
 
 <article aria-label={service.title} class={`grid lg:grid-cols-2 ${flip ? 'lg:grid-flow-dense' : ''}`}>
   <div
     role="img"
-    aria-label={`${service.title} – photo`}
-    class={`h-[360px] lg:h-auto bg-cover bg-center ${flip ? 'lg:col-start-2' : ''}`}
-    style={`background-image:url(${service.image});min-height:380px;`}
+    aria-label={`${service.title} – photo${images.length > 1 ? ' slideshow' : ''}`}
+    class={`relative h-[360px] lg:h-auto overflow-hidden ${flip ? 'lg:col-start-2' : ''}`}
+    style="min-height:380px;"
   >
+    {
+      images.length > 1 ? (
+        images.map((src, i) => (
+          <div
+            class="carousel-fade absolute inset-0 bg-cover bg-center"
+            style={`background-image:url(${src});animation-duration:${cycleSeconds}s;animation-delay:${-(i * 4)}s;`}
+          />
+        ))
+      ) : (
+        <div class="absolute inset-0 bg-cover bg-center" style={`background-image:url(${images[0]});`} />
+      )
+    }
   </div>
   <div
     class={`px-8 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center ${flip ? 'lg:col-start-1 lg:row-start-1' : ''}`}
@@ -58,3 +72,28 @@ const { service, flip = false, shade = false } = Astro.props;
     </a>
   </div>
 </article>
+
+<style>
+  .carousel-fade {
+    animation-name: carouselFade;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes carouselFade {
+    0% {
+      opacity: 0;
+    }
+    4% {
+      opacity: 1;
+    }
+    16% {
+      opacity: 1;
+    }
+    20% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
