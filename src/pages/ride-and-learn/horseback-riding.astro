@@ -33,7 +33,7 @@ const rideWays = [
     label: 'Trail & Scenic Riding',
     title: 'Guided Canyon Trail Rides',
     description:
-      'Our signature backcountry rides wind through the golden hills and chaparral canyons of Poway. 30-minute, 1-hour, and 1.5-hour options starting at $65 per person, in groups of six or fewer, with all equipment provided. Ages 7 and up.',
+      'Our signature backcountry rides wind through the golden hills and chaparral canyons of Poway. Choose a 30-minute, 1-hour, or 1.5-hour route, ridden in groups of six or fewer, with all equipment provided. Ages 7 and up.',
     details: ['30, 60 & 90-minute options', 'Groups of 6 or fewer', 'All equipment provided', 'Ages 7+'],
     video: '/videos/guided-horse-rides.mp4',
   },
@@ -42,7 +42,7 @@ const rideWays = [
     label: 'Horse Lessons',
     title: 'Riding Lessons for All Levels',
     description:
-      "Private and small-group lessons and monthly programs starting at $110. We work with beginner adults, so no previous horse experience is necessary — lessons include riding instruction, grooming and tacking, groundwork, and hands-on horse care.",
+      "Private and small-group lessons and monthly programs for beginner adults — no previous horse experience is necessary. Lessons include riding instruction, grooming and tacking, groundwork, and hands-on horse care.",
     details: ['Private & small-group formats', 'Beginner adults welcome', 'Monthly programs available'],
     video: '/videos/for-all-ages-horseback.mp4',
   },
@@ -69,22 +69,36 @@ const whyRide = [
   },
 ];
 
-const trailPrices = [
-  { title: '30-Minute Ride', subtitle: 'Every day of the week', price: '65', period: '/ person' },
-  { title: '1-Hour Ride', subtitle: 'Weekdays (Mon–Thu)', price: '110', period: '/ person' },
-  { title: '1-Hour Ride', subtitle: 'Weekends (Fri–Sun)', price: '125', period: '/ person' },
-  { title: '1.5-Hour Ride', subtitle: 'Weekdays (Mon–Thu)', price: '165', period: '/ person' },
-  { title: '1.5-Hour Ride', subtitle: 'Weekends (Fri–Sun)', price: '167.50', period: '/ person' },
-  { title: 'Pony Rides', subtitle: 'Ages 2–6 · Mon, Thu & Fri, 10 AM', price: '40', period: '/ 30 min' },
+const rideOptions = [
+  {
+    title: '30-Minute Ride',
+    subtitle: 'Every day of the week',
+    description: 'A quick taste of the backcountry — perfect for first-timers or a shorter visit.',
+  },
+  {
+    title: '1-Hour Ride',
+    subtitle: 'Weekdays & weekends',
+    description: 'Our most popular route, with enough time to settle in and enjoy the canyon views.',
+  },
+  {
+    title: '1.5-Hour Ride',
+    subtitle: 'Weekdays & weekends',
+    description: 'Reaches the higher ridgelines for the full golden-hour canyon experience.',
+  },
+  {
+    title: 'Pony Rides',
+    subtitle: 'Ages 2–6 · Mon, Thu & Fri, 10 AM',
+    description: 'A gentle, led introduction to horses for the youngest riders in the family.',
+  },
 ];
 
-const lessonPrices = [
-  { title: 'Single Lesson', subtitle: 'Try it out or ride occasionally', price: '110', period: '/ lesson' },
-  { title: '1 Day / Week', subtitle: '1 ride + horsemanship instruction', price: '300', period: '/ month' },
-  { title: '2 Days / Week', subtitle: 'Tue & Thu — ride + horsemanship', price: '300', period: '/ month' },
-  { title: '3 Days / Week', subtitle: 'Mon, Wed & Fri — 1 ride per week', price: '415', period: '/ month' },
-  { title: '4 Days / Week', subtitle: 'Mon–Thu — 2 rides per week', price: '490', period: '/ month' },
-  { title: '5 Days / Week', subtitle: 'Mon–Fri — 2 rides per week', price: '540', period: '/ month' },
+const lessonOptions = [
+  { title: 'Single Lesson', subtitle: 'Try it out or ride occasionally' },
+  { title: '1 Day / Week', subtitle: '1 ride + horsemanship instruction' },
+  { title: '2 Days / Week', subtitle: 'Tue & Thu — ride + horsemanship' },
+  { title: '3 Days / Week', subtitle: 'Mon, Wed & Fri — 1 ride per week' },
+  { title: '4 Days / Week', subtitle: 'Mon–Thu — 2 rides per week' },
+  { title: '5 Days / Week', subtitle: 'Mon–Fri — 2 rides per week' },
 ];
 
 const faqs = [
@@ -273,31 +287,26 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Trail ride pricing -->
-  <section aria-label="Trail ride pricing" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#3b2314;">
+  <!-- Ride options -->
+  <section aria-label="Ride options" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#3b2314;">
     <div class="max-w-[800px] mx-auto text-center mb-14">
-      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Trail Ride Pricing</div>
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Ride Options</div>
       <h2
         class="text-white"
         style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:300;line-height:1.2;"
       >
-        For ages 7 and up. Maximum rider weight is 220 lbs.
+        Pick the length that fits your day.
       </h2>
     </div>
-    <div class="max-w-[1200px] mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="max-w-[1200px] mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {
-        trailPrices.map((price) => (
+        rideOptions.map((option) => (
           <div class="p-8 rounded-lg text-center" style="background-color:#4a2e1a;">
             <h3 class="mb-1" style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#fff;">
-              {price.title}
+              {option.title}
             </h3>
-            <p class="mb-6" style="font-size:13px;color:rgba(255,255,255,0.6);">{price.subtitle}</p>
-            <div class="mb-6">
-              <span style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:400;color:#c49a3c;">
-                ${price.price}
-              </span>
-              <span style="font-size:13px;color:rgba(255,255,255,0.6);"> {price.period}</span>
-            </div>
+            <p class="mb-4" style="font-size:13px;color:rgba(255,255,255,0.6);">{option.subtitle}</p>
+            <p class="mb-6" style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.6;">{option.description}</p>
             <a
               href={BOOK_URL}
               target="_blank"
@@ -350,30 +359,24 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Lesson pricing -->
-  <section aria-label="Lesson and program pricing" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#f5f0e8;">
+  <!-- Lesson formats -->
+  <section aria-label="Lesson and program formats" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#f5f0e8;">
     <div class="max-w-[800px] mx-auto text-center mb-14">
-      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Lesson & Program Pricing</div>
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Lesson & Program Formats</div>
       <h2
         style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:400;color:#3b2314;line-height:1.2;"
       >
-        Once enrolled, additional rides are $35 each.
+        From an occasional ride to a full weekly program.
       </h2>
     </div>
     <div class="max-w-[1200px] mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {
-        lessonPrices.map((price) => (
+        lessonOptions.map((option) => (
           <div class="p-8 rounded-lg text-center" style="background-color:#edeae0;">
             <h3 class="mb-1" style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#3b2314;">
-              {price.title}
+              {option.title}
             </h3>
-            <p class="mb-6" style="font-size:13px;color:#2c2c2c;opacity:0.7;">{price.subtitle}</p>
-            <div class="mb-6">
-              <span style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:400;color:#3b2314;">
-                ${price.price}
-              </span>
-              <span style="font-size:13px;color:#2c2c2c;opacity:0.7;"> {price.period}</span>
-            </div>
+            <p class="mb-6" style="font-size:14px;color:#2c2c2c;opacity:0.75;">{option.subtitle}</p>
             <a
               href="/contact/"
               class="inline-flex items-center justify-center rounded-full w-full border-2 transition-all hover:bg-[#3b2314] hover:text-white"
