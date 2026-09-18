@@ -26,8 +26,8 @@ const metadata = {
       { text: 'Contact Us', href: '/contact/' },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1628043689405-b07db35be6b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraWRzJTIwaG9yc2V8ZW58MXx8fHwxNzgxNjI4MTEzfDA&ixlib=rb-4.1.0&q=80&w=1080',
-      alt: 'Kids having fun at horse camp',
+      src: '/images/marketing/camp-buddies-wave.jpg',
+      alt: 'Two campers ride side by side, one waving cheerfully',
     }}
   />
 
@@ -56,10 +56,26 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1553531580-652231e34e2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxob3JzZWJhY2slMjBsZXNzb258ZW58MXx8fHwxNzgxNjI4MTEwfDA&ixlib=rb-4.1.0&q=80&w=1080',
-      alt: 'Child learning to ride a horse',
+      src: '/images/marketing/camp-portrait-arena-1.jpg',
+      alt: 'A camper in a helmet poses on horseback in the riding arena',
     }}
   />
+
+  <!-- Photo strip -->
+  <section aria-label="Camp week in photos" class="grid sm:grid-cols-2">
+    <div
+      role="img"
+      aria-label="A camper rides through an arena obstacle course marked with orange cones"
+      class="h-[300px] bg-cover bg-center"
+      style="background-image:url(/images/marketing/camp-obstacle-cones.jpg);"
+    />
+    <div
+      role="img"
+      aria-label="A group of campers rides single-file along a paved ranch road"
+      class="h-[300px] bg-cover bg-center"
+      style="background-image:url(/images/marketing/camp-road-group.jpg);"
+    />
+  </section>
 
   <!-- Pricing -->
   <Pricing

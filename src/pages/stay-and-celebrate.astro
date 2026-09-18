@@ -34,7 +34,7 @@ const hospitality = [
       'Couples & family rates',
     ],
     href: '/contact/',
-    image: '/images/sdtc/rustic-ranch-home.jpg',
+    image: '/images/marketing/living-room-fireplace-nook.jpg',
   },
   {
     id: 'glamping',
@@ -93,8 +93,7 @@ const events = [
       'Sunset golden-hour timing',
     ],
     href: '/contact/',
-    image:
-      'https://images.unsplash.com/photo-1768179123386-a86a85f1c35c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxyYW5jaCUyMHdlZGRpbmclMjBnbGFtcGluZyUyMGx1eHVyeSUyMHRlbnQlMjBvdXRkb29yfGVufDF8fHx8MTc4MDgzMjYwMHww&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/images/marketing/wedding-arch-ocean-view.jpg',
   },
   {
     id: 'teambuilding',
@@ -207,6 +206,22 @@ const events = [
   <!-- Events cards -->
   <section aria-label="Event options" style="background-color:#f5f0e8;">
     {events.map((s, i) => <ServiceCard service={s} flip={i % 2 === 0} shade={i % 2 === 1} />)}
+  </section>
+
+  <!-- Photo strip -->
+  <section aria-label="Ranch home highlights" class="grid sm:grid-cols-2">
+    <div
+      role="img"
+      aria-label="Backyard pool and attached round hot tub framed by wood pergolas"
+      class="h-[320px] bg-cover bg-center"
+      style="background-image:url(/images/marketing/pool-hot-tub-pergolas.jpg);"
+    />
+    <div
+      role="img"
+      aria-label="Kitchen with granite counters, stainless appliances, and white cabinetry"
+      class="h-[320px] bg-cover bg-center"
+      style="background-image:url(/images/marketing/kitchen-granite-main.jpg);"
+    />
   </section>
 
   <!-- Cross-sell -->
