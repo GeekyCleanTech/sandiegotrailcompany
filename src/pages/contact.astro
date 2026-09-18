@@ -214,6 +214,8 @@ const inputStyle =
           if (json.success) {
             form.reset();
             show('Thanks — your message is on its way. We’ll be in touch soon.', true);
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: 'contact_form_submit' });
           } else {
             show(json.message || 'Something went wrong. Please try again or email us directly.', false);
           }
