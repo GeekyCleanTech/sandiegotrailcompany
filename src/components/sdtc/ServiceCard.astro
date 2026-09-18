@@ -8,26 +8,37 @@ export interface Props {
     description: string;
     details: string[];
     href: string;
-    image: string | string[];
+    image?: string | string[];
+    video?: string;
   };
   flip?: boolean;
   shade?: boolean;
 }
 
 const { service, flip = false, shade = false } = Astro.props;
-const images = Array.isArray(service.image) ? service.image : [service.image];
+const images = service.image ? (Array.isArray(service.image) ? service.image : [service.image]) : [];
 const cycleSeconds = images.length * 4;
 ---
 
 <article aria-label={service.title} class={`grid lg:grid-cols-2 ${flip ? 'lg:grid-flow-dense' : ''}`}>
   <div
     role="img"
-    aria-label={`${service.title} – photo${images.length > 1 ? ' slideshow' : ''}`}
+    aria-label={`${service.title} – ${service.video ? 'video' : images.length > 1 ? 'photo slideshow' : 'photo'}`}
     class={`relative h-[360px] lg:h-auto overflow-hidden ${flip ? 'lg:col-start-2' : ''}`}
     style="min-height:380px;"
   >
     {
-      images.length > 1 ? (
+      service.video ? (
+        <video
+          aria-hidden="true"
+          autoplay
+          muted
+          loop
+          playsinline
+          class="absolute inset-0 w-full h-full object-cover"
+          src={service.video}
+        />
+      ) : images.length > 1 ? (
         images.map((src, i) => (
           <div
             class="carousel-fade absolute inset-0 bg-cover bg-center"
