@@ -19,6 +19,15 @@ const structuredData = {
   areaServed: { '@type': 'City', name: 'Poway', addressRegion: 'CA' },
 };
 
+const kidsCampPhotos = [
+  '/images/marketing/kids-camp-carousel/kids-camp-1.jpg',
+  '/images/marketing/kids-camp-carousel/kids-camp-2.jpg',
+  '/images/marketing/kids-camp-carousel/kids-camp-3.jpg',
+  '/images/marketing/kids-camp-carousel/kids-camp-4.jpg',
+  '/images/marketing/kids-camp-carousel/kids-camp-5.jpg',
+];
+const kidsCampCycleSeconds = kidsCampPhotos.length * 4;
+
 const services = [
   {
     id: 'trail-riding',
@@ -28,7 +37,7 @@ const services = [
       'Our signature backcountry trail rides wind through the golden hills and chaparral canyons of Poway. Small groups of six or fewer, led by experienced guides who know every ridge and ravine.',
     details: ['1–2 hour ride options', 'Groups of 6 or fewer', 'All equipment provided', 'Ages 7+'],
     href: '/ride-and-learn/horseback-riding/',
-    image: '/images/marketing/bluff-rider-lake-view.jpg',
+    media: { type: 'video', src: '/videos/canyon-trail-rides.mp4' },
   },
   {
     id: 'lessons',
@@ -38,7 +47,7 @@ const services = [
       "Private and small-group lessons taught by certified instructors. Whether you've never touched a stirrup or you're working on advanced horsemanship, we meet you where you are.",
     details: ['Private & group formats', 'All skill levels welcome', 'Ongoing programs available'],
     href: '/ride-and-learn/horseback-riding/',
-    image: '/images/marketing/arena-rail-portrait-2.jpg',
+    media: { type: 'video', src: '/videos/for-all-ages.mp4' },
   },
   {
     id: 'kids-camps',
@@ -53,7 +62,7 @@ const services = [
       'Extended care available until 3:00 PM',
     ],
     href: '/ride-and-learn/kids-camps/',
-    image: '/images/ride-kids-camps.png',
+    media: { type: 'carousel', images: kidsCampPhotos },
   },
   {
     id: 'equus-coaching',
@@ -68,7 +77,7 @@ const services = [
       'Corporate & personal programs',
     ],
     href: '/ride-and-learn/equus-coaching/',
-    image: '/images/sdtc/equine-assisted-growth.png',
+    media: { type: 'image', src: '/images/sdtc/equine-assisted-growth.png' },
   },
 ];
 ---
@@ -145,11 +154,39 @@ const services = [
           class={`grid lg:grid-cols-2 ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}
         >
           <div
-            role="img"
-            aria-label={`${service.title} – scenic photo`}
-            class={`h-[380px] lg:h-auto bg-cover bg-center ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}
-            style={`background-image:url(${service.image});min-height:400px;`}
-          />
+            class={`relative h-[380px] lg:h-auto overflow-hidden ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}
+            style="min-height:400px;"
+          >
+            {service.media.type === 'video' && (
+              <video
+                aria-hidden="true"
+                autoplay
+                muted
+                loop
+                playsinline
+                class="absolute inset-0 w-full h-full object-cover"
+                src={service.media.src}
+              />
+            )}
+            {service.media.type === 'image' && (
+              <div
+                role="img"
+                aria-label={`${service.title} – scenic photo`}
+                class="absolute inset-0 bg-cover bg-center"
+                style={`background-image:url(${service.media.src});`}
+              />
+            )}
+            {service.media.type === 'carousel' && (
+              <div role="img" aria-label={`${service.title} – photo slideshow`} class="absolute inset-0">
+                {service.media.images.map((src, i) => (
+                  <div
+                    class="carousel-fade absolute inset-0 bg-cover bg-center"
+                    style={`background-image:url(${src});animation-duration:${kidsCampCycleSeconds}s;animation-delay:${-(i * 4)}s;`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
           <div
             class={`px-8 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center ${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}
             style={`background-color:${index % 2 === 0 ? '#f5f0e8' : '#edeae0'};`}
@@ -215,3 +252,28 @@ const services = [
     </div>
   </section>
 </SiteLayout>
+
+<style>
+  .carousel-fade {
+    animation-name: carouselFade;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes carouselFade {
+    0% {
+      opacity: 0;
+    }
+    4% {
+      opacity: 1;
+    }
+    16% {
+      opacity: 1;
+    }
+    20% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
