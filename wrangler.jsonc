@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "sandiegotrailcompany",
+  "compatibility_date": "2026-10-21",
+
+  // Assets-only Worker. There is no "main" field and no Astro Cloudflare
+  // adapter, because astro.config.ts sets output: 'static' — every page is
+  // prerendered at build time, so no Worker script is needed to serve them.
+  //
+  // Adding an adapter would flip Astro to output: 'server' and move all 26
+  // pages to on-demand rendering. Do not add one unless this site actually
+  // needs SSR.
+  "assets": {
+    "directory": "./dist",
+
+    // Serves the prerendered src/pages/404.astro on a miss. Without this,
+    // unmatched routes return a bare Workers 404 instead of the site's own
+    // 404 page.
+    "not_found_handling": "404-page",
+  },
+
+  "observability": {
+    "enabled": true,
+  },
+}
