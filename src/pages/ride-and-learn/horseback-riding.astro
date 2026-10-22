@@ -42,7 +42,7 @@ const rideWays = [
     label: 'Horse Lessons',
     title: 'Riding Lessons for All Levels',
     description:
-      "Private and small-group lessons and monthly programs for beginner adults — no previous horse experience is necessary. Lessons include riding instruction, grooming and tacking, groundwork, and hands-on horse care.",
+      'Private and small-group lessons and monthly programs for beginner adults — no previous horse experience is necessary. Lessons include riding instruction, grooming and tacking, groundwork, and hands-on horse care.',
     details: ['Private & small-group formats', 'Beginner adults welcome', 'Monthly programs available'],
     video: '/videos/for-all-ages-horseback.mp4',
   },
@@ -135,7 +135,11 @@ const faqs = [
   </Fragment>
 
   <!-- Hero -->
-  <section aria-label="Horseback riding hero" class="relative flex items-end overflow-hidden" style="height:80vh;min-height:560px;">
+  <section
+    aria-label="Horseback riding hero"
+    class="relative flex items-end overflow-hidden"
+    style="height:80vh;min-height:560px;"
+  >
     <video
       aria-hidden="true"
       autoplay
@@ -159,9 +163,8 @@ const faqs = [
         Horseback Riding in San Diego
       </h1>
       <p class="text-white mb-8" style="font-size:18px;max-width:560px;opacity:0.88;line-height:1.7;">
-        Ride the golden hills and chaparral canyons of the Poway backcountry. Small groups, patient horses, and
-        guides who know every ridge and ravine — whether it's your first time in the saddle or your five
-        hundredth.
+        Ride the golden hills and chaparral canyons of the Poway backcountry. Small groups, patient horses, and guides
+        who know every ridge and ravine — whether it's your first time in the saddle or your five hundredth.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a
@@ -253,7 +256,11 @@ const faqs = [
   </section>
 
   <!-- Why ride with us -->
-  <section aria-label="Why ride with San Diego Trail Company" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#f5f0e8;">
+  <section
+    aria-label="Why ride with San Diego Trail Company"
+    class="px-6 lg:px-12 py-20 lg:py-28"
+    style="background-color:#f5f0e8;"
+  >
     <div class="max-w-[800px] mx-auto text-center mb-16">
       <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Why Ride With Us</div>
       <h2
@@ -262,7 +269,10 @@ const faqs = [
         A ride that respects the horse and the rider.
       </h2>
     </div>
-    <div class="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-0 rounded-lg overflow-hidden" style="background-color:#edeae0;">
+    <div
+      class="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-0 rounded-lg overflow-hidden"
+      style="background-color:#edeae0;"
+    >
       <video
         aria-hidden="true"
         autoplay
@@ -276,7 +286,10 @@ const faqs = [
           whyRide.map((item) => (
             <div>
               <Icon name={item.icon} class="w-6 h-6 mb-3" style="color:#c49a3c;" />
-              <h3 class="mb-2" style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:#3b2314;">
+              <h3
+                class="mb-2"
+                style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:#3b2314;"
+              >
                 {item.title}
               </h3>
               <p style="font-size:14px;color:#2c2c2c;line-height:1.7;opacity:0.85;">{item.description}</p>
@@ -305,8 +318,12 @@ const faqs = [
             <h3 class="mb-1" style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#fff;">
               {option.title}
             </h3>
-            <p class="mb-4" style="font-size:13px;color:rgba(255,255,255,0.6);">{option.subtitle}</p>
-            <p class="mb-6" style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.6;">{option.description}</p>
+            <p class="mb-4" style="font-size:13px;color:rgba(255,255,255,0.6);">
+              {option.subtitle}
+            </p>
+            <p class="mb-6" style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.6;">
+              {option.description}
+            </p>
             <a
               href={BOOK_URL}
               target="_blank"
@@ -329,8 +346,12 @@ const faqs = [
       aria-label="A companion shot of a woman and horses at the arena rail"
       class="h-[360px] lg:h-auto bg-cover bg-center lg:col-start-2"
       style="background-image:url(/images/marketing/arena-rail-portrait-2.jpg);min-height:400px;"
-    />
-    <div class="px-8 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center lg:col-start-1 lg:row-start-1" style="background-color:#f5f0e8;">
+    >
+    </div>
+    <div
+      class="px-8 lg:px-16 xl:px-20 py-16 lg:py-20 flex flex-col justify-center lg:col-start-1 lg:row-start-1"
+      style="background-color:#f5f0e8;"
+    >
       <div class="uppercase tracking-[0.2em] mb-4" style="font-size:11px;color:#8a9e7b;">Adult Riding Program</div>
       <h2
         class="mb-5"
@@ -339,28 +360,34 @@ const faqs = [
         Horsemanship Lessons for Adults
       </h2>
       <p style="font-size:16px;color:#2c2c2c;line-height:1.8;opacity:0.85;max-width:480px;" class="mb-6">
-        No previous experience necessary — we work with beginner adults every day. Learning to ride also means
-        learning how to confidently handle, understand, and care for a horse. Every program day offers two riding
-        groups, based on experience and horse availability, while non-riding days round out the program with
-        groundwork, grooming, tacking, horse anatomy, and ranch chores — so riders leave as well-rounded horse
-        people, not just riders.
+        No previous experience necessary — we work with beginner adults every day. Learning to ride also means learning
+        how to confidently handle, understand, and care for a horse. Every program day offers two riding groups, based
+        on experience and horse availability, while non-riding days round out the program with groundwork, grooming,
+        tacking, horse anatomy, and ranch chores — so riders leave as well-rounded horse people, not just riders.
       </p>
       <ul class="space-y-3">
         <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
-          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Groom, tack & groundwork
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;"></span>Groom, tack &
+          groundwork
         </li>
         <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
-          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Mounted instruction & confidence-building
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;"></span>Mounted
+          instruction & confidence-building
         </li>
         <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
-          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Untack & after-ride horse care
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;"></span>Untack &
+          after-ride horse care
         </li>
       </ul>
     </div>
   </section>
 
   <!-- Lesson formats -->
-  <section aria-label="Lesson and program formats" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#f5f0e8;">
+  <section
+    aria-label="Lesson and program formats"
+    class="px-6 lg:px-12 py-20 lg:py-28"
+    style="background-color:#f5f0e8;"
+  >
     <div class="max-w-[800px] mx-auto text-center mb-14">
       <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Lesson & Program Formats</div>
       <h2
@@ -373,10 +400,15 @@ const faqs = [
       {
         lessonOptions.map((option) => (
           <div class="p-8 rounded-lg text-center" style="background-color:#edeae0;">
-            <h3 class="mb-1" style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#3b2314;">
+            <h3
+              class="mb-1"
+              style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#3b2314;"
+            >
               {option.title}
             </h3>
-            <p class="mb-6" style="font-size:14px;color:#2c2c2c;opacity:0.75;">{option.subtitle}</p>
+            <p class="mb-6" style="font-size:14px;color:#2c2c2c;opacity:0.75;">
+              {option.subtitle}
+            </p>
             <a
               href="/contact/"
               class="inline-flex items-center justify-center rounded-full w-full border-2 transition-all hover:bg-[#3b2314] hover:text-white"
@@ -391,7 +423,11 @@ const faqs = [
   </section>
 
   <!-- FAQ -->
-  <section aria-label="Horseback riding questions" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#3b2314;">
+  <section
+    aria-label="Horseback riding questions"
+    class="px-6 lg:px-12 py-20 lg:py-28"
+    style="background-color:#3b2314;"
+  >
     <div class="max-w-[800px] mx-auto text-center mb-14">
       <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Questions</div>
       <h2
@@ -405,7 +441,10 @@ const faqs = [
       {
         faqs.map((item) => (
           <div>
-            <h3 class="mb-2" style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:#c49a3c;">
+            <h3
+              class="mb-2"
+              style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:#c49a3c;"
+            >
               {item.q}
             </h3>
             <p style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.7;">{item.a}</p>
