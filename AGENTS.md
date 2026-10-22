@@ -18,6 +18,34 @@ AstroWind is a free, open-source website template built with **Astro v6** and **
 
 **Node.js requirement:** >= 22.12.0
 
+## Deployment
+
+**Target: Cloudflare Pages.** This is the only deploy path. Netlify, Vercel, and
+Docker/nginx configs were removed — they were unused AstroWind template defaults
+and nothing referenced them.
+
+| Setting           | Value                              |
+| ----------------- | ---------------------------------- |
+| Build command     | `npm run build`                    |
+| Build output      | `dist`                             |
+| Node version      | 22 (`engines` requires >= 22.12.0) |
+| Astro output mode | `static` — no adapter needed       |
+
+Two files in `public/` are copied verbatim into `dist/` and are read by Cloudflare
+Pages at the edge. **Neither is generated — edit them by hand:**
+
+- **`public/_headers`** — sets `Cache-Control: public, max-age=31536000, immutable`
+  on `/_astro/*`. Astro fingerprints those filenames, so the long TTL is safe.
+  Losing this file silently degrades repeat-visit performance; nothing will error.
+- **`public/_redirects`** — the legacy WordPress URL map. ~40 301s preserving link
+  equity from the pre-Astro SiteGround site, plus the Sep 2026 restructure under
+  `ride-and-learn/` and `stay-and-celebrate/`. Several were added from Google Search
+  Console 404 reports. **Treat as SEO-load-bearing: deleting a rule re-breaks a URL
+  that currently resolves.** Add both trailing-slash and bare forms for new entries.
+
+`src/config.yaml` sets `trailingSlash: true`, so Astro emits `/about/index.html` and
+Pages serves it at `/about/` without extra configuration.
+
 ## Architecture
 
 ### Directory Structure
