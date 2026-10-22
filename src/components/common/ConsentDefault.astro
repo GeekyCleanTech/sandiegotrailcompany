@@ -1,6 +1,9 @@
 <script is:inline>
   window.dataLayer = window.dataLayer || [];
+  // Google's gtag shim must push the Arguments object itself; rest params push a plain
+  // Array, which gtag.js/GTM does not unpack the same way. Do not "modernize" this.
   function gtag() {
+    // eslint-disable-next-line prefer-rest-params
     dataLayer.push(arguments);
   }
   gtag('consent', 'default', {
