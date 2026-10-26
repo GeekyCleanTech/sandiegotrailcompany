@@ -26,4 +26,8 @@
   "observability": {
     "enabled": true,
   },
+
+  // Don't publish a public per-version/per-branch preview URL for every
+  // upload. The custom domain and the main *.workers.dev URL are unaffected.
+  "preview_urls": false,
 }
