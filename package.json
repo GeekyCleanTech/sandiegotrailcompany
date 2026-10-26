@@ -61,7 +61,8 @@
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.60.0"
+    "typescript-eslint": "^8.60.0",
+    "wrangler": "^4.152.0"
   },
   "overrides": {
     "yaml": ">=2.8.3",
