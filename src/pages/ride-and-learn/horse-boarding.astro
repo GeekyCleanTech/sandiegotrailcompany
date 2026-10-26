@@ -61,7 +61,11 @@ const included = [
   </Fragment>
 
   <!-- Hero -->
-  <section aria-label="Horse boarding hero" class="relative flex items-end overflow-hidden" style="height:70vh;min-height:480px;">
+  <section
+    aria-label="Horse boarding hero"
+    class="relative flex items-end overflow-hidden"
+    style="height:70vh;min-height:480px;"
+  >
     <video
       aria-hidden="true"
       autoplay
@@ -120,7 +124,11 @@ const included = [
   </section>
 
   <!-- What's included -->
-  <section aria-label="What full-care boarding includes" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#f5f0e8;">
+  <section
+    aria-label="What full-care boarding includes"
+    class="px-6 lg:px-12 py-20 lg:py-28"
+    style="background-color:#f5f0e8;"
+  >
     <div class="max-w-[800px] mx-auto text-center mb-16">
       <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Full-Care Boarding</div>
       <h2
@@ -134,7 +142,10 @@ const included = [
         included.map((item) => (
           <div class="p-8 rounded-lg" style="background-color:#edeae0;">
             <Icon name={item.icon} class="w-7 h-7 mb-4" style="color:#c49a3c;" />
-            <h3 class="mb-3" style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#3b2314;">
+            <h3
+              class="mb-3"
+              style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#3b2314;"
+            >
               {item.title}
             </h3>
             <p style="font-size:15px;color:#2c2c2c;line-height:1.7;opacity:0.85;">{item.description}</p>
@@ -148,17 +159,20 @@ const included = [
         aria-label="A woman stands at the arena rail beside two paint horses"
         class="h-[280px] rounded-lg bg-cover bg-center"
         style="background-image:url(/images/marketing/arena-rail-portrait-1.jpg);"
-      />
+      >
+      </div>
       <div
         role="img"
         aria-label="A companion shot of the same woman and horses at the arena rail"
         class="h-[280px] rounded-lg bg-cover bg-center"
         style="background-image:url(/images/marketing/arena-rail-portrait-2.jpg);"
-      />
+      >
+      </div>
     </div>
     <p class="text-center mt-12" style="font-size:14px;color:#2c2c2c;opacity:0.7;">
-      Plans range from self-muck lease board to full board with hay included — every plan can be tailored to your
-      horse.{' '}
+      Plans range from self-muck lease board to full board with hay included — every plan can be tailored to your horse.{
+        ' '
+      }
       <a href={BOARDING_URL} target="_blank" rel="noopener noreferrer" style="color:#c49a3c;text-decoration:underline;">
         See current boarding rates
       </a>.
@@ -166,7 +180,11 @@ const included = [
   </section>
 
   <!-- Inquire -->
-  <section aria-label="Inquire about boarding" class="px-6 lg:px-12 py-20 lg:py-24 text-center" style="background-color:#3b2314;">
+  <section
+    aria-label="Inquire about boarding"
+    class="px-6 lg:px-12 py-20 lg:py-24 text-center"
+    style="background-color:#3b2314;"
+  >
     <div class="max-w-[640px] mx-auto">
       <div class="uppercase tracking-[0.2em] mb-5" style="font-size:11px;color:#8a9e7b;">Get In Touch</div>
       <h2
@@ -208,14 +226,18 @@ const included = [
   </section>
 
   <!-- Two entities disclaimer -->
-  <section aria-label="About our affiliation with Poway Equestrian Center" class="px-6 lg:px-12 py-16 lg:py-20" style="background-color:#f5f0e8;">
+  <section
+    aria-label="About our affiliation with Poway Equestrian Center"
+    class="px-6 lg:px-12 py-16 lg:py-20"
+    style="background-color:#f5f0e8;"
+  >
     <div class="max-w-[720px] mx-auto text-center">
       <div class="uppercase tracking-[0.2em] mb-5" style="font-size:11px;color:#8a9e7b;">Please Note</div>
       <p style="font-size:15px;color:#2c2c2c;line-height:1.8;opacity:0.8;">
         San Diego Trail Company and Poway Equestrian Center are two separate, affiliated businesses sharing the same
-        Poway property. San Diego Trail Company offers guided trail rides, lessons, camps, and other experiences
-        where people and horses interact directly. Poway Equestrian Center is dedicated strictly to horse boarding
-        and care, with human contact limited to the horses' caretakers.
+        Poway property. San Diego Trail Company offers guided trail rides, lessons, camps, and other experiences where
+        people and horses interact directly. Poway Equestrian Center is dedicated strictly to horse boarding and care,
+        with human contact limited to the horses' caretakers.
       </p>
     </div>
   </section>

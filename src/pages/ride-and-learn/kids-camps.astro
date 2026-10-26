@@ -30,17 +30,20 @@ const facts = [
 const expect = [
   {
     title: 'Daily Riding Lessons',
-    description: 'Every camper saddles up daily, with instruction focused on balance, control, and confidence in the arena.',
+    description:
+      'Every camper saddles up daily, with instruction focused on balance, control, and confidence in the arena.',
     icon: 'tabler:horse',
   },
   {
     title: 'Horsemanship & Care',
-    description: 'Grooming, tacking, and groundwork — kids learn to handle a horse from the ground up, not just ride one.',
+    description:
+      'Grooming, tacking, and groundwork — kids learn to handle a horse from the ground up, not just ride one.',
     icon: 'tabler:heart',
   },
   {
     title: 'Equine Education',
-    description: 'Horse anatomy, behavior, and safety, taught in a way that sticks — because understanding the horse is half the ride.',
+    description:
+      'Horse anatomy, behavior, and safety, taught in a way that sticks — because understanding the horse is half the ride.',
     icon: 'tabler:book',
   },
   {
@@ -50,12 +53,14 @@ const expect = [
   },
   {
     title: 'Arts & Crafts',
-    description: 'Horse-themed craft projects round out the day with a creative outlet after the riding boots come off.',
+    description:
+      'Horse-themed craft projects round out the day with a creative outlet after the riding boots come off.',
     icon: 'tabler:palette',
   },
   {
     title: 'Games & Movement',
-    description: 'Mounted games, stretching, and simple balance exercises keep the energy up and the week feeling like camp.',
+    description:
+      'Mounted games, stretching, and simple balance exercises keep the energy up and the week feeling like camp.',
     icon: 'tabler:mood-smile',
   },
 ];
@@ -70,20 +75,38 @@ const bringChecklist = [
 
 const goodToKnow = [
   { text: 'Helmets are provided — riders just need their own boots.', icon: 'tabler:shield-check' },
-  { text: 'No riding experience needed. We match every camper to a horse suited to their skill level.', icon: 'tabler:sparkles' },
+  {
+    text: 'No riding experience needed. We match every camper to a horse suited to their skill level.',
+    icon: 'tabler:sparkles',
+  },
   { text: 'A signed waiver must be on file before camp begins.', icon: 'tabler:file-check' },
   { text: 'A 200 lb weight limit applies for horseback riding.', icon: 'tabler:scale' },
 ];
 
 const galleryTop = [
-  { src: '/images/marketing/camp-portrait-arena-1.jpg', alt: 'A camper in a helmet poses on horseback in the riding arena' },
-  { src: '/images/marketing/camp-obstacle-cones.jpg', alt: 'A camper rides through an arena obstacle course marked with orange cones' },
+  {
+    src: '/images/marketing/camp-portrait-arena-1.jpg',
+    alt: 'A camper in a helmet poses on horseback in the riding arena',
+  },
+  {
+    src: '/images/marketing/camp-obstacle-cones.jpg',
+    alt: 'A camper rides through an arena obstacle course marked with orange cones',
+  },
 ];
 
 const galleryBottom = [
-  { src: '/images/marketing/camp-arena-fog.jpg', alt: 'Two young campers ride single-file through a foggy arena at dawn' },
-  { src: '/images/marketing/camp-portrait-hillside.jpg', alt: 'A camper rides past ranch buildings and hillside under a partly cloudy sky' },
-  { src: '/images/marketing/camp-road-group.jpg', alt: 'A group of campers rides single-file along a paved ranch road' },
+  {
+    src: '/images/marketing/camp-arena-fog.jpg',
+    alt: 'Two young campers ride single-file through a foggy arena at dawn',
+  },
+  {
+    src: '/images/marketing/camp-portrait-hillside.jpg',
+    alt: 'A camper rides past ranch buildings and hillside under a partly cloudy sky',
+  },
+  {
+    src: '/images/marketing/camp-road-group.jpg',
+    alt: 'A group of campers rides single-file along a paved ranch road',
+  },
 ];
 
 const faqs = [
@@ -128,7 +151,11 @@ const faqs = [
   </Fragment>
 
   <!-- Hero -->
-  <section aria-label="Kids summer camp hero" class="relative flex items-end overflow-hidden" style="height:80vh;min-height:560px;">
+  <section
+    aria-label="Kids summer camp hero"
+    class="relative flex items-end overflow-hidden"
+    style="height:80vh;min-height:560px;"
+  >
     <video
       aria-hidden="true"
       autoplay
@@ -153,8 +180,8 @@ const faqs = [
         Camps at the Ranch
       </h1>
       <p class="text-white mb-8" style="font-size:18px;max-width:560px;opacity:0.88;line-height:1.7;">
-        A fun, hands-on week of riding, horsemanship, and outdoor adventure that builds confidence, skills, and
-        teamwork at the ranch. Camps run weekdays, beginning June 1 through the end of July.
+        A fun, hands-on week of riding, horsemanship, and outdoor adventure that builds confidence, skills, and teamwork
+        at the ranch. Camps run weekdays, beginning June 1 through the end of July.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a
@@ -208,9 +235,9 @@ const faqs = [
       </h2>
       <p style="font-size:17px;color:#2c2c2c;line-height:1.8;opacity:0.85;max-width:680px;margin:0 auto;">
         Our week-long camps combine horseback riding, horsemanship, and outdoor fun in a safe, structured, and
-        supportive setting. Campers learn the foundations of horse care, grooming, tacking, and groundwork, while
-        also building confidence, responsibility, and teamwork — with a mix of riding, hands-on education, and
-        classic camp activities every single day.
+        supportive setting. Campers learn the foundations of horse care, grooming, tacking, and groundwork, while also
+        building confidence, responsibility, and teamwork — with a mix of riding, hands-on education, and classic camp
+        activities every single day.
       </p>
     </div>
     <div class="max-w-[1200px] mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
@@ -218,7 +245,10 @@ const faqs = [
         expect.map((item) => (
           <div class="p-8 rounded-lg" style="background-color:#edeae0;">
             <Icon name={item.icon} class="w-7 h-7 mb-4" style="color:#c49a3c;" />
-            <h3 class="mb-3" style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#3b2314;">
+            <h3
+              class="mb-3"
+              style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#3b2314;"
+            >
               {item.title}
             </h3>
             <p style="font-size:15px;color:#2c2c2c;line-height:1.7;opacity:0.85;">{item.description}</p>
@@ -229,14 +259,23 @@ const faqs = [
     <div class="max-w-[1200px] mx-auto grid sm:grid-cols-2 gap-6">
       {
         galleryTop.map((img) => (
-          <div role="img" aria-label={img.alt} class="h-[300px] rounded-lg bg-cover bg-top" style={`background-image:url(${img.src});`} />
+          <div
+            role="img"
+            aria-label={img.alt}
+            class="h-[300px] rounded-lg bg-cover bg-top"
+            style={`background-image:url(${img.src});`}
+          />
         ))
       }
     </div>
   </section>
 
   <!-- What to bring / Good to know -->
-  <section aria-label="What to bring and good to know" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#edeae0;">
+  <section
+    aria-label="What to bring and good to know"
+    class="px-6 lg:px-12 py-20 lg:py-28"
+    style="background-color:#edeae0;"
+  >
     <div class="max-w-[1100px] mx-auto grid lg:grid-cols-2 gap-12">
       <div>
         <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">What to Bring</div>
@@ -299,19 +338,24 @@ const faqs = [
       </p>
       <ul class="mb-8 space-y-3 text-left max-w-[340px] mx-auto">
         <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
-          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Drop-off from 7:45 AM · Pick-up at 1:00 PM
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;"></span>Drop-off from
+          7:45 AM · Pick-up at 1:00 PM
         </li>
         <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
-          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Ages 6–17, capped at 20 campers
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;"></span>Ages 6–17,
+          capped at 20 campers
         </li>
         <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
-          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Horseback riding, horsemanship & equine education
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;"></span>Horseback
+          riding, horsemanship & equine education
         </li>
         <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
-          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />Extended care available until 3:00 PM
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;"></span>Extended care
+          available until 3:00 PM
         </li>
         <li class="flex items-center gap-3" style="font-size:15px;color:#8a9e7b;">
-          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;" />5% sibling discount, same week
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background-color:#c49a3c;"></span>5% sibling
+          discount, same week
         </li>
       </ul>
       <a
@@ -339,7 +383,12 @@ const faqs = [
     <div class="max-w-[1200px] mx-auto grid sm:grid-cols-3 gap-6">
       {
         galleryBottom.map((img) => (
-          <div role="img" aria-label={img.alt} class="h-[260px] rounded-lg bg-cover bg-top" style={`background-image:url(${img.src});`} />
+          <div
+            role="img"
+            aria-label={img.alt}
+            class="h-[260px] rounded-lg bg-cover bg-top"
+            style={`background-image:url(${img.src});`}
+          />
         ))
       }
     </div>
@@ -348,7 +397,9 @@ const faqs = [
   <!-- FAQ -->
   <section aria-label="Camp questions" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#3b2314;">
     <div class="max-w-[800px] mx-auto text-center mb-14">
-      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Frequently Asked Questions</div>
+      <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">
+        Frequently Asked Questions
+      </div>
       <h2
         class="text-white"
         style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:300;line-height:1.2;"
@@ -360,7 +411,10 @@ const faqs = [
       {
         faqs.map((item) => (
           <div>
-            <h3 class="mb-2" style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:#c49a3c;">
+            <h3
+              class="mb-2"
+              style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;color:#c49a3c;"
+            >
               {item.q}
             </h3>
             <p style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.7;">{item.a}</p>

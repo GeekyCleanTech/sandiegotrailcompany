@@ -28,7 +28,22 @@ const kidsCampPhotos = [
 ];
 const kidsCampCycleSeconds = kidsCampPhotos.length * 4;
 
-const services = [
+type ServiceMedia =
+  | { type: 'video'; src: string; objectPosition?: string }
+  | { type: 'image'; src: string; objectPosition?: string }
+  | { type: 'carousel'; images: string[] };
+
+type Service = {
+  id: string;
+  label: string;
+  title: string;
+  description: string;
+  details: string[];
+  href: string;
+  media: ServiceMedia;
+};
+
+const services: Service[] = [
   {
     id: 'trail-riding',
     label: 'Trail & Scenic Riding',
@@ -88,7 +103,11 @@ const services = [
   </Fragment>
 
   <!-- Hero -->
-  <section aria-label="Ride and Learn hero" class="relative flex items-end overflow-hidden" style="height:80vh;min-height:560px;">
+  <section
+    aria-label="Ride and Learn hero"
+    class="relative flex items-end overflow-hidden"
+    style="height:80vh;min-height:560px;"
+  >
     <video
       aria-hidden="true"
       autoplay
