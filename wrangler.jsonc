@@ -13,6 +13,10 @@
   "assets": {
     "directory": "./dist",
 
+    // Pages-compatible trailing-slash handling, kept explicit so a change
+    // to Wrangler's default can't silently alter the site's URLs.
+    "html_handling": "auto-trailing-slash",
+
     // Serves the prerendered src/pages/404.astro on a miss. Without this,
     // unmatched routes return a bare Workers 404 instead of the site's own
     // 404 page.
