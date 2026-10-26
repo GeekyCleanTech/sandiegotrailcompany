@@ -14,8 +14,7 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Corporate Retreats & Team Building – San Diego Trail Company',
-  description:
-    'Equine-assisted corporate retreats and team-building programs on a working ranch in Poway, CA.',
+  description: 'Equine-assisted corporate retreats and team-building programs on a working ranch in Poway, CA.',
   provider: { '@type': 'LocalBusiness', name: 'San Diego Trail Company', url: 'https://www.sandiegotrailcompany.com' },
   areaServed: { '@type': 'City', name: 'San Diego', addressRegion: 'CA' },
 };
@@ -32,17 +31,20 @@ const facts = [
 const included = [
   {
     title: 'Horse-powered team building',
-    description: 'Horses respond to presence, not titles — equine-led exercises that build real trust between teammates.',
+    description:
+      'Horses respond to presence, not titles — equine-led exercises that build real trust between teammates.',
     icon: 'tabler:horse',
   },
   {
     title: 'Facilitated debrief sessions',
-    description: 'Half-day and full-day programs, each with a facilitated debrief so the lessons carry back to the office.',
+    description:
+      'Half-day and full-day programs, each with a facilitated debrief so the lessons carry back to the office.',
     icon: 'tabler:users',
   },
   {
     title: 'Custom group activities',
-    description: "Programs are built around your team's size and goals, on a working ranch 30 minutes from downtown San Diego.",
+    description:
+      "Programs are built around your team's size and goals, on a working ranch 30 minutes from downtown San Diego.",
     icon: 'tabler:adjustments',
   },
   {
@@ -108,7 +110,11 @@ const included = [
   </section>
 
   <!-- What's included -->
-  <section aria-label="What a corporate retreat includes" class="px-6 lg:px-12 py-20 lg:py-28" style="background-color:#f5f0e8;">
+  <section
+    aria-label="What a corporate retreat includes"
+    class="px-6 lg:px-12 py-20 lg:py-28"
+    style="background-color:#f5f0e8;"
+  >
     <div class="max-w-[800px] mx-auto text-center mb-16">
       <div class="uppercase tracking-[0.2em] mb-6" style="font-size:11px;color:#8a9e7b;">Leadership Retreats</div>
       <h2
@@ -122,7 +128,10 @@ const included = [
         included.map((item) => (
           <div class="p-8 rounded-lg" style="background-color:#edeae0;">
             <Icon name={item.icon} class="w-7 h-7 mb-4" style="color:#c49a3c;" />
-            <h3 class="mb-3" style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#3b2314;">
+            <h3
+              class="mb-3"
+              style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#3b2314;"
+            >
               {item.title}
             </h3>
             <p style="font-size:15px;color:#2c2c2c;line-height:1.7;opacity:0.85;">{item.description}</p>
@@ -139,23 +148,30 @@ const included = [
       aria-label="A barrel-style bar and lounge seating under a wood pergola"
       class="h-[260px] bg-cover bg-center"
       style="background-image:url(/images/marketing/barrel-bar-lounge.jpg);"
-    />
+    >
+    </div>
     <div
       role="img"
       aria-label="A second living room with a dark accent wall, fireplace, and leather sofas"
       class="h-[260px] bg-cover bg-center"
       style="background-image:url(/images/marketing/second-living-room-fireplace.jpg);"
-    />
+    >
+    </div>
     <div
       role="img"
       aria-label="A backyard covered patio with lounge seating"
       class="h-[260px] bg-cover bg-center"
       style="background-image:url(/images/marketing/backyard-covered-patio.jpg);"
-    />
+    >
+    </div>
   </section>
 
   <!-- Inquire -->
-  <section aria-label="Request retreat pricing" class="px-6 lg:px-12 py-20 lg:py-24 text-center" style="background-color:#3b2314;">
+  <section
+    aria-label="Request retreat pricing"
+    class="px-6 lg:px-12 py-20 lg:py-24 text-center"
+    style="background-color:#3b2314;"
+  >
     <div class="max-w-[640px] mx-auto">
       <div class="uppercase tracking-[0.2em] mb-5" style="font-size:11px;color:#8a9e7b;">Get In Touch</div>
       <h2
