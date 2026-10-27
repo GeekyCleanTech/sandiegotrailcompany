@@ -1,8 +1,7 @@
 # Rowdy Moms Two-Year Anniversary: Article Deliverables
 
-Reviewable package for sandiegotrailcompany.com. **Nothing here is published.** The article is committed as a
-draft (`draft: true`) and will not build or appear on the site until the organizer checks below are resolved and
-the draft flag is removed.
+Package for sandiegotrailcompany.com. The organizer details were confirmed on Oct 27, 2026 (see section 7), and the
+article is set to `draft: false`. It goes live at the URL below once the production deploy of `main` finishes.
 
 ## 1. Article
 
@@ -20,15 +19,15 @@ the draft flag is removed.
 
 | Field                  | Value                                                                                                                                                                                                |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SEO title              | Rowdy Moms Turns Two at Rustic Ranch in Poway (site template appends " \| San Diego Trail Company")                                                                                                  |
-| Meta description       | Celebrate two years of Rowdy Moms on Nov 7, 3–6 PM at Rustic Ranch in Poway: local vendors, a sunset sound bath, and an optional 15-minute trail ride. (151 characters)                              |
+| SEO title              | Generated from the H1. Titles too long for the " \| San Diego Trail Company" suffix are used on their own.                                                                                           |
+| Meta description       | Generated from the excerpt (or the opening paragraph when a post has no excerpt), trimmed to 158 characters on a word boundary.                                                                      |
 | Slug                   | `/blog/rowdy-moms-two-year-anniversary-ranch-celebration/`                                                                                                                                           |
 | Excerpt (journal card) | Rowdy Moms turns two on November 7 with an afternoon of friends, local makers, and a sunset sound bath at Rustic Ranch in Poway, plus an optional 15-minute trail ride with San Diego Trail Company. |
 
 ## 3. Open Graph
 
-- **og:title:** Rowdy Moms Turns Two at Rustic Ranch in Poway
-- **og:description:** same as the meta description
+- **og:title / og:description:** generated, same as the SEO title and meta description
+- **article:published_time, article:section, article:tag** and a schema.org `BlogPosting` (with `VideoObject`) are generated from the frontmatter
 - **og:type:** article
 - **og:video:** `/videos/rowdy-moms-two-years.mp4` (absolute URL, `video/mp4`, 692 × 692), with `og:video:secure_url`
 - **og:image (1200 × 630):** `src/assets/images/events/rowdy-moms-og.jpg` is a still from the featured video (the
@@ -56,26 +55,28 @@ Add the verified article URL once it's live; don't share the link before then.
 > vendors, ranch photo ops, and a sunset sound bath on the deck.
 >
 > Want a little adventure? San Diego Trail Company is offering an optional 15-minute trail ride for $26.50, in
-> addition to event admission. It's only available to guests with a purchased ticket.
+> addition to event admission. It's only available to guests with a purchased ticket, and there's no need to book
+> ahead: sign up and pay at the event.
 >
-> To reserve: message Rowdy Moms on Instagram ([VERIFIED_ROWDY_MOMS_INSTAGRAM_URL]) for payment instructions.
+> To reserve: message Rowdy Moms on Instagram (https://www.instagram.com/rowdyymoms/) for payment instructions.
 > Admission is $65, paid directly to Rowdy Moms via Venmo.
 >
-> Details: [PUBLISHED_ARTICLE_URL]
+> Details: https://www.sandiegotrailcompany.com/blog/rowdy-moms-two-year-anniversary-ranch-celebration/
 
 **Instagram** (Reel using the MP4; put the article in a Story link sticker, since links in captions aren't clickable):
 
 > Two years of Rowdy Moms 🤠✨ Sat, Nov 7 · 3–6 PM · Rustic Ranch, Poway
 >
 > Local vendors, ranch photo ops, and a sunset sound bath on the deck. Want to add a little adventure? An optional
-> 15-min trail ride with @[SDTC_HANDLE] is $26.50 extra and only for guests with event admission.
+> 15-min trail ride with @[SDTC_HANDLE] is $26.50 extra and only for guests with event admission. No need to book ahead:
+> sign up and pay at the event.
 >
-> 🎟 DM @[ROWDY_MOMS_HANDLE] to reserve your spot. Admission is $65, paid to Rowdy Moms via Venmo. Full details are
+> 🎟 DM @rowdyymoms to reserve your spot. Admission is $65, paid to Rowdy Moms via Venmo. Full details are
 > at the link in our bio.
 >
 > #RowdyMoms #PowayMoms #SanDiegoMoms #RanchDay #SanDiegoTrailCompany
 
-## 5. Implementation (built in this branch)
+## 5. Implementation (merged to `main`)
 
 The work reuses the existing blog template (`src/pages/blog/[...slug].astro`), which already carries the brand
 tokens from `CustomStyles.astro`: Cormorant Garamond headings, DM Sans body, Deep Saddle Brown #3b2314, Sunbaked
@@ -89,15 +90,16 @@ Gold #c49a3c, Canyon Sage #8a9e7b and Warm Linen #f5f0e8.
   (H.264, faststart, no audio track), which is in line with the site's other clips.
 - **Featured photo:** shown in the article body as a figure with descriptive alt text and a caption saying it's
   from a previous gathering. It's also the journal-card thumbnail.
-- **Frontmatter `metadata`:** blog posts now pass frontmatter `metadata` through. That gives this post its own
-  SEO title, description, OG image and `og:type`, and existing posts without it are unaffected. The
-  `og:video` tags are added through the layout's `head` slot.
+- **Auto-generated meta tags** (`src/utils/postMeta.ts`): every post's title, description, `og:type`, social
+  image (in order: frontmatter override, video poster, featured image), article tags and JSON-LD are built from
+  the article itself. Frontmatter `metadata` can still override any field. This post overrides only the social
+  card image. The `og:video` tags are added through the layout's `head` slot.
 - **Share row on every post:** Facebook, email and copy link, each a 44 px touch target, plus a polite live
   region that announces "Link copied". URLs come from `site` in `config.yaml`, so no live URL is hard-coded.
 - **New MDX components:** `PostCta` (a pill button that matches the header's "Book Your Ride") and
   `PostCallout` (a fact box built as a `<dl>`). Everything in them is selectable text, and they stack to one
   column on mobile.
-- **Checks:** with the draft temporarily flipped, the article builds; `npm run check` passes; the page has one H1;
+- **Checks:** the site builds with all four posts; `npm run check` passes; the page has one H1;
   and it showed no horizontal scroll at 390 px or 1280 px.
 
 ## 6. AI image-generation prompts
@@ -128,37 +130,27 @@ lettering and set all text in the site's own fonts.
 > horse silhouette standing calmly behind the fence with no rider, subtle hand-drawn stars, large clear empty area
 > on the left half for text, no people, no text, no letters, no logos.
 
-## 7. Organizer checks before publication
+## 7. Organizer checks
 
-These must be resolved before `draft: true` is removed.
+**Resolved (Oct 27, 2026):**
 
-1. **Instagram URL:** replace `RESERVE_URL = '[VERIFIED_ROWDY_MOMS_INSTAGRAM_URL]'` in the MDX file with Rowdy
-   Moms' verified profile URL. The same placeholder appears in the captions.
-2. **Ride booking:** confirm how ride spots are reserved and paid for (through Rowdy Moms, San Diego Trail
-   Company, or at check-in). Then replace the visible `[RIDE_BOOKING: …]` sentence in the article.
-3. **Ride eligibility and times:** confirm any age, weight, experience or waiver requirements, plus ride windows
-   and capacity. The site's standard tour rules (ages 7+, 220 lb limit, groups of 6 or fewer) were deliberately
-   left out.
-4. **Address spelling:** the organizer supplied "Mine De Oro", and the value-proposition note uses "Mina de Oro
-   Rd." The article uses **14875 Mina De Oro**, matching the site's footer, contact page and terms. Confirm before
-   publishing.
-5. **What admission includes:** confirm which announced offerings, if any, the $65 covers, and the terms of the
-   EMSCULPT giveaway.
-6. **Unconfirmed attendance details:** are children welcome, or is it adults only? Can non-members attend? Also
-   confirm the age requirement for alcohol, parking, accessibility, refund terms and capacity limits.
-7. **Video on-screen text:** the teaser shows "Trail Rides W/ Rustic Ranch". The brief attributes the rides to San
-   Diego Trail Company, and the article and video caption use that. Ask whether Rowdy Moms can re-export the
-   video. The teaser also spells "The Vibe Chick", while the vendor list says "The Vibe Check". Confirm the
-   correct name.
-8. **Video brand fit:** one shot shows a trucker hat with profanity ("hot girl sh!t"), and another shows canned
-   cocktails held up to a horse. Confirm both are acceptable on the SDTC site, or ask for a trimmed cut.
-9. **Media rights and credits:** confirm permission to use the community photo and the teaser video, and the
-   credit line ("courtesy of Rowdy Moms"). Confirm which gathering the photo shows. Its caption says "a previous
-   gathering", so it isn't presented as the November 7 event.
-10. **Value proposition source:** `Nicole Stone Value Proposition.md` wasn't attached. The SDTC paragraph uses
-    only the wording from the prompt ("guided horseback experiences that help visitors connect with horses and
-    the outdoors"). Swap in the approved wording if it differs.
-11. **Social handles:** fill in `[ROWDY_MOMS_HANDLE]`, `[SDTC_HANDLE]` and `[PUBLISHED_ARTICLE_URL]` in the
-    captions.
-12. **After the event:** once November 7 has passed, update or unlist the post so it doesn't keep promoting a
-    past event.
+- **Instagram URL:** https://www.instagram.com/rowdyymoms/ is used for both reserve buttons.
+- **Ride booking:** rides are booked and paid for at the event. Guests don't need to book ahead to attend or
+  ride. Event admission is still required to ride.
+- **Address:** 14875 Mina de Oro Rd, Poway, CA 92064.
+- **Video text and content:** approved as is.
+- **Media rights:** the photo and video are approved for use, and so is the credit line "courtesy of Rowdy Moms".
+- **Value proposition:** the "Ride Another Day" copy now draws on the SDTC customer statement from
+  `Nicole Stone Value Proposition.md` (small-group guided rides through Poway's backcountry canyons, well-cared-for
+  horses). The six-rider cap, ages 7+, pricing and rescue claims stay out of the event article.
+
+**Still open (not blockers):**
+
+1. **What admission includes:** which announced offerings, if any, the $65 covers, and the terms of the EMSCULPT
+   giveaway. The article doesn't promise any.
+2. **Attendance details:** whether children are welcome, the age requirement for alcohol, parking, accessibility,
+   refunds and capacity. The article makes no claims about any of these.
+3. **Ride eligibility:** any rider requirements for the 15-minute event ride. The article doesn't state any.
+4. **Social handle:** fill in `@[SDTC_HANDLE]` in the Instagram caption.
+5. **After the event:** once November 7 has passed, update or unlist the post so it doesn't keep promoting a
+   past event.
