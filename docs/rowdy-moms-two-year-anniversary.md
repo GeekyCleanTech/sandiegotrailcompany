@@ -151,5 +151,5 @@ lettering and set all text in the site's own fonts.
 2. **Attendance details:** whether children are welcome, the age requirement for alcohol, parking, accessibility,
    refunds and capacity. The article makes no claims about any of these.
 3. **Ride eligibility:** any rider requirements for the 15-minute event ride. The article doesn't state any.
-5. **After the event:** once November 7 has passed, update or unlist the post so it doesn't keep promoting a
+4. **After the event:** once November 7 has passed, update or unlist the post so it doesn't keep promoting a
    past event.
