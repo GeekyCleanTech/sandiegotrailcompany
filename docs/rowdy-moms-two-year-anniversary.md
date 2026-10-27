@@ -10,7 +10,7 @@ article is set to `draft: false`. It goes live at the URL below once the product
 - Sections (H2): Two Years of Rowdy Moms · An Afternoon at the Ranch · Optional Extra: A Short Trail Ride ·
   Event Details · How to Reserve Your Spot · Ride Another Day
 - About 80% of the copy is about the community and the event. The ride gets its own subsection with a fact box
-  (provider, 15 min, $26.50 additional, admission required, $65 admission paid separately through Rowdy Moms).
+  (provider, 15 min, ride tickets purchased during the event, admission required, $65 admission paid separately through Rowdy Moms).
 - "DM Rowdy Moms to Reserve" appears as the primary (gold) button near the top and again after the reservation
   steps. The "Explore Guided Rides" button is the secondary (outline) style and links to the existing
   `/ride-and-learn/horseback-riding/` page, so regular rides stay separate from booking for the event.
@@ -54,9 +54,8 @@ Add the verified article URL once it's live; don't share the link before then.
 > Rowdy Moms turns two! 🤠 Join the celebration on Saturday, Nov 7, 3–6 PM at Rustic Ranch in Poway: local
 > vendors, ranch photo ops, and a sunset sound bath on the deck.
 >
-> Want a little adventure? San Diego Trail Company is offering an optional 15-minute trail ride for $26.50, in
-> addition to event admission. It's only available to guests with a purchased ticket, and there's no need to book
-> ahead: sign up and pay at the event.
+> Want a little adventure? San Diego Trail Company is offering an optional 15-minute trail ride for guests with
+> event admission. Ride tickets can be purchased during the event, so there's no need to book ahead.
 >
 > To reserve: message Rowdy Moms on Instagram (https://www.instagram.com/rowdyymoms/) for payment instructions.
 > Admission is $65, paid directly to Rowdy Moms via Venmo.
@@ -68,8 +67,7 @@ Add the verified article URL once it's live; don't share the link before then.
 > Two years of Rowdy Moms 🤠✨ Sat, Nov 7 · 3–6 PM · Rustic Ranch, Poway
 >
 > Local vendors, ranch photo ops, and a sunset sound bath on the deck. Want to add a little adventure? An optional
-> 15-min trail ride with San Diego Trail Company (aka @horse_adventure_vacation on Instagram) is $26.50 extra and only for guests with event admission. No need to book ahead:
-> sign up and pay at the event.
+> 15-min trail ride with San Diego Trail Company (aka @horse_adventure_vacation on Instagram) is open to guests with event admission. Ride tickets can be purchased during the event.
 >
 > 🎟 DM @rowdyymoms to reserve your spot. Admission is $65, paid to Rowdy Moms via Venmo. Full details are
 > at the link in our bio.
@@ -135,7 +133,7 @@ lettering and set all text in the site's own fonts.
 **Resolved (Oct 27, 2026):**
 
 - **Instagram URL:** https://www.instagram.com/rowdyymoms/ is used for both reserve buttons.
-- **Ride booking:** rides are booked and paid for at the event. Guests don't need to book ahead to attend or
+- **Ride booking:** ride tickets are purchased during the event. The ride price is not published in the article or captions. Guests don't need to book ahead to attend or
   ride. Event admission is still required to ride.
 - **Address:** 14875 Mina de Oro Rd, Poway, CA 92064.
 - **Video text and content:** approved as is.
