@@ -1,0 +1,36 @@
+---
+// Boxed fact list for MDX posts (event details, pricing). Content stays selectable text.
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  title: string;
+  icon?: string;
+  items: { label: string; value: string }[];
+}
+
+const { title, icon, items } = Astro.props;
+---
+
+<aside
+  class="post-callout rounded-lg my-8 p-6 sm:p-8"
+  style="background-color:#fff;border:1px solid rgba(59,35,20,0.12);border-left:4px solid #8a9e7b;"
+>
+  <p
+    class="flex items-center gap-2 uppercase"
+    style="font-size:12px;font-weight:600;letter-spacing:0.18em;color:#3b2314;margin-bottom:1em;"
+  >
+    {icon && <Icon name={icon} class="w-5 h-5" style="color:#8a9e7b;" aria-hidden="true" />}
+    {title}
+  </p>
+  <dl class="grid gap-x-6 gap-y-3 sm:grid-cols-[max-content_1fr]">
+    {
+      items.map(({ label, value }) => (
+        <>
+          <dt style="font-size:13px;font-weight:600;color:#3b2314;letter-spacing:0.05em;">{label}</dt>
+          <dd style="font-size:16px;color:#2c2c2c;line-height:1.6;margin:0 0 0.4em 0;">{value}</dd>
+        </>
+      ))
+    }
+  </dl>
+  <slot />
+</aside>

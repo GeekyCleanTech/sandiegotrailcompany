@@ -1,0 +1,25 @@
+---
+// Pill-shaped call-to-action for use inside MDX posts; matches the header "Book Your Ride" button.
+export interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary';
+  external?: boolean;
+}
+
+const { href, variant = 'primary', external = true } = Astro.props;
+const style =
+  variant === 'primary'
+    ? 'background-color:#c49a3c;color:#3b2314;border:1px solid #c49a3c;'
+    : 'background-color:transparent;color:#3b2314;border:1px solid #3b2314;';
+---
+
+<div class="post-cta">
+  <a
+    href={href}
+    {...external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+    class="px-8 rounded-full transition-all hover:brightness-110 inline-flex items-center justify-center text-center"
+    style={`${style}font-size:13px;font-weight:600;min-height:48px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;`}
+  >
+    <slot />
+  </a>
+</div>
