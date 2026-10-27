@@ -68,7 +68,7 @@ Add the verified article URL once it's live; don't share the link before then.
 > Two years of Rowdy Moms 🤠✨ Sat, Nov 7 · 3–6 PM · Rustic Ranch, Poway
 >
 > Local vendors, ranch photo ops, and a sunset sound bath on the deck. Want to add a little adventure? An optional
-> 15-min trail ride with @[SDTC_HANDLE] is $26.50 extra and only for guests with event admission. No need to book ahead:
+> 15-min trail ride with @horse_adventure_vacation is $26.50 extra and only for guests with event admission. No need to book ahead:
 > sign up and pay at the event.
 >
 > 🎟 DM @rowdyymoms to reserve your spot. Admission is $65, paid to Rowdy Moms via Venmo. Full details are
@@ -151,6 +151,6 @@ lettering and set all text in the site's own fonts.
 2. **Attendance details:** whether children are welcome, the age requirement for alcohol, parking, accessibility,
    refunds and capacity. The article makes no claims about any of these.
 3. **Ride eligibility:** any rider requirements for the 15-minute event ride. The article doesn't state any.
-4. **Social handle:** fill in `@[SDTC_HANDLE]` in the Instagram caption.
+4. **Social handle:** fill in `@horse_adventure_vacation` in the Instagram caption.
 5. **After the event:** once November 7 has passed, update or unlist the post so it doesn't keep promoting a
    past event.
