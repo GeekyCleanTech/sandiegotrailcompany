@@ -1,0 +1,217 @@
+---
+// Share bar for blog posts: Facebook, Instagram, native share sheet, email and copy link.
+//
+// Neither Facebook nor Instagram accepts a video attachment from a web link, so when the
+// browser can share files (most phones) the Facebook, Instagram and Share buttons open the
+// system share sheet with the featured video itself plus the summary and link. Facebook and
+// Instagram drop pre-filled text, so the summary and link are also copied for pasting.
+// Without file sharing (most desktops), Facebook falls back to its link sharer (the post's
+// Open Graph card) and Instagram, which has no web share URL, downloads the video and
+// copies the caption.
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  url: string;
+  title: string;
+  summary?: string;
+  video?: { src: string; filename: string };
+  class?: string;
+}
+
+const { url, title, summary, video, class: className = '' } = Astro.props;
+const caption = summary ? `${summary}\n\n${url}` : `${title}\n\n${url}`;
+---
+
+<div
+  class={`post-share flex flex-wrap items-center gap-2 ${className}`}
+  role="group"
+  aria-label="Share this article"
+  data-share-url={url}
+  data-share-title={title}
+  data-share-caption={caption}
+  data-share-video={video?.src}
+  data-share-video-name={video?.filename}
+>
+  <span class="uppercase mr-1" style="font-size:12px;letter-spacing:0.15em;color:#3b2314;">Share</span>
+  <a
+    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="share-btn"
+    data-share="facebook"
+    aria-label="Share on Facebook (opens in new tab)"
+  >
+    <Icon name="tabler:brand-facebook" class="w-5 h-5" aria-hidden="true" />
+  </a>
+  <button type="button" class="share-btn" data-share="instagram" aria-label="Share on Instagram">
+    <Icon name="tabler:brand-instagram" class="w-5 h-5" aria-hidden="true" />
+  </button>
+  <button type="button" class="share-btn" data-share="native" aria-label="Share with another app">
+    <Icon name="tabler:share" class="w-5 h-5" aria-hidden="true" />
+  </button>
+  <a
+    href={`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(caption)}`}
+    class="share-btn"
+    aria-label="Share by email"
+  >
+    <Icon name="tabler:mail" class="w-5 h-5" aria-hidden="true" />
+  </a>
+  <button type="button" class="share-btn" data-share="copy" aria-label="Copy link to this article">
+    <Icon name="tabler:link" class="w-5 h-5" aria-hidden="true" />
+  </button>
+  <span class="share-status basis-full" role="status" aria-live="polite" style="font-size:13px;color:#5f7052;"></span>
+</div>
+
+<script>
+  type ShareBar = HTMLElement & { dataset: DOMStringMap };
+
+  // Browsers only allow share() shortly after a tap, so the video is fetched ahead of time
+  // (only on devices that can share files) and kept here for an instant, synchronous share.
+  const videoFiles = new Map<string, File | null>();
+  const pending = new Map<string, Promise<File | null>>();
+
+  const canShareVideo = () => {
+    try {
+      return !!navigator.canShare?.({ files: [new File([''], 'probe.mp4', { type: 'video/mp4' })] });
+    } catch {
+      return false;
+    }
+  };
+
+  const loadVideo = (src: string, name: string) => {
+    if (!pending.has(src)) {
+      pending.set(
+        src,
+        fetch(src)
+          .then((r) => (r.ok ? r.blob() : null))
+          .then((blob) => (blob ? new File([blob], name, { type: blob.type || 'video/mp4' }) : null))
+          .catch(() => null)
+          .then((file) => {
+            videoFiles.set(src, file);
+            return file;
+          })
+      );
+    }
+    return pending.get(src)!;
+  };
+
+  const say = (bar: ShareBar, message: string) => {
+    const status = bar.querySelector('.share-status');
+    if (status) status.textContent = message;
+  };
+
+  const copy = (text: string) =>
+    navigator.clipboard?.writeText(text).then(
+      () => true,
+      () => false
+    ) ?? Promise.resolve(false);
+
+  /** Open the system share sheet with the video (when ready), summary and link. */
+  const shareVideo = async (bar: ShareBar): Promise<'shared' | 'loading' | 'unsupported'> => {
+    const { shareVideo: src, shareTitle: title, shareCaption: text, shareUrl: url } = bar.dataset;
+    const file = src ? videoFiles.get(src) : null;
+    if (file && navigator.canShare?.({ files: [file] })) {
+      await navigator.share({ files: [file], title, text });
+      return 'shared';
+    }
+    if (src && canShareVideo() && !videoFiles.has(src)) {
+      say(bar, 'Getting the video ready… tap again in a moment.');
+      void loadVideo(src, bar.dataset.shareVideoName ?? 'video.mp4').then((f) =>
+        say(bar, f ? 'Video ready — tap again to share it.' : '')
+      );
+      return 'loading';
+    }
+    if (navigator.share) {
+      await navigator.share({ title, text, url });
+      return 'shared';
+    }
+    return 'unsupported';
+  };
+
+  const run = async (bar: ShareBar, action: string, event: Event) => {
+    const { shareCaption: caption = '', shareUrl: url = location.href, shareVideo: src } = bar.dataset;
+    const fileShare = !!src && canShareVideo();
+
+    try {
+      if (action === 'copy') {
+        say(bar, (await copy(url)) ? 'Link copied.' : 'Copy failed — use the address bar.');
+        return;
+      }
+
+      if (action === 'facebook') {
+        // Desktop: let the link open Facebook's sharer with the article's preview card.
+        if (!fileShare) return;
+        event.preventDefault();
+        void copy(caption);
+        if ((await shareVideo(bar)) === 'shared')
+          say(bar, 'Caption and link copied — paste them into your Facebook post.');
+        return;
+      }
+
+      if (action === 'instagram') {
+        void copy(caption);
+        if (fileShare) {
+          if ((await shareVideo(bar)) === 'shared')
+            say(bar, 'Caption and link copied — paste them into your Instagram post.');
+          return;
+        }
+        if (src) {
+          const a = document.createElement('a');
+          a.href = src;
+          a.download = bar.dataset.shareVideoName ?? '';
+          a.click();
+          say(bar, 'Video downloaded and caption copied. Open Instagram to post the video and paste the caption.');
+        } else {
+          say(bar, 'Caption and link copied. Open Instagram to paste them into your post.');
+        }
+        return;
+      }
+
+      if (action === 'native') {
+        void copy(caption);
+        if ((await shareVideo(bar)) !== 'loading') say(bar, 'Caption and link copied.');
+      }
+    } catch (err) {
+      // The person closed the share sheet; nothing to report.
+      if ((err as DOMException)?.name !== 'AbortError')
+        say(bar, 'Sharing didn’t work here — the caption and link are copied.');
+    }
+  };
+
+  document.querySelectorAll<ShareBar>('.post-share').forEach((bar) => {
+    bar.querySelectorAll<HTMLElement>('[data-share]').forEach((btn) => {
+      btn.addEventListener('click', (event) => void run(bar, btn.dataset.share!, event));
+    });
+  });
+
+  // Fetch the featured video in the background on devices that can share it. It is usually
+  // already cached because the article autoplays it.
+  const first = document.querySelector<ShareBar>('.post-share[data-share-video]');
+  if (first && canShareVideo()) {
+    const start = () => loadVideo(first.dataset.shareVideo!, first.dataset.shareVideoName ?? 'video.mp4');
+    if ('requestIdleCallback' in window) requestIdleCallback(() => void start(), { timeout: 4000 });
+    else setTimeout(() => void start(), 2000);
+  }
+</script>
+
+<style>
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 9999px;
+    border: 1px solid rgba(59, 35, 20, 0.2);
+    color: #3b2314;
+    transition: all 0.2s;
+  }
+  .share-btn:hover,
+  .share-btn:focus-visible {
+    background-color: #c49a3c;
+    border-color: #c49a3c;
+  }
+  .share-status:empty {
+    display: none;
+  }
+</style>
