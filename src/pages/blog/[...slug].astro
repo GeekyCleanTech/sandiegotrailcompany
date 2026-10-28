@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { Icon } from 'astro-icon/components';
 import SiteLayout from '~/layouts/SiteLayout.astro';
+import PostShare from '~/components/blog/PostShare.astro';
 import { buildPostMetadata, buildPostJsonLd } from '~/utils/postMeta';
 
 export async function getStaticPaths() {
@@ -21,6 +21,12 @@ const { video } = post.data;
 const videoUrl = video && String(new URL(video.src, Astro.site));
 const shareUrl = String(new URL(Astro.url.pathname, Astro.site));
 const jsonLd = buildPostJsonLd(post, shareUrl, Astro.site);
+const share = {
+  url: shareUrl,
+  title: post.data.title,
+  summary: post.data.excerpt ?? metadata.description,
+  video: video && { src: video.src, filename: `${post.id}.mp4` },
+};
 ---
 
 <SiteLayout metadata={metadata}>
@@ -66,6 +72,7 @@ const jsonLd = buildPostJsonLd(post, shareUrl, Astro.site);
 
   <article class="px-6 lg:px-12 py-14 lg:py-20" style="background-color:#f5f0e8;">
     <div class="max-w-[760px] mx-auto">
+      <PostShare {...share} class="mb-8" />
       {
         video ? (
           <figure class="mb-10">
@@ -111,29 +118,7 @@ const jsonLd = buildPostJsonLd(post, shareUrl, Astro.site);
         class="mt-14 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
         style="border-top:1px solid rgba(59,35,20,0.12);"
       >
-        <div class="flex items-center gap-2" role="group" aria-label="Share this article">
-          <span class="uppercase mr-1" style="font-size:12px;letter-spacing:0.15em;color:#3b2314;">Share</span>
-          <a
-            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="share-btn"
-            aria-label="Share on Facebook (opens in new tab)"
-          >
-            <Icon name="tabler:brand-facebook" class="w-5 h-5" aria-hidden="true" />
-          </a>
-          <a
-            href={`mailto:?subject=${encodeURIComponent(post.data.title)}&body=${encodeURIComponent(shareUrl)}`}
-            class="share-btn"
-            aria-label="Share by email"
-          >
-            <Icon name="tabler:mail" class="w-5 h-5" aria-hidden="true" />
-          </a>
-          <button type="button" class="share-btn" data-copy-link={shareUrl} aria-label="Copy link to this article">
-            <Icon name="tabler:link" class="w-5 h-5" aria-hidden="true" />
-          </button>
-          <span class="copy-status" role="status" aria-live="polite" style="font-size:12px;color:#8a9e7b;"></span>
-        </div>
+        <PostShare {...share} />
         <a
           href="/blog/"
           class="inline-flex items-center gap-2 hover:gap-3 transition-all"
@@ -147,19 +132,6 @@ const jsonLd = buildPostJsonLd(post, shareUrl, Astro.site);
 </SiteLayout>
 
 <script>
-  // Copy-link share button.
-  document.querySelectorAll<HTMLButtonElement>('[data-copy-link]').forEach((btn) => {
-    btn.addEventListener('click', async () => {
-      const status = btn.parentElement?.querySelector('.copy-status');
-      try {
-        await navigator.clipboard.writeText(btn.dataset.copyLink ?? location.href);
-        if (status) status.textContent = 'Link copied';
-      } catch {
-        if (status) status.textContent = 'Copy failed — use the address bar';
-      }
-    });
-  });
-
   // Featured videos autoplay on loop; hold them on the poster for visitors who prefer reduced motion.
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.querySelectorAll<HTMLVideoElement>('.post-video').forEach((v) => {
@@ -170,22 +142,6 @@ const jsonLd = buildPostJsonLd(post, shareUrl, Astro.site);
 </script>
 
 <style>
-  .share-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 9999px;
-    border: 1px solid rgba(59, 35, 20, 0.2);
-    color: #3b2314;
-    transition: all 0.2s;
-  }
-  .share-btn:hover,
-  .share-btn:focus-visible {
-    background-color: #c49a3c;
-    border-color: #c49a3c;
-  }
   .post-body :global(figure) {
     margin: 2em 0;
   }

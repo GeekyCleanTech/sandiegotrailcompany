@@ -92,8 +92,13 @@ Gold #c49a3c, Canyon Sage #8a9e7b and Warm Linen #f5f0e8.
   image (in order: frontmatter override, video poster, featured image), article tags and JSON-LD are built from
   the article itself. Frontmatter `metadata` can still override any field. This post overrides only the social
   card image. The `og:video` tags are added through the layout's `head` slot.
-- **Share row on every post:** Facebook, email and copy link, each a 44 px touch target, plus a polite live
-  region that announces "Link copied". URLs come from `site` in `config.yaml`, so no live URL is hard-coded.
+- **Share bar on every post** (`src/components/blog/PostShare.astro`), above the featured media and again at the
+  end: Facebook, Instagram, Share, email and copy link, each a 44 px touch target, with a polite live region for
+  status messages. Each share carries the post's excerpt and its canonical URL, which comes from `site` in
+  `config.yaml`. On phones that can share files, the Facebook, Instagram and Share buttons open the system share
+  sheet with the featured video file. Because Facebook and Instagram drop pre-filled text, the summary and link
+  are also copied for pasting. On desktop, Facebook opens its link sharer, which shows the post's preview card.
+  Instagram has no web share link, so it downloads the video and copies the caption.
 - **New MDX components:** `PostCta` (a pill button that matches the header's "Book Your Ride") and
   `PostCallout` (a fact box built as a `<dl>`). Everything in them is selectable text, and they stack to one
   column on mobile.
